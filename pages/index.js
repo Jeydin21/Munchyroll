@@ -50,6 +50,7 @@ export default function Home() {
           property="twitter:image"
           content="https://i.postimg.cc/FRHHCckG/image.png"
         />
+        <meta name="theme-color" content="#A0956E" />
       </Head>
       <LandingPage />
     </div>

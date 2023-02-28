@@ -47,6 +47,7 @@ function MainLayout({ children, useHead = true }) {
             property="twitter:image"
             content="https://i.postimg.cc/FRHHCckG/image.png"
           />
+          <meta name="theme-color" content="#A0956E" />
         </Head>
       )}
       <Header />
