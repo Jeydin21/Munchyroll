@@ -34,7 +34,7 @@ export default function Home() {
           property="og:description"
           content="Zubayr Theater is a point of interest located in Sumeru City, Avidya Forest, Dharma Forest, Sumeru. It is located within the Grand Bazaar. Nilou is associated with the theater troupe."
         />
-        <meta property="og:image" content="https://i.imgur.com/xO0ViM0.png" />
+        <meta property="og:image" content="https://i.postimg.cc/FRHHCckG/image.png" />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://zubayr.vercel.app/" />
@@ -48,7 +48,7 @@ export default function Home() {
         />
         <meta
           property="twitter:image"
-          content="https://i.imgur.com/xO0ViM0.png"
+          content="https://i.postimg.cc/FRHHCckG/image.png"
         />
       </Head>
       <LandingPage />

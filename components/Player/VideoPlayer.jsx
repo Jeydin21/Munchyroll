@@ -30,7 +30,7 @@ const VideoPlayer = ({ videoSource }) => {
       fluid: true,
       muted: false,
       responsive: true,
-      poster: "https://i.imgur.com/xO0ViM0.png",
+      poster: "https://i.postimg.cc/FRHHCckG/image.png",
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
