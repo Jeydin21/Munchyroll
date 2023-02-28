@@ -17,7 +17,7 @@ export default function Home() {
         <title>Zubayr Theater</title>
         <meta
           name="title"
-          content="Zubayr Theater"
+          content="Zubayr Theater - Come Watch Some Shows!"
         />
         <meta
           name="description"
@@ -28,7 +28,7 @@ export default function Home() {
         <meta property="og:url" content="https://zubayr.vercel.app/" />
         <meta
           property="og:title"
-          content="Zubayr Theater"
+          content="Zubayr Theater - Come Watch Some Shows!"
         />
         <meta
           property="og:description"
@@ -40,7 +40,7 @@ export default function Home() {
         <meta property="twitter:url" content="https://zubayr.vercel.app/" />
         <meta
           property="twitter:title"
-          content="Zubayr Theater"
+          content="Zubayr Theater - Come Watch Some Shows!"
         />
         <meta
           property="twitter:description"

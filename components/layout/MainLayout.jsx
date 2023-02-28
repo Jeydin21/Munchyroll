@@ -8,10 +8,10 @@ function MainLayout({ children, useHead = true }) {
     <div className="  bg-background">
       {useHead && (
         <Head>
-          <title>Zubayr Theater - Minimal anime streaming site</title>
+          <title>Zubayr Theater</title>
           <meta
             name="title"
-            content="Zubayr Theater - A minimal anime streaming site"
+            content="Zubayr Theater - Come Watch Some Shows!"
           />
           <meta
             name="description"
@@ -22,7 +22,7 @@ function MainLayout({ children, useHead = true }) {
           <meta property="og:url" content="https://zubayr.vercel.app/" />
           <meta
             property="og:title"
-            content="Zubayr Theater - Minimal anime streaming site"
+            content="Zubayr Theater - Come Watch Some Shows!"
           />
           <meta
             property="og:description"
@@ -37,7 +37,7 @@ function MainLayout({ children, useHead = true }) {
           />
           <meta
             property="twitter:title"
-            content="Zubayr Theater - Minimal anime streaming site"
+            content="Zubayr Theater - Come Watch Some Shows!"
           />
           <meta
             property="twitter:description"

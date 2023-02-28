@@ -41,9 +41,8 @@ function AnimeDetailsPage({ data }) {
         <title>{data?.animeTitle + " - Zubayr Theater "}</title>
         <meta name="description" content={data?.synopsis} />
         <meta name="keywords" content={data?.genres} />
-        <meta name="author" content="consumet" />
 
-        <meta property="og:title" content={data?.animeTitle} />
+        <meta property="og:title" content={data?.animeTitle + " - Zubayr Theater "} />
         <meta property="og:description" content={data?.synopsis} />
         <meta property="og:image" content={data?.animeImg} />
       </Head>
