@@ -33,7 +33,7 @@ function AnimeDetails({ data }) {
             onClick={() => setIsReadMore(!isReadMore)}
             className=" text-indigo-200  cursor-pointer"
           >
-            {!isReadMore ? "read more" : "read less"}
+            {!isReadMore ? "Read More" : "Read Less"}
           </span>
 
           <div className="mt-5 flex gap-2 flex-wrap">
