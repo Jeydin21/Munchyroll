@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "https://webdis-x51w.onrender.com";
+const BASEURL = "https://zubayr-theater-api.onrender.com";
 export const getPopularAnime = async () => {
   const { data } = await axios.get(`${BASEURL}/popular`);
   return data;

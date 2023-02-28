@@ -11,7 +11,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `https://webdis-x51w.onrender.com/anime-details/${animeId}`
+    `https://zubayr-theater-api.onrender.com/anime-details/${animeId}`
   );
 
   const data = await res.json();
