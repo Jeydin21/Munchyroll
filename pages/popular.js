@@ -8,7 +8,7 @@ import ReactGA from "react-ga";
 import { getPopularAnime } from "../src/handlers";
 
 export async function getServerSideProps() {
-  const res = await fetch("https://gogoanime.consumet.stream/popular");
+  const res = await fetch("https://zubayr-theater-api.onrender.com/popular");
 
   const data = await res.json();
 

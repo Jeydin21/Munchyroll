@@ -11,7 +11,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `https://gogoanime.consumet.stream/${animeId}`
+    `https://zubayr-theater-api.onrender.com/${animeId}`
   );
 
   const data = await res.json();
