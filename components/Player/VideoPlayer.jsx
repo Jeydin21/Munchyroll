@@ -32,7 +32,6 @@ const VideoPlayer = ({ videoSource }) => {
       responsive: true,
       poster: "https://i.postimg.cc/FRHHCckG/image.png",
       liveui: true,
-      preferFullWindow: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
         src: videoSource,
