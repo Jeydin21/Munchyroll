@@ -55,7 +55,7 @@ function AnimeDetails({ data }) {
       <div>
         <h2 className=" font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
-          {episodesList?.map((episode, i) => (
+          {episodesList?.slice(0).reverse().map((episode, i) => (
             <TextButtons
               key={i}
               link={`/stream/${episode.episodeId}`}

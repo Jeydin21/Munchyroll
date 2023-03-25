@@ -37,6 +37,7 @@ function StreamingPage({ data }) {
   // get the search id from the url with javascript
 
   const episodeId = window.location.pathname.split("/")[2];
+  const episodeName = episodeId.split("-").join(" ")
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -83,7 +84,7 @@ function StreamingPage({ data }) {
             )}
 
             <div className="  hidden sm:block mt-5">
-              <h3 className="  capitalize ">{episodeId}</h3>
+              <h3 className="  capitalize ">{episodeName}</h3>
             </div>
           </div>
           <div className=" sm:hidden  mt-5">
