@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 // **Important** Replace this tracking ID by your Analytics code
 // Or you can put it into the environment file.
-const GA_TRACKING_ID = 'G-PQCH40ZGNT';
+const GA_TRACKING_ID = 'G-BWHMJBKN0R';
 
 // @ts-ignore
 const addPageView = (url) => {

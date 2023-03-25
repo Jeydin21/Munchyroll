@@ -8,7 +8,7 @@ import ReactGA from "react-ga";
 
 import nprogress from "nprogress";
 
-ReactGA.initialize("G-PQCH40ZGNT");
+ReactGA.initialize("G-BWHMJBKN0R");
 
 import Router from "next/router";
 import GoogleAnalytics from "../components/GoogleAnalytics";
