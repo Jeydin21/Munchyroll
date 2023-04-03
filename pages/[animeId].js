@@ -38,11 +38,11 @@ function AnimeDetailsPage({ data }) {
   return (
     <>
       <Head>
-        <title>{data?.animeTitle + " - Zubayr Theater "}</title>
+        <title>{data?.animeTitle + " - Munchyroll "}</title>
         <meta name="description" content={data?.synopsis} />
         <meta name="keywords" content={data?.genres} />
 
-        <meta property="og:title" content={data?.animeTitle + " - Zubayr Theater "} />
+        <meta property="og:title" content={data?.animeTitle + " - Munchyroll "} />
         <meta property="og:description" content={data?.synopsis} />
         <meta property="og:image" content={data?.animeImg} />
         <meta name="theme-color" content="#A0956E" /> {/* Maybe change this to scan image and return main color */}
