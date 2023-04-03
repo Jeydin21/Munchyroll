@@ -11,22 +11,22 @@ function MainLayout({ children, useHead = true }) {
           <title>Munchyroll</title>
           <meta
             name="title"
-            content="Munchyroll - Come Watch Some Shows!"
+            content="Munchyroll - Watch HD Anime For Free"
           />
           <meta
             name="description"
-            content="Munchyroll is a point of interest located in Sumeru City, Avidya Forest, Dharma Forest, Sumeru. It is located within the Grand Bazaar. Nilou is associated with the theater troupe."
+            content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
           />
 
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://zubayr.vercel.app/" />
           <meta
             property="og:title"
-            content="Munchyroll - Come Watch Some Shows!"
+            content="Munchyroll - Watch HD Anime For Free"
           />
           <meta
             property="og:description"
-            content="Munchyroll is a point of interest located in Sumeru City, Avidya Forest, Dharma Forest, Sumeru. It is located within the Grand Bazaar. Nilou is associated with the theater troupe."
+            content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
           />
           <meta property="og:image" content="https://i.postimg.cc/FRHHCckG/image.png" />
 
@@ -37,11 +37,11 @@ function MainLayout({ children, useHead = true }) {
           />
           <meta
             property="twitter:title"
-            content="Munchyroll - Come Watch Some Shows!"
+            content="Munchyroll - Watch HD Anime For Free"
           />
           <meta
             property="twitter:description"
-            content="Munchyroll is a point of interest located in Sumeru City, Avidya Forest, Dharma Forest, Sumeru. It is located within the Grand Bazaar. Nilou is associated with the theater troupe."
+            content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
           />
           <meta
             property="twitter:image"
