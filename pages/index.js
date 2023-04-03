@@ -34,7 +34,6 @@ export default function Home() {
           property="og:description"
           content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
         />
-        <meta property="og:image" content="https://i.postimg.cc/FRHHCckG/image.png" />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://zubayr.vercel.app/" />
