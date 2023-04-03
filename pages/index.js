@@ -45,10 +45,6 @@ export default function Home() {
           property="twitter:description"
           content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
         />
-        <meta
-          property="twitter:image"
-          content="https://i.postimg.cc/FRHHCckG/image.png"
-        />
         <meta name="theme-color" content="#A0956E" />
       </Head>
       <LandingPage />
