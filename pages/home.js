@@ -19,6 +19,7 @@ export async function getServerSideProps() {
   };
 }
 
+
 const Home = ({ data }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
