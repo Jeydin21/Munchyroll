@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "https://zubayr-theater-api.onrender.com";
+const BASEURL = "https://api.munchyroll.ml";
 export const getPopularAnime = async () => {
   const { data } = await axios.get(`${BASEURL}/popular`);
   return data;
