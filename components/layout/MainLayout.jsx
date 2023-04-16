@@ -19,7 +19,7 @@ function MainLayout({ children, useHead = true }) {
           />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://zubayr.vercel.app/" />
+          <meta property="og:url" content="https://munchyroll.ml/" />
           <meta
             property="og:title"
             content="Munchyroll - Watch HD Anime For Free"
@@ -32,7 +32,7 @@ function MainLayout({ children, useHead = true }) {
           <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:url"
-            content="https://zubayr.vercel.app/"
+            content="https://munchyroll.ml/"
           />
           <meta
             property="twitter:title"
