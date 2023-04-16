@@ -47,6 +47,7 @@ export default function Home() {
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
 				<meta name="theme-color" content="#A0956E" />
+				<script async src="https://arc.io/widget.min.js#171c8xgV"></script>
 			</Head>
 			<LandingPage />
 		</div>
