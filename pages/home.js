@@ -29,7 +29,7 @@ const Home = ({ data }) => {
   return (
     <>
       <Head>
-        <title>Home - Munchyroll</title>
+        <title>Munchyroll</title>
         <meta name="description" content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display." />
 
         <meta property="og:title" content="Home - Munchyroll " />
@@ -41,7 +41,8 @@ const Home = ({ data }) => {
       {isError && <div>Something went wrong</div>} */}
 
       {data && (
-        <>
+          <>
+            <h1 className=" text-2xl font-bold">Popular Anime</h1>
           <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
             {data &&
               data.map((anime) => <Card key={anime.animeId} data={anime} />)}
