@@ -41,7 +41,16 @@ function SearchPage({ data }) {
   //   getAnimeSearch(searchId)
   // );
   return (
-    <MainLayout>
+    <>
+      <Head>
+        <title>{"Search Results: " + searchId + " - Munchyroll"}</title>
+        <meta name="description" content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display." />
+
+        <meta property="og:title" content={"Search Results: " + searchId + " - Munchyroll"} />
+        <meta property="og:description" content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display." />
+        <meta name="theme-color" content="#A0956E" /> {/* Maybe change this to scan image and return main color */}
+      </Head>
+    <MainLayout useHead={false}>
       {/* {isLoading && <Loading />}
       {isError && <div>Something went wrong</div>} */}
 
@@ -60,7 +69,8 @@ function SearchPage({ data }) {
           </div>
         </>
       )}
-    </MainLayout>
+      </MainLayout>
+      </>
   );
 }
 
