@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useQuery } from "react-query";
+import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
 import Card from "../../components/small-components/Card";
 import Loading from "../../components/small-components/Loading";
@@ -24,7 +25,7 @@ export const getServerSideProps = async (context) => {
 
 function SearchPage({ data }) {
   const router = useRouter();
-  // const { searchId } = router.query;
+  const { searchId } = router.query;
 
   // get the search id from the url with javascript
 
