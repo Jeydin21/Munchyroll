@@ -123,19 +123,20 @@ function StreamingPage({ data }) {
 							{!isExternalPlayer ? (
 								<PrimaryButton
 									icon={<BsFillPlayFill />}
-									onClick={() => setIsExternalPlayer(isExternalPlayer)}>
+									sub="Faster And No Ads"
+									onClick={() => setIsExternalPlayer(!isExternalPlayer)}>
 									Use Internal Player
 								</PrimaryButton>
 							) : (
 								<PrimaryButton
 									icon={<HiOutlineDownload />}
 									sub="Download Option Available"
-									onClick={() => setIsExternalPlayer(isExternalPlayer)}>
+									onClick={() => setIsExternalPlayer(!isExternalPlayer)}>
 									Use External Player
 								</PrimaryButton>
 							)}
 
-							<PrimaryButton
+							{/*<PrimaryButton
 								icon={<BsFillPlayCircleFill />}
 								onClick={handleMxPlayer}
 								sub="Android (Experimental)">
@@ -147,6 +148,7 @@ function StreamingPage({ data }) {
 								onClick={handleVLCPlayer}>
 								Open in VLC
 							</PrimaryButton>
+							*/}
 						</div>
 					</div>
 				)}
