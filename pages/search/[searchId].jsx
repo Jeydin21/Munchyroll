@@ -44,7 +44,7 @@ function SearchPage({ data }) {
   return (
     <>
       <Head>
-        <title>{searchId + " - Munchyroll"}</title>
+        <title>{"Search Results For:" + searchId + " - Munchyroll"}</title>
         <meta name="description" content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display." />
 
         <meta property="og:title" content={"Search Results: " + searchId + " - Munchyroll"} />
