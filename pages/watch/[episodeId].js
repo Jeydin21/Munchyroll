@@ -112,11 +112,11 @@ function StreamingPage({ data }) {
 							)}
 
 							<div className="  hidden sm:block mt-5">
-								<h3 className="  capitalize ">{episodeName}</h3>
+								<h2 className="  capitalize ">{episodeName}</h2>
 							</div>
 						</div>
 						<div className=" sm:hidden  mt-5">
-							<h3 className=" capitalize ">{episodeName}</h3>
+							<h2 className=" capitalize ">{episodeName}</h2>
 						</div>
 
 						<div className=" mt-5 lg:mt-0 space-y-4">
