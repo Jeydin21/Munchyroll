@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-function Card({ data }) {
+function ReleaseCard({ data }) {
   return (
     <Link href={"/" + data.animeId}>
       <div className="     sm:p-3   ">
@@ -14,11 +14,11 @@ function Card({ data }) {
         <div>
           <h4 className=" mt-3 font-bold  line-clamp-2">{data.animeTitle}</h4>
 
-          <p>Released: {data.releasedDate}</p>
+          <p>Episode {data.episodeNum}</p>
         </div>
       </div>
     </Link>
   );
 }
 
-export default Card;
+export default ReleaseCard;
