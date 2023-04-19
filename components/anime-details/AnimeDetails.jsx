@@ -22,7 +22,7 @@ function AnimeDetails({ data }) {
         <div className=" mt-5 lg:mt-0 max-w-4xl">
           <h2 className=" line-clamp-1 font-semibold">{animeTitle}</h2>
           <h4 className=" line-clamp-1  text-secondary-light">
-            {otherNames + " " + releasedDate}
+            {otherNames}
           </h4>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
@@ -39,6 +39,7 @@ function AnimeDetails({ data }) {
           <div className="mt-5 flex gap-2 flex-wrap">
             <TextButtons text={status} />
             <TextButtons text={type} />
+            <TextButtons text={"Released: " + releasedDate} />
             <TextButtons text={totalEpisodes + " Episodes"} />
           </div>
           <div className=" mt-5">
