@@ -93,7 +93,7 @@ function StreamingPage({ data }) {
 				/>
 				<meta property="og:description" content={data?.synopsis} />
 				<meta property="og:image" content={data?.animeImg} />
-				<meta name="theme-color" content="#A0956E" />
+				<meta name="theme-color" content="#7FFFD4" />
 				{/* Maybe change this to scan image and return main color */}
 			</Head>
 			<MainLayout useHead={false}>

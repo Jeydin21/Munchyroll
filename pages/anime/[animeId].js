@@ -45,7 +45,7 @@ function AnimeDetailsPage({ data }) {
         <meta property="og:title" content={data?.animeTitle + " - Munchyroll "} />
         <meta property="og:description" content={data?.synopsis} />
         <meta property="og:image" content={data?.animeImg} />
-        <meta name="theme-color" content="#A0956E" /> {/* Maybe change this to scan image and return main color */}
+        <meta name="theme-color" content="#7FFFD4" /> {/* Maybe change this to scan image and return main color */}
       </Head>
       <MainLayout useHead={false}>
         {/* {isLoading && <Loading />}
