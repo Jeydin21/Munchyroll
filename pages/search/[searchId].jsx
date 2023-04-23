@@ -49,7 +49,7 @@ function SearchPage({ data }) {
 
         <meta property="og:title" content={"Search Results: " + searchId + " - Munchyroll"} />
         <meta property="og:description" content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display." />
-        <meta name="theme-color" content={data?.animeColor} /> {/* Maybe change this to scan image and return main color */}
+        <meta name="theme-color" content="#A0956E" /> {/* Maybe change this to scan image and return main color */}
       </Head>
     <MainLayout useHead={false}>
       {/* {isLoading && <Loading />}
