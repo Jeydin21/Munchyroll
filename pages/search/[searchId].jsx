@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
-import Card from "../../components/small-components/Card";
+import SearchCard from "../../components/small-components/SearchCard";
 import Loading from "../../components/small-components/Loading";
 import { getAnimeSearch, getPopularAnime } from "../../src/handlers";
 
@@ -66,7 +66,7 @@ function SearchPage({ data }) {
           </div>
           <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
             {data &&
-              data?.map((anime) => <Card key={anime.animeId} data={anime} />)}
+              data?.map((anime) => <SearchCard key={anime.animeId} data={anime} />)}
           </div>
         </>
       )}
