@@ -46,7 +46,7 @@ export default function Home() {
 					property="twitter:description"
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
-				<meta name="theme-color" content="#7FFFD4" />
+				<meta name="theme-color" content="#00C5FF" />
 				<script async src="https://arc.io/widget.min.js#171c8xgV"></script>
 			</Head>
 			<LandingPage />
