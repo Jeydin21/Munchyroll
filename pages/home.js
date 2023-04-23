@@ -62,7 +62,9 @@ const Home = ({ popular, movies, recent }) => {
 						</div>
 					</>
         )}
-        <br></br>
+				<br></br>
+				<br></br>
+				<br></br>
 				{popular && (
 					<>
 						<h1 className=" text-2xl font-bold">Popular Anime</h1>
@@ -75,7 +77,8 @@ const Home = ({ popular, movies, recent }) => {
 					</>
         )}
         <br></br>
-        <br></br>
+				<br></br>
+				<br></br>
 				{movies && (
 					<>
 						<h1 className=" text-2xl font-bold">Anime Movies</h1>
