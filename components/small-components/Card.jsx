@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 function Card({ data }) {
   return (
-    <Link href={"/" + data.animeId}>
+    <Link href={"/anime/" + data.animeId}>
       <div className="     sm:p-3   ">
         <img
           className=" hover:scale-105 transition-all w-full  aspect-[5/7] object-cover rounded-m"

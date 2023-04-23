@@ -2,10 +2,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import { useQuery } from "react-query";
-import AnimeDetails from "../components/anime-details/AnimeDetails";
-import MainLayout from "../components/layout/MainLayout";
-import Loading from "../components/small-components/Loading";
-import { getAnimeDetails } from "../src/handlers";
+import AnimeDetails from "../../components/anime-details/AnimeDetails";
+import MainLayout from "../../components/layout/MainLayout";
+import Loading from "../../components/small-components/Loading";
+import { getAnimeDetails } from "../../src/handlers";
 
 export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
