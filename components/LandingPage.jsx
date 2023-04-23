@@ -31,12 +31,6 @@ function LandingPage() {
             <Link href="/home">
               <PrimaryButton>Home</PrimaryButton>
             </Link>
-            <Link href="/popular">
-              <PrimaryButton>Popular Anime</PrimaryButton>
-            </Link>
-            <Link href="/movies">
-              <PrimaryButton>Anime Movies</PrimaryButton>
-            </Link>
           </div>
         </div>
       </div>
