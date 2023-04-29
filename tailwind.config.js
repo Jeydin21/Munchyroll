@@ -22,12 +22,11 @@ module.exports = {
           DEFAULT: "#FBBF24",
           light: "#FDE68A",
         },
-
-        background: {
-          DEFAULT: "#222222",
-        },
       },
     },
+    backgroundImage: (theme) => ({
+      'background': `linear-gradient(to top, #C4AD8A, #19547b)`,
+    }),
   },
   plugins: [
     plugin(function ({ addBase, theme }) {
