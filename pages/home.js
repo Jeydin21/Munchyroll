@@ -44,7 +44,7 @@ const Home = ({ popular, movies, recent }) => {
 					property="og:description"
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
-				<meta name="theme-color" content="#00C5FF" />{" "}
+				<meta name="theme-color" content="#C4AD8A" />{" "}
 				{/* Maybe change this to scan image and return main color */}
 			</Head>
 			<MainLayout useHead={false}>

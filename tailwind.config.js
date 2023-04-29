@@ -25,7 +25,7 @@ module.exports = {
       },
     },
     backgroundImage: (theme) => ({
-      'background': `linear-gradient(to top, #C4AD8A, #19547b)`,
+      'background': `linear-gradient(to top, #C4AD8A, #19547B)`,
     }),
   },
   plugins: [
