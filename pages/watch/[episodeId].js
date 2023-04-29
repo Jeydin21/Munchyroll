@@ -25,11 +25,12 @@ export const getServerSideProps = async (context) => {
 	return {
 		props: {
 			data,
+			episodeId
 		},
 	};
 };
 
-function StreamingPage({ data }) {
+function StreamingPage({ data, episodeId }) {
 	const router = useRouter();
 
 	const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
@@ -37,8 +38,8 @@ function StreamingPage({ data }) {
 
 	// get the search id from the url with javascript
 
-	const episodeId = window.location.pathname.split("/")[2];
-  const episodeName = episodeId.split("-").join(" ");
+	const chicken = episodeId
+  const episodeName = chicken.split("-").join(" ");
   
   const arr = episodeName.split(" ");
 
