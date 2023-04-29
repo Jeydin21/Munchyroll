@@ -25,7 +25,8 @@
     "react-ga": "^3.3.1",
     "react-icons": "^4.7.1",
     "react-query": "^3.39.2",
-    "video.js": "^7.20.3"
+    "video.js": "^7.20.3",
+    "videojs-hotkeys": "^0.2.28"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

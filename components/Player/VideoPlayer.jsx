@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import videojs from "video.js"; // version 7
 import "@videojs/http-streaming";
 import "video.js/dist/video-js.css";
+import "videojs-hotkeys";
 const VideoPlayer = ({ videoSource }) => {
   const videoRef = useRef();
 
@@ -43,6 +44,16 @@ const VideoPlayer = ({ videoSource }) => {
       videoRef.current,
       videoJsOptions,
       function onPlayerReaady() {
+        this.hotkeys({
+          volumeStep: 0.1,
+          seekStep: 5,
+          alwaysCaptureHotkeys: true,
+          enableModifiersForNumbers: false,
+          enableMute: true,
+          enableNumbers: true,
+          enableVolumeScroll: true,
+          enableFullscreen: true,
+        });
         console.log("onPlayerReady");
       }
     );
