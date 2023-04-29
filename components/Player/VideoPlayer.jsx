@@ -31,7 +31,7 @@ const VideoPlayer = ({ videoSource }) => {
       fluid: true,
       muted: false,
       responsive: true,
-      poster: "https://i.postimg.cc/FRHHCckG/image.png",
+      poster: "https://i.postimg.cc/Hnsd6mKP/nilou-sword.jpg",
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
