@@ -7,7 +7,7 @@ function Footer() {
   };
 
   return (
-    <footer className=" mt-14 border-t-2 border-primary-light p-5 sm:p-10">
+    <footer className=" mt-14 p-5 sm:p-10">
       <div
         onClick={goToTop}
         className=" cursor-pointer float-right bg-primary-light p-3 text-2xl"
