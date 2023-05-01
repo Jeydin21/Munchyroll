@@ -19,14 +19,14 @@ function Footer() {
           <Logo />
           <p>A minimal anime streaming site</p>
           <p className=" font-extralight ">
-            made by
+            Join the 
             <a
               className="  underline ml-1 "
               target="_blank"
-              href="https://jeydin.is-a.dev"
+              href="https://discord.gg/AZTERx5EPq"
               rel="noreferrer"
             >
-              Jeydin21
+              Discord!
             </a>
           </p>
         </div>
