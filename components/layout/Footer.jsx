@@ -19,15 +19,7 @@ function Footer() {
           <Logo />
           <p>A minimal anime streaming site</p>
           <p className=" font-extralight ">
-            Join the 
-            <a
-              className="  underline ml-1 "
-              target="_blank"
-              href="https://discord.gg/AZTERx5EPq"
-              rel="noreferrer"
-            >
-              Discord!
-            </a>
+            Made by Jeydin21!
           </p>
         </div>
       </div>
