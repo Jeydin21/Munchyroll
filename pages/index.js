@@ -35,7 +35,7 @@ export default function Home() {
 					property="og:description"
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
-				<meta property="og:image" content="https://i.postimg.cc/tCK7KkMX/image.png"></meta>
+				
 
 				<meta property="twitter:card" content="summary_large_image" />
 				<meta property="twitter:url" content="https://munchyroll.ml/" />
