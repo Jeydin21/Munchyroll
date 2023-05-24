@@ -25,8 +25,8 @@ module.exports = {
       },
     },
     backgroundImage: (theme) => ({
-      'background': `linear-gradient(to top, #141E30, #243B55)`, // Night
-      // 'background': `linear-gradient(to top, #FD746C, #2C3E50)`, // Dusk
+      // 'background': `linear-gradient(to top, #141E30, #243B55)`, // Night
+      'background': `linear-gradient(to top, #C45656, #2C3E50)`, // Dusk
       // 'background': `linear-gradient(to top, #bdc3c7, #003973)`, // Noon
       // 'background': `linear-gradient(to top, #C4AD8A, #19547B)`, // Dawn
     }),
