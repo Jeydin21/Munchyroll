@@ -9,9 +9,9 @@ import SearchInput from "../components/small-components/SearchInput";
 import ReactGA from "react-ga";
 
 export async function getServerSideProps() {
-	const popularResults = await fetch("https://api.munchyroll.ml/popular");
-	const moviesResults = await fetch("https://api.munchyroll.ml/anime-movies");
-	const recentResults = await fetch("https://api.munchyroll.ml/recent-release");
+	const popularResults = await fetch("https://munchyroll-api.j21.dev/popular");
+	const moviesResults = await fetch("https://munchyroll-api.j21.dev/anime-movies");
+	const recentResults = await fetch("https://munchyroll-api.j21.dev/recent-release");
 
 	const popular = await popularResults.json();
 	const movies = await moviesResults.json();
