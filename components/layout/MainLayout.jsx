@@ -4,8 +4,19 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 function MainLayout({ children, useHead = true }) {
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  
+  // Define the time ranges for day and night
+  const dawnStartHour = 6; // 6 AM
+  const noonStartHour = 12; // 12 PM
+  const duskStartHour = 16; // 4 PM
+  const nightStartHour = 20; // 8 PM
+
+  const backgroundClass = currentHour >= dawnStartHour && currentHour < noonStartHour ? "dawn" : currentHour >= noonStartHour && currentHour < duskStartHour ? "noon" : currentHour >= duskStartHour && currentHour < nightStartHour ? "dusk" : "night";
+
   return (
-    <div className="  bg-background">
+    <div className={`bg-${backgroundClass}`}>
       {useHead && (
         <Head>
           <title>Munchyroll</title>

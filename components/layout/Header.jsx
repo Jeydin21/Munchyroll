@@ -10,9 +10,21 @@ import { VscChromeClose } from "react-icons/vsc";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const randomNum = Math.floor(Math.random() * 6) + 1;
+
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  
+  // Define the time ranges for day and night
+  const dawnStartHour = 6; // 6 AM
+  const noonStartHour = 12; // 12 PM
+  const duskStartHour = 16; // 4 PM
+  const nightStartHour = 20; // 8 PM
+
+  const backgroundClass = currentHour >= dawnStartHour && currentHour < noonStartHour ? "dawn" : currentHour >= noonStartHour && currentHour < duskStartHour ? "noon" : currentHour >= duskStartHour && currentHour < nightStartHour ? "dusk" : "night";
+
   return (
     <>
-      <div className=" p-5 px-5 sm:px-10 border-b-2 border-primary-light bg-background/90 backdrop-blur-sm z-50  fixed flex justify-between left-0 items-center top-0 right-0  ">
+      <div className={`p-5 px-5 sm:px-10 border-b-2 border-primary-light bg-${backgroundClass}/90 backdrop-blur-sm z-50  fixed flex justify-between left-0 items-center top-0 right-0 `}>
         <Logo />
 
         <div className=" hidden lg:block">
