@@ -6,17 +6,27 @@ import Header from "./Header";
 function MainLayout({ children, useHead = true }) {
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
-  
-  // Define the time ranges for day and night
-  const dawnStartHour = 6; // 6 AM
-  const noonStartHour = 12; // 12 PM
-  const duskStartHour = 16; // 4 PM
-  const nightStartHour = 20; // 8 PM
 
-  const backgroundClass = currentHour >= dawnStartHour && currentHour < noonStartHour ? "dawn" : currentHour >= noonStartHour && currentHour < duskStartHour ? "noon" : currentHour >= duskStartHour && currentHour < nightStartHour ? "dusk" : "night";
+  var backgroundClass;
+
+  // Define the time ranges for day and night
+  const dawn = 6; // 6 AM
+  const noon = 12; // 12 PM
+  const dusk = 17; // 5 PM
+  const night = 20; // 8 PM
+
+  if (currentHour >= dawn && currentHour < noon) {
+    backgroundClass = "from-[#C4AD8A] to-[#19547B]";
+  } else if (currentHour >= noon && currentHour < dusk) {
+    backgroundClass = "from-[#bdc3c7] to-[#003973]";
+  } else if (currentHour >= dusk && currentHour < night) {
+    backgroundClass = "from-[#C45656] to-[#2C3E50]";
+  } else {
+    backgroundClass = "from-[#141E30] to-[#243B55]";
+  }
 
   return (
-    <div className={`bg-${backgroundClass}`}>
+    <div className={`bg-gradient-to-t ${backgroundClass}`}>
       {useHead && (
         <Head>
           <title>Munchyroll</title>
