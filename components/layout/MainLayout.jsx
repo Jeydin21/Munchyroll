@@ -5,15 +5,18 @@ import Header from "./Header";
 
 function MainLayout({ children, useHead = true }) {
   const currentTime = new Date();
-  const currentHour = currentTime.getHours();
+  const currentHour = currentTime.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    hour12: false,
+  });
 
   var backgroundClass;
 
   // Define the time ranges for day and night
-  const dawn = 6; // 6 AM
-  const noon = 12; // 12 PM
-  const dusk = 17; // 5 PM
-  const night = 20; // 8 PM
+  const dawn = "06"; // 6 AM
+  const noon = "12"; // 12 PM
+  const dusk = "16"; // 4 PM
+  const night = "20"; // 8 PM
 
   if (currentHour >= dawn && currentHour < noon) {
     backgroundClass = "from-[#C4AD8A] to-[#19547B]";
@@ -30,10 +33,7 @@ function MainLayout({ children, useHead = true }) {
       {useHead && (
         <Head>
           <title>Munchyroll</title>
-          <meta
-            name="title"
-            content="Munchyroll - Watch HD Anime For Free"
-          />
+          <meta name="title" content="Munchyroll - Watch HD Anime For Free" />
           <meta
             name="description"
             content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
@@ -49,13 +49,9 @@ function MainLayout({ children, useHead = true }) {
             property="og:description"
             content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
           />
-          
 
           <meta property="twitter:card" content="summary_large_image" />
-          <meta
-            property="twitter:url"
-            content="https://munchyroll.ml/"
-          />
+          <meta property="twitter:url" content="https://munchyroll.ml/" />
           <meta
             property="twitter:title"
             content="Munchyroll - Watch HD Anime For Free"
