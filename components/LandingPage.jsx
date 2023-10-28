@@ -16,17 +16,17 @@ function LandingPage() {
   const night = 20; // 8 PM
 
   if (currentHour >= dawn && currentHour < noon) {
-    backgroundClass = "dawn";
+    backgroundClass = "from-[#C4AD8A] to-[#19547B]";
   } else if (currentHour >= noon && currentHour < dusk) {
-    backgroundClass = "noon";
+    backgroundClass = "from-[#bdc3c7] to-[#003973]";
   } else if (currentHour >= dusk && currentHour < night) {
-    backgroundClass = "dusk";
+    backgroundClass = "from-[#C45656] to-[#2C3E50]";
   } else {
-    backgroundClass = "night";
+    backgroundClass = "from-[#141E30] to-[#243B55]";
   }
 
   return (
-    <div className={`min-h-screen justify-center relative flex items-center bg-${backgroundClass}`} >
+    <div className={`min-h-screen justify-center relative flex items-center bg-gradient-to-t ${backgroundClass}`} >
       <div class="custom-shape-divider-bottom-1682184498">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
@@ -38,7 +38,7 @@ function LandingPage() {
         <div className=" text-secondary  font-semibold">
           <h1 className=" text-4xl font-bold">Munchyroll</h1>
           <h1 className=" text-4xl font-medium text-secondary-light">
-            Watch HD Anime For Free
+            {backgroundClass}
           </h1>
           <br></br>
           <h1 className=" text-2xl font-medium text-secondary-light">
