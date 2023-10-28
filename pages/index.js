@@ -26,7 +26,7 @@ export default function Home() {
 				/>
 
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://munchyroll.ml/" />
+				<meta property="og:url" content="https://anime.j21.dev" />
 				<meta
 					property="og:title"
 					content="Munchyroll - Watch HD Anime For Free"
@@ -38,7 +38,7 @@ export default function Home() {
 				
 
 				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content="https://munchyroll.ml/" />
+				<meta property="twitter:url" content="https://anime.j21.dev" />
 				<meta
 					property="twitter:title"
 					content="Munchyroll - Watch HD Anime For Free"
@@ -47,7 +47,6 @@ export default function Home() {
 					property="twitter:description"
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
-				<meta property="twitter:image" content="https://i.postimg.cc/tCK7KkMX/image.png"></meta>
 				<meta name="theme-color" content="#C4AD8A" />
 				<script async src="https://arc.io/widget.min.js#171c8xgV"></script>
 			</Head>
