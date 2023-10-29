@@ -4,13 +4,12 @@ import Link from "next/link";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SearchInput from "./small-components/SearchInput";
 function LandingPage() {
-  // const [hour, setHour] = useState();
-  //
-  // useEffect(() => {
-  //   const time = new Date();
-  //   setHour(time.getHours());
-  // })
-  const hour = 2;
+  const [hour, setHour] = useState();
+
+  useEffect(() => {
+    const time = new Date();
+    setHour(time.getHours());
+  });
 
   var backgroundClass;
   var welcomeMessage;

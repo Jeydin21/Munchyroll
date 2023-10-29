@@ -10,8 +10,8 @@ function MainLayout({ children, useHead = true }) {
   useEffect(() => {
     const time = new Date();
     setHour(time.getHours());
-  })
-  
+  });
+
   var backgroundClass;
 
   // Define the time ranges for day and night
@@ -21,7 +21,7 @@ function MainLayout({ children, useHead = true }) {
   const night = "20"; // 8 PM
 
   if (hour >= dawn && hour < noon) {
-    backgroundClass = "from-[#C4AD8A] to-[#19547B]";
+    backgroundClass = "from-[#CF9E57] to-[#19547B]";
   } else if (hour >= noon && hour < dusk) {
     backgroundClass = "from-[#bdc3c7] to-[#003973]";
   } else if (hour >= dusk && hour < night) {
