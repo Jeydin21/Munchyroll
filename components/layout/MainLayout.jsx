@@ -1,3 +1,4 @@
+'use client'
 import Head from "next/head";
 import React from "react";
 import Footer from "./Footer";
@@ -5,11 +6,8 @@ import Header from "./Header";
 
 function MainLayout({ children, useHead = true }) {
   const currentTime = new Date();
-  const currentHour = currentTime.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    hour12: false,
-  });
-
+  const currentHour = currentTime.getHours();
+  
   var backgroundClass;
 
   // Define the time ranges for day and night
