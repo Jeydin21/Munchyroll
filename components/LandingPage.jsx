@@ -1,14 +1,15 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 import Link from "next/link";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SearchInput from "./small-components/SearchInput";
 function LandingPage() {
-  const currentTime = new Date();
-  const currentHour = currentTime.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    hour12: false,
-  });
+  const [hour, setHour] = useState();
+
+  useEffect(() => {
+    const time = new Date();
+    setHour(time.getHours());
+  })
 
   var backgroundClass;
 
@@ -18,11 +19,11 @@ function LandingPage() {
   const dusk = "16"; // 4 PM
   const night = "20"; // 8 PM
 
-  if (currentHour >= dawn && currentHour < noon) {
+  if (hour >= dawn && hour < noon) {
     backgroundClass = "from-[#C4AD8A] to-[#19547B]";
-  } else if (currentHour >= noon && currentHour < dusk) {
+  } else if (hour >= noon && hour < dusk) {
     backgroundClass = "from-[#bdc3c7] to-[#003973]";
-  } else if (currentHour >= dusk && currentHour < night) {
+  } else if (hour >= dusk && hour < night) {
     backgroundClass = "from-[#C45656] to-[#2C3E50]";
   } else {
     backgroundClass = "from-[#141E30] to-[#243B55]";
@@ -60,6 +61,7 @@ function LandingPage() {
           <h1 className=" text-4xl font-bold">Munchyroll</h1>
           <h1 className=" text-4xl font-medium text-secondary-light">
             Watch HD Anime For Free
+            {hour}
           </h1>
           <br></br>
           <h1 className=" text-2xl font-medium text-secondary-light">
