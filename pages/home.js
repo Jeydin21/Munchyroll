@@ -44,6 +44,7 @@ const Home = ({ popular, movies, recent }) => {
 					property="og:description"
 					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
 				/>
+				<link rel="manifest" href="public/manifest.json" />
 				
 				<meta name="theme-color" content="#C4AD8A" />{" "}
 				{/* Maybe change this to scan image and return main color */}
