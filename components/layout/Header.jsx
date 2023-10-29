@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Logo from "../small-components/Logo";
 import SearchInput from "../small-components/SearchInput";
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -8,19 +8,33 @@ import { CgSearch } from "react-icons/cg";
 import { motion } from "framer-motion";
 import { VscChromeClose } from "react-icons/vsc";
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const randomNum = Math.floor(Math.random() * 6) + 1;
 
-  const currentTime = new Date();
-  const currentHour = currentTime.getHours();
+  const [hour, setHour] = useState();
+
+  useEffect(() => {
+    const time = new Date();
+    setHour(time.getHours());
+  })
+
+  var backgroundClass;
   
   // Define the time ranges for day and night
-  const dawnStartHour = 6; // 6 AM
-  const noonStartHour = 12; // 12 PM
-  const duskStartHour = 16; // 4 PM
-  const nightStartHour = 20; // 8 PM
+  const dawn = 6; // 6 AM
+  const noon = 12; // 12 PM
+  const dusk = 16; // 4 PM
+  const night = 20; // 8 PM
 
-  const backgroundClass = currentHour >= dawnStartHour && currentHour < noonStartHour ? "dawn" : currentHour >= noonStartHour && currentHour < duskStartHour ? "noon" : currentHour >= duskStartHour && currentHour < nightStartHour ? "dusk" : "night";
+  if (hour >= dawn && hour < noon) {
+    backgroundClass = "from-[#C4AD8A] to-[#19547B]";
+  } else if (hour >= noon && hour < dusk) {
+    backgroundClass = "from-[#bdc3c7] to-[#003973]";
+  } else if (hour >= dusk && hour < night) {
+    backgroundClass = "from-[#C45656] to-[#2C3E50]";
+  } else {
+    backgroundClass = "from-[#141E30] to-[#243B55]";
+  }
 
   return (
     <>

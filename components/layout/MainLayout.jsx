@@ -1,12 +1,16 @@
-'use client'
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 
 function MainLayout({ children, useHead = true }) {
-  const currentTime = new Date();
-  const currentHour = currentTime.getHours();
+  const [hour, setHour] = useState();
+
+  useEffect(() => {
+    const time = new Date();
+    setHour(time.getHours());
+  })
   
   var backgroundClass;
 
@@ -16,11 +20,11 @@ function MainLayout({ children, useHead = true }) {
   const dusk = "16"; // 4 PM
   const night = "20"; // 8 PM
 
-  if (currentHour >= dawn && currentHour < noon) {
+  if (hour >= dawn && hour < noon) {
     backgroundClass = "from-[#C4AD8A] to-[#19547B]";
-  } else if (currentHour >= noon && currentHour < dusk) {
+  } else if (hour >= noon && hour < dusk) {
     backgroundClass = "from-[#bdc3c7] to-[#003973]";
-  } else if (currentHour >= dusk && currentHour < night) {
+  } else if (hour >= dusk && hour < night) {
     backgroundClass = "from-[#C45656] to-[#2C3E50]";
   } else {
     backgroundClass = "from-[#141E30] to-[#243B55]";
