@@ -4,14 +4,16 @@ import Link from "next/link";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SearchInput from "./small-components/SearchInput";
 function LandingPage() {
-  const [hour, setHour] = useState();
-
-  useEffect(() => {
-    const time = new Date();
-    setHour(time.getHours());
-  })
+  // const [hour, setHour] = useState();
+  //
+  // useEffect(() => {
+  //   const time = new Date();
+  //   setHour(time.getHours());
+  // })
+  const hour = 2;
 
   var backgroundClass;
+  var welcomeMessage;
 
   // Define the time ranges for day and night
   const dawn = "06"; // 6 AM
@@ -20,13 +22,17 @@ function LandingPage() {
   const night = "20"; // 8 PM
 
   if (hour >= dawn && hour < noon) {
-    backgroundClass = "from-[#C4AD8A] to-[#19547B]";
+    backgroundClass = "from-[#CF9E57] to-[#19547B]";
+    welcomeMessage = "Good morning 🌅";
   } else if (hour >= noon && hour < dusk) {
     backgroundClass = "from-[#bdc3c7] to-[#003973]";
+    welcomeMessage = "Good afternoon 🏙️";
   } else if (hour >= dusk && hour < night) {
     backgroundClass = "from-[#C45656] to-[#2C3E50]";
+    welcomeMessage = "Good evening 🌇";
   } else {
     backgroundClass = "from-[#141E30] to-[#243B55]";
+    welcomeMessage = "Good night 🌃";
   }
 
   return (
@@ -63,6 +69,9 @@ function LandingPage() {
             Watch HD Anime For Free
           </h1>
           <br></br>
+          <h1 className=" text-2xl font-medium text-secondary-light">
+            {welcomeMessage}
+          </h1>
           <h1 className=" text-2xl font-medium text-secondary-light">
             Share this with friends!
           </h1>

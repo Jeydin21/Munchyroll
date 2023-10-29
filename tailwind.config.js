@@ -23,12 +23,6 @@ module.exports = {
           light: "#FDE68A",
         },
       },
-      backgroundImage: (theme) => ({
-        'dawn': `linear-gradient(to top, #C4AD8A, #19547B)`, // Dawn
-        'noon': `gradient-to-t from-[#bdc3c7] to-[#003973]`, // Noon
-        'dusk': `gradient-to-t from-[#C45656] to-[#2C3E50]`, // Dusk
-        'night': `gradient-to-t from-[#141E30] to-[#243B55]`, // Night
-      }),
     },
   },
   plugins: [
