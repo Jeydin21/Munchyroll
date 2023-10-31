@@ -17,7 +17,7 @@ export const getServerSideProps = async (context) => {
 	const { episodeId } = context.query;
 
 	const res = await fetch(
-		`https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId}`
+		`https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId}`
 	);
 
 	const data = await res.json();

@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "https://munchyroll-api.j21.dev";
+const BASEURL = "https://munchyroll-api.onrender.com";
 export const getPopularAnime = async () => {
   const { data } = await axios.get(`${BASEURL}/popular`);
   return data;
