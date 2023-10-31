@@ -34,6 +34,5 @@ module.exports = {
         // h4, h5, h6, p - 16px;
       });
     }),
-    require("@tailwindcss/line-clamp"),
   ],
 };
