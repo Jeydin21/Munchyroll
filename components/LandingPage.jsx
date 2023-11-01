@@ -62,9 +62,9 @@ function LandingPage() {
           ></path>
         </svg>
       </div>
-      <div className="   px-10 max-w-screen-xl w-full mx-auto relative md:flex items-center space-y-10   justify-between ">
+      <div className="px-10 max-w-screen-xl w-full mx-auto relative md:flex items-center space-y-10 justify-between ">
         <div className=" text-secondary  font-semibold">
-          <h1 className=" text-4xl font-bold">Munchyroll</h1>
+          <h1 className=" text-4xl font-bold">Munchyroll Development Server</h1>
           <h1 className=" text-4xl font-medium text-secondary-light">
             Watch HD Anime For Free
           </h1>

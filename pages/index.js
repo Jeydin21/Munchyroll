@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import LandingPage from "../components/LandingPage";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
 import styles from "../styles/Home.module.css";
 
@@ -14,9 +13,6 @@ export default function Home() {
 	});
 	return (
 		<div>
-			<div className="App">
-				<TawkMessengerReact propertyId="622047bb1ffac05b1d7cb217" widgetId="1ft71gdb9" />
-			</div>
 			<Head>
 				<title>Munchyroll</title>
 				<meta name="title" content="Munchyroll - Watch HD Anime For Free" />
