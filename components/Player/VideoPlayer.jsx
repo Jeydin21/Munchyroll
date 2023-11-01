@@ -55,7 +55,7 @@ const VideoPlayer = ({ videoSource }) => {
           enableFullscreen: true,
         });
         console.log("onPlayerReady");
-      }
+      },
     );
 
     setPlayer(p);

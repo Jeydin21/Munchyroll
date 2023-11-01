@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router';
-import Script from 'next/script';
-import { useEffect } from 'react';
+import { useRouter } from "next/router";
+import Script from "next/script";
+import { useEffect } from "react";
 
 // **Important** Replace this tracking ID by your Analytics code
 // Or you can put it into the environment file.
-const GA_TRACKING_ID = '';
+const GA_TRACKING_ID = "G-0K4K425H17";
 
 // @ts-ignore
 const addPageView = (url) => {
   // @ts-ignore
-  window.gtag('config', GA_TRACKING_ID, {
+  window.gtag("config", GA_TRACKING_ID, {
     page_path: url,
   });
 };
@@ -22,9 +22,9 @@ const GoogleAnalytics = () => {
     const handleRouteChange = (url) => {
       addPageView(url);
     };
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
   return (

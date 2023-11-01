@@ -34,7 +34,9 @@ function SearchInput({ isLandingPage = false }) {
       />
       <CgSearch
         onClick={handleSubmit}
-        className={`${isLandingPage ? "text-black text-xl" : "text-white text-xl"}`}
+        className={`${
+          isLandingPage ? "text-black text-xl" : "text-white text-xl"
+        }`}
       />
     </form>
   );

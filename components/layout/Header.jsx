@@ -16,10 +16,10 @@ function Header() {
   useEffect(() => {
     const time = new Date();
     setHour(time.getHours());
-  })
+  });
 
   var backgroundClass;
-  
+
   // Define the time ranges for day and night
   const dawn = 6; // 6 AM
   const noon = 12; // 12 PM
@@ -38,7 +38,9 @@ function Header() {
 
   return (
     <>
-      <div className={`p-5 px-5 sm:px-10 border-b-2 border-primary-light bg-${backgroundClass}/90 backdrop-blur-sm z-50  fixed flex justify-between left-0 items-center top-0 right-0 `}>
+      <div
+        className={`p-5 px-5 sm:px-10 border-b-2 border-primary-light bg-${backgroundClass}/90 backdrop-blur-sm z-50  fixed flex justify-between left-0 items-center top-0 right-0 `}
+      >
         <Logo />
 
         <div className=" hidden lg:block">
@@ -49,10 +51,7 @@ function Header() {
           {isMenuOpen ? (
             <VscChromeClose onClick={() => setIsMenuOpen(false)} />
           ) : (
-            <CgSearch
-              
-              onClick={() => setIsMenuOpen(true)}
-            />
+            <CgSearch onClick={() => setIsMenuOpen(true)} />
           )}
         </div>
       </div>

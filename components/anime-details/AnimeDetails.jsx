@@ -21,9 +21,7 @@ function AnimeDetails({ data }) {
         <img className=" sm:max-w-[230px]" src={animeImg} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
           <h2 className=" line-clamp-1 font-semibold">{animeTitle}</h2>
-          <h4 className=" line-clamp-1  text-secondary-light">
-            {otherNames}
-          </h4>
+          <h4 className=" line-clamp-1  text-secondary-light">{otherNames}</h4>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
           >
@@ -56,13 +54,16 @@ function AnimeDetails({ data }) {
       <div>
         <h2 className=" font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
-          {episodesList?.slice(0).reverse().map((episode, i) => (
-            <TextButtons
-              key={i}
-              link={`/watch/${episode.episodeId}`}
-              text={episode.episodeNum}
-            />
-          ))}
+          {episodesList
+            ?.slice(0)
+            .reverse()
+            .map((episode, i) => (
+              <TextButtons
+                key={i}
+                link={`/watch/${episode.episodeId}`}
+                text={episode.episodeNum}
+              />
+            ))}
         </div>
       </div>
     </div>
