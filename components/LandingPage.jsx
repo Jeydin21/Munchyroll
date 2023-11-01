@@ -81,7 +81,7 @@ function LandingPage() {
           <SearchInput isLandingPage={true} />
           <div className="   sm:w-[400px] ">
             <Link href="/home">
-              <PrimaryButton>Home</PrimaryButton>
+              <PrimaryButton isLandingPage={true}>Home</PrimaryButton>
             </Link>
           </div>
         </div>

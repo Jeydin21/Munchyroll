@@ -1,9 +1,12 @@
 import React from "react";
 
-function PrimaryButton({ children, sub, icon, onClick }) {
+function PrimaryButton({ children, sub, icon, onClick, isLandingPage }) {
   return (
     <button
-      className="cursor-pointer hover:bg-primary-hover transition-all bg-primary-light px-5 text-gray-100 text-left font-medium w-full   p-2"
+      className={`${isLandingPage
+          ? "rounded-b-md"
+          : "rounded-md"
+        } cursor-pointer hover:bg-primary-hover transition-all bg-primary-light px-5 text-gray-100 text-left font-medium w-full   p-2`}
       onClick={onClick}
     >
       <div className=" flex  space-x-3 items-center">

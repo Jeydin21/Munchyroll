@@ -18,7 +18,7 @@ function AnimeDetails({ data }) {
   return (
     <div className=" mt-5">
       <div className=" lg:flex items-start  lg:space-x-7">
-        <img className=" sm:max-w-[230px]" src={animeImg} alt="" />
+        <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={animeImg} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
           <h2 className=" line-clamp-1 font-semibold">{animeTitle}</h2>
           <h4 className=" line-clamp-1  text-secondary-light">{otherNames}</h4>
@@ -29,7 +29,7 @@ function AnimeDetails({ data }) {
           </p>
           <span
             onClick={() => setIsReadMore(!isReadMore)}
-            className=" text-indigo-200  cursor-pointer"
+            className="hover:underline text-indigo-200  cursor-pointer"
           >
             {!isReadMore ? "Read More" : "Read Less"}
           </span>
@@ -70,11 +70,11 @@ function AnimeDetails({ data }) {
   );
 }
 
-export const TextButtons = ({ text, link }) => {
+export const TextButtons = ({ text, link, onClick }) => {
   if (link) {
     return (
       <Link href={link}>
-        <div className=" min-w-[100px] bg-primary-light px-2 py-1">
+          <div className="rounded-md text-center min-w-[75px] bg-primary-light hover:bg-primary-hover transition-all  px-2 py-1">
           <p className=" text-secondary">{text}</p>
         </div>
       </Link>
@@ -82,7 +82,7 @@ export const TextButtons = ({ text, link }) => {
   }
 
   return (
-    <div className=" min-w-[70px] bg-primary-light px-2 py-1">
+    <div className="rounded-md text-center min-w-[70px] bg-primary-light px-3 py-1.5">
       <p className=" text-secondary">{text}</p>
     </div>
   );

@@ -6,7 +6,7 @@ function Card({ data }) {
     <Link href={"/anime/" + data.animeId}>
       <div className="     sm:p-3   ">
         <img
-          className=" hover:scale-105 transition-all w-full  aspect-[5/7] object-cover rounded-m"
+          className=" hover:scale-105 transition-all w-full aspect-[5/7] object-cover rounded-lg"
           src={data.animeImg}
           alt=""
         />

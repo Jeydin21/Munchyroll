@@ -17,11 +17,11 @@ function SearchInput({ isLandingPage = false }) {
       className={` ${`
         ${
           isLandingPage
-            ? "bg-secondary sm:w-[400px]"
-            : "bg-primary-light sm:w-[350px]"
+            ? "bg-secondary sm:w-[400px] rounded-t-md"
+            : "bg-slate-900 sm:w-[350px] rounded-md"
         }   h-10`}
 
-        flex items-center  shadow-md px-5
+        flex items-center px-5
         `}
     >
       <input
@@ -29,7 +29,7 @@ function SearchInput({ isLandingPage = false }) {
         onChange={(e) => setSearch(e.target.value)}
         className={` ${
           isLandingPage ? "text-black" : "text-white"
-        } w-full outline-none p-3 px-0  h-full bg-transparent`}
+        } w-full outline-none p-3 px-0 h-full bg-transparent`}
         placeholder="Search"
       />
       <CgSearch
