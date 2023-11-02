@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: "#0F0E0E",
-          light: "#343434",
+          light: "#4B4B4B",
           hover: "#1F1F1F",
         },
         secondary: {

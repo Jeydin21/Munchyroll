@@ -16,21 +16,27 @@ import { BsFillPlayFill } from "react-icons/bs";
 export const getServerSideProps = async (context) => {
   const { episodeId } = context.query;
 
-  const res = await fetch(
+  const episodeData = await fetch(
     `https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId}`,
   );
 
-  const data = await res.json();
+  const animeData = await fetch(
+    `https://munchyroll-api.onrender.com/anime-details/${episodeId.replace(/-episode-\d+/, '')}`,
+  );
+
+  const episode = await episodeData.json();
+  const anime = await animeData.json();
 
   return {
     props: {
-      data,
+      episode,
+      anime,
       episodeId,
     },
   };
 };
 
-function StreamingPage({ data, episodeId }) {
+function StreamingPage({ episode, anime, episodeId }) {
   const router = useRouter();
 
   const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
@@ -57,26 +63,26 @@ function StreamingPage({ data, episodeId }) {
   //   return <MainLayout>loading...</MainLayout>;
   // }
 
-  // const { data, isLoading, isError, error } = useQuery("details", () =>
+  // const { episode, isLoading, isError, error } = useQuery("details", () =>
   //   getStreamLink(episodeId)
   // );
 
-  console.log(data);
+  console.log(anime);
 
   const handleExternalPlayer = () => {
-    window.open(data?.Referer, "_blank");
+    window.open(episode?.Referer, "_blank");
   };
 
   const handleVLCPlayer = () => {
     window.open(
-      `intent:${data?.sources[0].file}#Intent;scheme=vlc;package=org.videolan.vlc;end`,
+      `intent:${episode?.sources[0].file}#Intent;scheme=vlc;package=org.videolan.vlc;end`,
       "_blank",
     );
   };
   const handleMxPlayer = () => {
     //
     window.open(
-      `intent:${data?.sources[0].file}#Intent;scheme=mxplayer;package=com.mxtech.videoplayer.ad;end`,
+      `intent:${episode?.sources[0].file}#Intent;scheme=mxplayer;package=com.mxtech.videoplayer.ad;end`,
       "_blank",
     );
   };
@@ -84,40 +90,34 @@ function StreamingPage({ data, episodeId }) {
     <>
       <Head>
         <title>{capitalizedEpisodeName + " - Munchyroll "}</title>
-        <meta name="description" content={data?.synopsis} />
-        <meta name="keywords" content={data?.genres} />
+        <meta name="description" content={episode?.synopsis} />
+        <meta name="keywords" content={episode?.genres} />
         <meta
           property="og:title"
-          content={data?.animeTitle + " - Munchyroll "}
+          content={episode?.animeTitle + " - Munchyroll "}
         />
-        <meta property="og:description" content={data?.synopsis} />
-        <meta property="og:image" content={data?.animeImg} />
+        <meta property="og:description" content={episode?.synopsis} />
+        <meta property="og:image" content={episode?.animeImg} />
         <meta name="theme-color" content="#C4AD8A" />
         <link rel="manifest" href="public/manifest.json" />
         {/* Maybe change this to scan image and return main color */}
       </Head>
       <MainLayout useHead={false}>
         {/* {isLoading && <Loading />} */}
-        {data && (
+        {episode && (
           <div className=" lg:flex lg:space-x-4">
             <div className=" alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
               {!isExternalPlayer ? (
                 <iframe
                   className=" overflow-hidden aspect-[5/4]   sm:aspect-video w-full h-full"
-                  src={data.Referer}
+                  src={episode.Referer}
                   allowFullScreen
                   frameborder="0"
                 ></iframe>
               ) : (
-                <VideoPlayer videoSource={data?.sources[0].file} />
+                <VideoPlayer videoSource={episode?.sources[0].file} />
               )}
-
-              <div className="  hidden sm:block mt-5">
-                <h2 className="  capitalize ">{episodeName}</h2>
-              </div>
-            </div>
-            <div className=" sm:hidden  mt-5">
-              <h2 className=" capitalize ">{episodeName}</h2>
+              
             </div>
 
             <div className=" mt-5 lg:mt-0 space-y-4">
@@ -155,6 +155,22 @@ function StreamingPage({ data, episodeId }) {
             </div>
           </div>
         )}
+        <div>
+        <h2 className=" font-semibold mt-10">Episodes</h2>
+        <div className=" mt-5 flex  flex-wrap  gap-3">
+          {anime.episodesList
+            ?.slice(0)
+            .reverse()
+            .map((episode, i) => (
+              <TextButtons
+                key={i}
+                link={`/watch/${episode.episodeId}`}
+                text={episode.episodeNum}
+                isCurrent={episode.episodeId === episodeId}
+              />
+            ))}
+        </div>
+      </div>
       </MainLayout>
     </>
   );
