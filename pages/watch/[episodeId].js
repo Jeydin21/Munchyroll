@@ -100,7 +100,7 @@ function StreamingPage({ data, episodeId }) {
         {/* {isLoading && <Loading />} */}
         {data && (
           <div className=" lg:flex lg:space-x-4">
-            <div className=" alignfull w-full overflow-hidden max-w-screen-xl">
+            <div className=" alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
               {!isExternalPlayer ? (
                 <iframe
                   className=" overflow-hidden aspect-[5/4]   sm:aspect-video w-full h-full"
