@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-import { useQuery } from "react-query";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
 import ReleaseCard from "../components/small-components/ReleaseCard";
 import Card from "../components/small-components/Card";
-import Loading from "../components/small-components/Loading";
-import SearchInput from "../components/small-components/SearchInput";
 import ReactGA from "react-ga";
 
 export async function getServerSideProps() {

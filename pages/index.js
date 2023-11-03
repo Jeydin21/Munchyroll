@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import LandingPage from "../components/LandingPage";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
-import styles from "../styles/Home.module.css";
-
 import ReactGA from "react-ga";
 
 export default function Home() {

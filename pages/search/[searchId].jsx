@@ -1,11 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { useQuery } from "react-query";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
 import SearchCard from "../../components/small-components/SearchCard";
-import Loading from "../../components/small-components/Loading";
-import { getAnimeSearch, getPopularAnime } from "../../src/handlers";
 
 export const getServerSideProps = async (context) => {
   const { searchId } = context.query;

@@ -1,16 +1,11 @@
 import { useRouter } from "next/router";
 import React from "react";
 import Head from "next/head";
-import { useQuery } from "react-query";
 import { TextButtons } from "../../components/anime-details/AnimeDetails";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import MainLayout from "../../components/layout/MainLayout";
 import VideoPlayer from "../../components/Player/VideoPlayer";
-import { getStreamLink } from "../../src/handlers";
 import { HiOutlineDownload } from "react-icons/hi";
-import { BsFillPlayCircleFill } from "react-icons/bs";
-import { FcVlc } from "react-icons/fc";
-import Loading from "../../components/small-components/Loading";
 import { BsFillPlayFill } from "react-icons/bs";
 
 export const getServerSideProps = async (context) => {

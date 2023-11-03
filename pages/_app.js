@@ -2,8 +2,6 @@ import "../styles/globals.css";
 import "../styles/nprogress.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
-import MainLayout from "../components/layout/MainLayout";
-import Loading from "../components/small-components/Loading";
 import ReactGA from "react-ga";
 
 import nprogress from "nprogress";
@@ -20,7 +18,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GoogleAnalytics />
+      {/* <GoogleAnalytics /> */}
       <Component {...pageProps} />
     </QueryClientProvider>
   );
