@@ -74,7 +74,7 @@ export const TextButtons = ({ text, link, isCurrent }) => {
   if (link) {
     return (
       <Link href={link}>
-        <div className={`${isCurrent ? "bg-blue-500 text-white" : "border-gray-300"} rounded-md text-center min-w-[75px] bg-primary-light hover:bg-primary-hover transition-all  px-2 py-1`}>
+        <div className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-1`}>
           <p className=" text-secondary">{text}</p>
         </div>
       </Link>

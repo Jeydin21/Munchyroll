@@ -62,7 +62,7 @@ function StreamingPage({ episode, anime, episodeId }) {
   //   getStreamLink(episodeId)
   // );
 
-  console.log(anime);
+  console.log(episodeId);
 
   const handleExternalPlayer = () => {
     window.open(episode?.Referer, "_blank");
