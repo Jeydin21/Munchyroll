@@ -4,7 +4,7 @@ import React from "react";
 function Logo() {
   return (
     <Link href="/home">
-      <div className=" text-3xl font-semibold ">Munchyroll</div>
+      <div className="text-3xl font-black ">Munchyroll</div>
     </Link>
   );
 }

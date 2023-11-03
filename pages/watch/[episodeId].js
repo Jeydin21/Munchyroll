@@ -62,7 +62,13 @@ function StreamingPage({ episode, anime, episodeId }) {
   //   getStreamLink(episodeId)
   // );
 
-  console.log(episodeId);
+  const episodeList = Object.keys(anime.episodesList?.slice(0))
+
+  const currentIndex = episodeId.match(/episode-(\d+)/)[1] - 1
+
+  // Determine the next and previous episode IDs
+  const prevEpisodeId = currentIndex > 0 ? episodeList[currentIndex] : null;
+  const nextEpisodeId = currentIndex >= 0 && currentIndex < episodeList.length - 1 ? (Number(episodeList[currentIndex + 1]) + 1) : null;
 
   const handleExternalPlayer = () => {
     window.open(episode?.Referer, "_blank");
@@ -112,7 +118,14 @@ function StreamingPage({ episode, anime, episodeId }) {
               ) : (
                 <VideoPlayer videoSource={episode?.sources[0].file} />
               )}
-              
+
+              <div className="font-bold hidden sm:block mt-5">
+                <h2 className="  capitalize ">{episodeName}</h2>
+              </div>
+            </div>
+            <div className="font-bold sm:hidden mt-5">
+              <h2 className=" capitalize ">{episodeName}</h2>
+
             </div>
 
             <div className=" mt-5 lg:mt-0 space-y-4">
@@ -134,6 +147,28 @@ function StreamingPage({ episode, anime, episodeId }) {
                 </PrimaryButton>
               )}
 
+              <div>
+                <div className=" mt-5 lg:mt-0 space-y-4">
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {nextEpisodeId && (
+                      <TextButtons
+                        link={`/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${nextEpisodeId}`}
+                        text="Next Episode"
+                      />
+                    )}
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {prevEpisodeId && (
+                      <TextButtons
+                        link={`/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${prevEpisodeId}`}
+                        text="Previous Episode"
+                      />
+                    )}
+                  </div>
+
+                </div>
+              </div>
+
               {/*<PrimaryButton
 								icon={<BsFillPlayCircleFill />}
 								onClick={handleMxPlayer}
@@ -151,21 +186,21 @@ function StreamingPage({ episode, anime, episodeId }) {
           </div>
         )}
         <div>
-        <h2 className=" font-semibold mt-10">Episodes</h2>
-        <div className=" mt-5 flex  flex-wrap  gap-3">
-          {anime.episodesList
-            ?.slice(0)
-            .reverse()
-            .map((episode, i) => (
-              <TextButtons
-                key={i}
-                link={`/watch/${episode.episodeId}`}
-                text={episode.episodeNum}
-                isCurrent={episode.episodeId === episodeId}
-              />
-            ))}
+          <h2 className=" font-semibold mt-10">Episodes</h2>
+          <div className=" mt-5 flex  flex-wrap  gap-3">
+            {anime.episodesList
+              ?.slice(0)
+              .reverse()
+              .map((episode, i) => (
+                <TextButtons
+                  key={i}
+                  link={`/watch/${episode.episodeId}`}
+                  text={episode.episodeNum}
+                  isCurrent={episode.episodeId === episodeId}
+                />
+              ))}
+          </div>
         </div>
-      </div>
       </MainLayout>
     </>
   );
