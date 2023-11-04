@@ -70,11 +70,11 @@ function AnimeDetails({ data }) {
   );
 }
 
-export const TextButtons = ({ text, link, isCurrent }) => {
+export const TextButtons = ({ text, link, isCurrent, onClick }) => {
   if (link) {
     return (
       <Link href={link}>
-        <div className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-1`}>
+        <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
           <p className=" text-secondary">{text}</p>
         </div>
       </Link>
@@ -82,9 +82,9 @@ export const TextButtons = ({ text, link, isCurrent }) => {
   }
 
   return (
-    <div className="rounded-md text-center min-w-[70px] bg-primary-light px-3 py-1.5">
-      <p className=" text-secondary">{text}</p>
-    </div>
+    <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
+          <p className=" text-secondary">{text}</p>
+        </div>
   );
 };
 

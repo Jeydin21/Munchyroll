@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GoogleAnalytics />
+      {/* <GoogleAnalytics /> */}
       <Component {...pageProps} />
     </QueryClientProvider>
   );

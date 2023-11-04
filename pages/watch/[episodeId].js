@@ -9,7 +9,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 
 export const getServerSideProps = async (context) => {
-  const { episodeId } = context.query;
+  const { episodeId } = await context.query;
 
   const episodeData = await fetch(
     `https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId}`,
@@ -21,7 +21,6 @@ export const getServerSideProps = async (context) => {
 
   const episode = await episodeData.json();
   const anime = await animeData.json();
-
   return {
     props: {
       episode,
@@ -35,6 +34,7 @@ function StreamingPage({ episode, anime, episodeId }) {
   const router = useRouter();
 
   const [isExternalPlayer, setIsExternalPlayer] = React.useState(true);
+  const [videoSource, setVideoSource] = React.useState(episode?.sources[0].file);
   // const { episodeId } = router.query;
 
   // get the search id from the url with javascript
@@ -54,6 +54,18 @@ function StreamingPage({ episode, anime, episodeId }) {
   //using a blankspace as a separator
   const capitalizedEpisodeName = arr.join(" ");
 
+  async function getEpisodeData(episodeNum) {
+    const episodeData = await fetch(
+      `https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`,
+    );
+    const episodeStuff = await episodeData.json()
+    return episodeStuff;
+  }
+
+  function changeVideoSource(source) {
+    setVideoSource(source)
+  }
+
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
   // }
@@ -62,31 +74,23 @@ function StreamingPage({ episode, anime, episodeId }) {
   //   getStreamLink(episodeId)
   // );
 
-  const episodeList = Object.keys(anime.episodesList?.slice(0))
+  // const handleExternalPlayer = () => {
+  //   window.open(episode?.Referer, "_blank");
+  // };
 
-  const currentIndex = episodeId.match(/episode-(\d+)/)[1] - 1
-
-  // Determine the next and previous episode IDs
-  const prevEpisodeId = currentIndex > 0 ? episodeList[currentIndex] : null;
-  const nextEpisodeId = currentIndex >= 0 && currentIndex < episodeList.length - 1 ? (Number(episodeList[currentIndex + 1]) + 1) : null;
-
-  const handleExternalPlayer = () => {
-    window.open(episode?.Referer, "_blank");
-  };
-
-  const handleVLCPlayer = () => {
-    window.open(
-      `intent:${episode?.sources[0].file}#Intent;scheme=vlc;package=org.videolan.vlc;end`,
-      "_blank",
-    );
-  };
-  const handleMxPlayer = () => {
-    //
-    window.open(
-      `intent:${episode?.sources[0].file}#Intent;scheme=mxplayer;package=com.mxtech.videoplayer.ad;end`,
-      "_blank",
-    );
-  };
+  // const handleVLCPlayer = () => {
+  //   window.open(
+  //     `intent:${episode?.sources[0].file}#Intent;scheme=vlc;package=org.videolan.vlc;end`,
+  //     "_blank",
+  //   );
+  // };
+  // const handleMxPlayer = () => {
+  //   //
+  //   window.open(
+  //     `intent:${episode?.sources[0].file}#Intent;scheme=mxplayer;package=com.mxtech.videoplayer.ad;end`,
+  //     "_blank",
+  //   );
+  // };
   return (
     <>
       <Head>
@@ -116,7 +120,7 @@ function StreamingPage({ episode, anime, episodeId }) {
                   frameborder="0"
                 ></iframe>
               ) : (
-                <VideoPlayer videoSource={episode?.sources[0].file} />
+                <VideoPlayer videoSource={videoSource} />
               )}
 
               <div className="font-bold hidden sm:block mt-5">
@@ -128,26 +132,30 @@ function StreamingPage({ episode, anime, episodeId }) {
 
             </div>
 
-            <div className=" mt-5 lg:mt-0 space-y-4">
-              {!isExternalPlayer ? (
-                <PrimaryButton
-                  icon={<BsFillPlayFill />}
-                  sub="Faster And No Ads"
-                  onClick={() => setIsExternalPlayer(!isExternalPlayer)}
-                >
-                  Use Internal Player
-                </PrimaryButton>
-              ) : (
-                <PrimaryButton
-                  icon={<HiOutlineDownload />}
-                  sub="Download Option Available"
-                  onClick={() => setIsExternalPlayer(!isExternalPlayer)}
-                >
-                  Use External Player
-                </PrimaryButton>
-              )}
+            <div>
+              <h2 className="font-semibold lg:text-center mt-10">Episode List (Not Working)</h2>
+              <div className="lg:justify-center lg:px-20 mt-5 flex flex-wrap gap-3">
+                {anime.episodesList
+                  ?.slice(0)
+                  .reverse()
+                  .map((episode, i) => (
+                    <TextButtons
+                      key={i}
+                      // link={`/watch/${episode.episodeId}`}
+                      text={episode.episodeNum}
+                      isCurrent={episode.episodeId === episodeId}
+                      onClick={() => getEpisodeData(episode.episodeNum).then(episodeData => {
+                          changeVideoSource(episodeData.sources[0].file)
+                        }).catch(error => {
+                          console.error(error);
+                        })
+                        }
+                    />
+                  ))}
+              </div>
+            </div>
 
-              <div>
+            {/* <div>
                 <div className=" mt-5 lg:mt-0 space-y-4">
                   <div className="mt-5 flex flex-wrap gap-3">
                     {nextEpisodeId && (
@@ -167,9 +175,9 @@ function StreamingPage({ episode, anime, episodeId }) {
                   </div>
 
                 </div>
-              </div>
+              </div> */}
 
-              {/*<PrimaryButton
+            {/*<PrimaryButton
 								icon={<BsFillPlayCircleFill />}
 								onClick={handleMxPlayer}
 								sub="Android (Experimental)">
@@ -182,24 +190,26 @@ function StreamingPage({ episode, anime, episodeId }) {
 								Open in VLC
 							</PrimaryButton>
 							*/}
-            </div>
           </div>
         )}
-        <div>
-          <h2 className=" font-semibold mt-10">Episodes</h2>
-          <div className=" mt-5 flex  flex-wrap  gap-3">
-            {anime.episodesList
-              ?.slice(0)
-              .reverse()
-              .map((episode, i) => (
-                <TextButtons
-                  key={i}
-                  link={`/watch/${episode.episodeId}`}
-                  text={episode.episodeNum}
-                  isCurrent={episode.episodeId === episodeId}
-                />
-              ))}
-          </div>
+        <div className="max-w-xs mt-10 space-y-4">
+          {!isExternalPlayer ? (
+            <PrimaryButton
+              icon={<BsFillPlayFill />}
+              sub="Faster And No Ads"
+              onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+            >
+              Use Internal Player
+            </PrimaryButton>
+          ) : (
+            <PrimaryButton
+              icon={<HiOutlineDownload />}
+              sub="Download Option Available"
+              onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+            >
+              Use External Player
+            </PrimaryButton>
+          )}
         </div>
       </MainLayout>
     </>
