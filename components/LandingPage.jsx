@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SearchInput from "./small-components/SearchInput";
 
@@ -39,7 +40,7 @@ function LandingPage() {
     <div
       className={`min-h-screen justify-center relative flex items-center bg-gradient-to-t ${backgroundClass}`}
     >
-      <div className="custom-shape-divider-bottom-1682184498">
+      <div className="custom-shape-divider-bottom-1682184498 max-md:hidden">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,8 +79,13 @@ function LandingPage() {
         </div>
 
         <div className="lg:pb-36 md:pb-36">
-        <div>
-          <img src="nilou.png" alt="Image Description" className="h-40 w-40" />
+          <div>
+            <Image
+              src="/nilou.png"
+              width={160}
+              height={160}
+              alt="Nilou" 
+            />
         </div>
           <SearchInput isLandingPage={true} />
           <div class="sm:w-[400px]">
