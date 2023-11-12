@@ -77,14 +77,18 @@ function LandingPage() {
           </h1>
         </div>
 
+        <div className="lg:pb-36 md:pb-36">
         <div>
+          <img src="nilou.png" alt="Image Description" className="h-40 w-40" />
+        </div>
           <SearchInput isLandingPage={true} />
-          <div className="   sm:w-[400px] ">
+          <div class="sm:w-[400px]">
             <Link href="/home">
               <PrimaryButton isLandingPage={true}>Home</PrimaryButton>
             </Link>
           </div>
         </div>
+
       </div>
     </div>
   );
