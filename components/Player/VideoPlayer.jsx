@@ -26,12 +26,12 @@ const VideoPlayer = ({ videoSource }) => {
 
   useEffect(() => {
     const videoJsOptions = {
-      autoplay: true,
+      autoplay: false,
       controls: true,
       fluid: true,
       muted: false,
       responsive: true,
-      poster: "https://i.postimg.cc/vZswMgZQ/kokomi-mermaid.jpg",
+      preload: "auto",
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
