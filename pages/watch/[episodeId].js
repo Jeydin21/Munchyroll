@@ -176,6 +176,29 @@ function StreamingPage({ episode, anime, episodeId }) {
 
               </div>
 
+              <div>
+              <h2 className="font-semibold lg:text-center mt-10">Episode List</h2>
+              <div className="lg:justify-center lg:px-20 mt-5 flex flex-wrap gap-3">
+                {anime.episodesList
+                  ?.slice(0)
+                  .reverse()
+                  .map((episode, i) => (
+                    <TextButtons
+                      key={i}
+                      link={`/watch/${episode.episodeId}`}
+                      text={episode.episodeNum}
+                      isCurrent={episode.episodeId === episodeId}
+                      onClick={() => getEpisodeData(episode.episodeNum).then(episodeData => {
+                        setVideoSource(episodeData.sources[0].file); setIsLoading(true);
+                        }).catch(error => {
+                          console.error(error);
+                        })
+                        }
+                    />
+                  ))}
+              </div>
+            </div>
+
               {/*<PrimaryButton
 								icon={<BsFillPlayCircleFill />}
 								onClick={handleMxPlayer}
