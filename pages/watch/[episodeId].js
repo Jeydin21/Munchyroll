@@ -13,11 +13,11 @@ export const getServerSideProps = async (context) => {
   const { episodeId } = await context.query;
 
   const episodeData = await fetch(
-    `https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId}`,
+    `https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId}`,
   );
 
   const animeData = await fetch(
-    `https://munchyroll-api.onrender.com/anime-details/${episodeId.replace(/-episode-\d+/, '')}`,
+    `https://munchyroll-api.j21.dev/anime-details/${episodeId.replace(/-episode-\d+/, '')}`,
   );
 
   const episode = await episodeData.json();
@@ -74,7 +74,7 @@ function StreamingPage({ episode, anime, episodeId }) {
 
   async function getEpisodeData(episodeNum) {
     const episodeData = await fetch(
-      `https://munchyroll-api.onrender.com/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`,
+      `https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`,
     );
     const episodeStuff = await episodeData.json()
     return episodeStuff;
