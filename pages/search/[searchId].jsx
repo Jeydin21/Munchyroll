@@ -44,7 +44,7 @@ function SearchPage({ data }) {
         <title>{"Search Results For: " + searchId + " - Munchyroll"}</title>
         <meta
           name="description"
-          content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
+          content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
         />
         <meta
           property="og:title"
@@ -52,7 +52,7 @@ function SearchPage({ data }) {
         />
         <meta
           property="og:description"
-          content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
+          content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
         />
         <meta name="theme-color" content="#C4AD8A" />{" "}
         {/* Maybe change this to scan image and return main color */}

@@ -67,7 +67,7 @@ function LandingPage() {
         <div className=" text-secondary  font-semibold">
           <h1 className=" text-4xl font-bold">Munchyroll</h1>
           <h1 className=" text-4xl font-medium text-secondary-light">
-            Watch HD Anime For Free
+            No ads. Just anime.
           </h1>
           <br></br>
           <h1 className=" text-2xl font-medium text-secondary-light">

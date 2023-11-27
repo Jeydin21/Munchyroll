@@ -20,7 +20,7 @@ export default function Home() {
 				<meta name="title" content="Munchyroll - Watch HD Anime For Free" />
 				<meta
 					name="description"
-					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
+					content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
 				/>
 
 				<meta property="og:type" content="website" />
@@ -31,7 +31,7 @@ export default function Home() {
 				/>
 				<meta
 					property="og:description"
-					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
+					content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
 				/>
 				
 
@@ -43,7 +43,7 @@ export default function Home() {
 				/>
 				<meta
 					property="twitter:description"
-					content="Watch free anime series and movies online in HD quality, on mobile or on desktop, subbed or dubbed, in a rich and modern display."
+					content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
 				/>
 				<meta name="theme-color" content="#C4AD8A" />
 				<link rel="manifest" href={process.env.PUBLIC_URL + '/manifest.json'} />
