@@ -35,7 +35,7 @@ function MainLayout({ children, useHead = true }) {
       {useHead && (
         <Head>
           <title>Munchyroll</title>
-          <meta name="title" content="Munchyroll - Watch HD Anime For Free" />
+          <meta name="title" content="Munchyroll" />
           <meta
             name="description"
             content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
@@ -45,7 +45,7 @@ function MainLayout({ children, useHead = true }) {
           <meta property="og:url" content="https://anime.j21.dev/" />
           <meta
             property="og:title"
-            content="Munchyroll - Watch HD Anime For Free"
+            content="Munchyroll"
           />
           <meta
             property="og:description"
@@ -56,7 +56,7 @@ function MainLayout({ children, useHead = true }) {
           <meta property="twitter:url" content="https://anime.j21.dev/" />
           <meta
             property="twitter:title"
-            content="Munchyroll - Watch HD Anime For Free"
+            content="Munchyroll"
           />
           <meta
             property="twitter:description"
