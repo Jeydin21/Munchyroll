@@ -11,13 +11,15 @@ import Link from "next/link";
 
 export const getServerSideProps = async (context) => {
   const { episodeId } = await context.query;
+  let thing = episodeId.replace(/-episode-\d+/, '')
+  if(thing === 'jujutsu-kaisen-2nd-season') thing = 'jujutsu-kaisen-tv-2nd-season'
 
   const episodeData = await fetch(
     `https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId}`,
   );
 
   const animeData = await fetch(
-    `https://munchyroll-api.j21.dev/anime-details/${episodeId.replace(/-episode-\d+/, '')}`,
+    `https://munchyroll-api.j21.dev/anime-details/${thing}`,
   );
 
   const episode = await episodeData.json();
