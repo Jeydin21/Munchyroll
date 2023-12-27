@@ -178,9 +178,9 @@ function StreamingPage({ episode, anime, episodeId }) {
 
               </div>
 
-              <div>
+              <div className="w-2/5">
               <h2 className="font-semibold lg:text-center mt-10">Episode List</h2>
-              <div className="lg:justify-center lg:px-20 mt-5 flex flex-wrap gap-3">
+              <div className=" lg:justify-center lg:px-10 mt-5 flex flex-wrap gap-3">
                 {anime.episodesList
                   ?.slice(0)
                   .reverse()
