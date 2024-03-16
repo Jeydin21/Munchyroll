@@ -1,7 +1,44 @@
-# Munchyroll
-Munchyroll is an ad-free anime streaming web app aimed at minimality and responsive design. 
+<div align="center">
+<a href="https://anime.j21.dev">
+  <img src="https://i.postimg.cc/4yFXm9bV/NILOU-STARE-cropped.png" alt="logo" width="180"/>
+<h1>Munchyroll</h1>
+</a>
+Ad-free anime streaming web app aimed at minimality and responsive design. 
 
-This project is what I consider to be my best creation, as I've worked on this idea for over 4 years. 
+<br />
+<br />
+
+ <a href="https://github.com/Jeydin21/Munchyroll/blob/main/LICENSE.md">
+    <img src="https://img.shields.io/github/license/Jeydin21/Munchyroll" alt="license"/>
+  </a>
+  <a href="https://github.com/Jeydin21/Munchyroll/fork">
+    <img src="https://img.shields.io/github/forks/Jeydin21/Munchyroll?style=social" alt="fork"/>
+  </a>
+  <a href="https://github.com/Jeydin21/Munchyroll">
+    <img src="https://img.shields.io/github/stars/Jeydin21/Munchyroll?style=social" alt="stars"/>
+  </a>
+  
+</p>
+
+<p align="center">
+ <img src="https://i.postimg.cc/7YQFvgrg/image.png" alt="main">
+</p>
+
+<details>
+<summary>More Screenshots</summary>
+
+<h3 align="center">Home Page</h3>
+<img src="https://i.postimg.cc/W1ZTX9qD/image.png"/>
+
+<h3 align="center">Info Page</h3>
+<img src="https://i.postimg.cc/LsdLJqNc/image.png"/>
+
+<h3 align="center">Watch Page</h3>
+<img src="https://i.postimg.cc/BZNzfxfm/image.png"/>
+
+</details>
+
+</div>
 
 ## Features
 - **No Ads** - No ads, no popups, no redirects, no bullshit
