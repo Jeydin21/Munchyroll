@@ -14,7 +14,7 @@ Ad-free anime streaming web app aimed at minimality and responsive design.
   <a href="https://github.com/Jeydin21/Munchyroll/fork">
     <img src="https://img.shields.io/github/forks/Jeydin21/Munchyroll?style=social" alt="fork"/>
   </a>
-  <a href="https://github.com/Jeydin21/Munchyroll/stars">
+  <a href="https://github.com/Jeydin21/Munchyroll/stargazers">
     <img src="https://img.shields.io/github/stars/Jeydin21/Munchyroll?style=social" alt="stars"/>
   </a>
   
