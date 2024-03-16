@@ -38,7 +38,7 @@ function MainLayout({ children, useHead = true }) {
           <meta name="title" content="Munchyroll" />
           <meta
             name="description"
-            content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
+            content="Ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
           />
 
           <meta property="og:type" content="website" />
@@ -49,7 +49,7 @@ function MainLayout({ children, useHead = true }) {
           />
           <meta
             property="og:description"
-            content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
+            content="Ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
           />
 
           <meta property="twitter:card" content="summary_large_image" />
@@ -60,7 +60,7 @@ function MainLayout({ children, useHead = true }) {
           />
           <meta
             property="twitter:description"
-            content="Munchyroll provides a wide range of ad-free anime content, all accessible to you for free. Watch anime seamlessly!"
+            content="Ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
           />
           <meta name="theme-color" content="#C4AD8A" />
         </Head>
