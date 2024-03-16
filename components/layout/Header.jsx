@@ -34,7 +34,7 @@ function Header() {
   return (
     <>
       <div
-        className={`p-5 px-5 sm:px-10 border-b-[1px] border-gray-600 bg-${backgroundClass}/90 backdrop-blur-sm z-50  fixed flex justify-between left-0 items-center top-0 right-0 `}
+        className={`p-5 px-5 sm:px-10 border-b-[1px] border-gray-600 bg-${backgroundClass}/90 backdrop-blur-sm z-50 flex justify-between left-0 items-center top-0 right-0 `}
       >
         <Logo />
 

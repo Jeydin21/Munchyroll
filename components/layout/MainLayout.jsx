@@ -67,7 +67,7 @@ function MainLayout({ children, useHead = true }) {
       )}
       <Header />
       <div className=" flex ">
-        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh]  mt-[103px] md:mt-28 ">
+        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh] mt-10 ">
           {children}
         </div>
       </div>

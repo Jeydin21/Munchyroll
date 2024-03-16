@@ -58,7 +58,7 @@ const Home = ({ popular, movies, recent }) => {
         {recent && (
           <>
             <h1 className=" text-2xl font-bold">Recent Anime</h1>
-            <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
+            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {recent &&
                 recent.map((anime) => (
                   <ReleaseCard key={anime.animeId} data={anime} />
@@ -72,7 +72,7 @@ const Home = ({ popular, movies, recent }) => {
         {popular && (
           <>
             <h1 className=" text-2xl font-bold">Popular Anime</h1>
-            <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
+            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {popular &&
                 popular.map((anime) => (
                   <Card key={anime.animeId} data={anime} />

@@ -7,10 +7,10 @@ function Footer() {
   };
 
   return (
-    <footer className=" mt-14 p-5 sm:p-10">
+    <footer className="border-t-[1px] border-gray-600 mt-14 p-5 sm:p-10">
       <div
         onClick={goToTop}
-        className=" cursor-pointer float-right bg-primary-light p-3 text-2xl"
+        className=" cursor-pointer float-right bg-primary-light p-3 text-2xl rounded-full hover:bg-accent hover:text-black transition-all "
       >
         <BiUpArrowAlt />
       </div>
@@ -18,8 +18,8 @@ function Footer() {
         <div>
           <Logo />
           <p>A minimal anime streaming site</p>
-          <p className=" font-extralight ">
-            Made by Jeydin21!
+          <p>
+            Made by <a className="hover:text-blue-400 underline transition-all" target="_blank" href="https://j21.dev">Jeydin21</a>!
           </p>
         </div>
       </div>

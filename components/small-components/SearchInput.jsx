@@ -17,8 +17,8 @@ function SearchInput({ isLandingPage = false }) {
       className={` ${`
         ${
           isLandingPage
-            ? "bg-secondary sm:w-[400px] rounded-t-md"
-            : "bg-slate-900 sm:w-[350px] rounded-md"
+            ? "bg-secondary transition-all sm:w-[400px] rounded-t-md"
+            : "bg-slate-800 focus-within:bg-slate-900 sm:w-[350px] rounded-md transition-all"
         }   h-10`}
 
         flex items-center px-5
@@ -35,7 +35,7 @@ function SearchInput({ isLandingPage = false }) {
       <CgSearch
         onClick={handleSubmit}
         className={`${
-          isLandingPage ? "text-black text-xl" : "text-white text-xl"
+          isLandingPage ? "text-black text-xl hover:cursor-pointer transition-all" : "text-white text-xl hover:cursor-pointer transition-all"
         }`}
       />
     </form>
