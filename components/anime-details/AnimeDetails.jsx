@@ -34,9 +34,12 @@ function AnimeDetails({ data }) {
             {!isReadMore ? "Read More" : "Read Less"}
           </span>
 
+          <div className=" mt-5">
+            <h4 className=" font-semibold">Information</h4>
+          </div>
           <div className="mt-5 flex gap-2 flex-wrap">
-            <TextButtons text={status} />
-            <TextButtons text={type} />
+            <TextButtons text={"Status: " + status} />
+            <TextButtons text={"Season: " + type} />
             <TextButtons text={"Released: " + releasedDate} />
             <TextButtons text={totalEpisodes + " Episodes"} />
           </div>
