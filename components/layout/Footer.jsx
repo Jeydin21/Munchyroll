@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../small-components/Logo";
-import { FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { FaDiscord } from 'react-icons/fa';
 
 function Footer() {
@@ -19,11 +19,8 @@ function Footer() {
   <a href="https://discord.com/invite/JQsvHC4JUH" target="_blank" rel="noreferrer" className="transition-all hover:scale-125">
     <FaDiscord size={25} color="#5865F2 " />
   </a>
-  <a href="https://twitter.com/Jeydin21" target="_blank" rel="noreferrer" className="transition-all hover:scale-125">
-    <FaTwitter size={25} color="#1DA1F2" />
-  </a>
-  <a href="https://www.instagram.com/jeydin21/" target="_blank" rel="noreferrer" className="transition-all hover:scale-125">
-    <FaInstagram size={25} color="#fa7e1e " />
+  <a href="https://github.com/Jeydin21/Munchyroll" target="_blank" rel="noreferrer" className="transition-all hover:scale-125">
+    <FaGithub size={25} />
   </a>
 </div>
       </div>
