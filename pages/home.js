@@ -40,12 +40,12 @@ const Home = ({ popular, movies, recent }) => {
         <title>Home - Munchyroll</title>
         <meta
           name="description"
-          content="Ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
+          content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
         />
         <meta property="og:title" content="Home - Munchyroll " />
         <meta
           property="og:description"
-          content="Ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
+          content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
         />
         <link rel="manifest" href="public/manifest.json" />
         <meta name="theme-color" content="#C4AD8A" />{" "}

@@ -3,7 +3,11 @@
   <img src="https://i.postimg.cc/4yFXm9bV/NILOU-STARE-cropped.png" alt="logo" width="180"/>
 <h1>Munchyroll</h1>
 </a>
-Ad-free anime streaming web app aimed at minimality and responsive design. 
+An ad-free anime streaming web app aimed at minimality and responsive design. 
+<br>
+<br>
+
+Live demo at [anime.j21.dev](https://anime.j21.dev)
 
 <br />
 <br />
