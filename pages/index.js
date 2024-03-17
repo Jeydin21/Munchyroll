@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Script from 'next/script'
 import { useEffect } from "react";
 import LandingPage from "../components/LandingPage";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
@@ -47,7 +47,7 @@ export default function Home() {
 				/>
 				<meta name="theme-color" content="#C4AD8A" />
 				<link rel="manifest" href={process.env.PUBLIC_URL + '/manifest.json'} />
-				<script defer src="https://us.umami.is/script.js" data-website-id="8b7147de-6d59-4789-91cc-b34bdcd63d56"></script>
+				<Script src="https://us.umami.is/script.js" data-website-id="8b7147de-6d59-4789-91cc-b34bdcd63d56"></Script>
 			</Head>
 			<LandingPage />
 		</div>
