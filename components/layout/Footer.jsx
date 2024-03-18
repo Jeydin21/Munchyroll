@@ -15,7 +15,7 @@ function Footer() {
             Made by <a className="hover:text-blue-400 underline transition-all" rel="noreferrer" target="_blank" href="https://j21.dev">Jeydin21</a>!
           </p>
         </div>
-        <div className="flex flex-col space-y-4 items-center bg-gray-900 bg-opacity-60 rounded-full p-4">
+        <div className="flex flex-col space-y-4 items-center bg-gray-900 bg-opacity-80 rounded-full p-4">
   <a href="https://discord.com/invite/JQsvHC4JUH" target="_blank" rel="noreferrer" className="transition-all hover:scale-125">
     <FaDiscord size={25} color="#5865F2 " />
   </a>
