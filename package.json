@@ -11,7 +11,7 @@
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tawk.to/tawk-messenger-react": "^2.0.1",
-    "@videojs/http-streaming": "^2.15.1",
+    "@videojs/http-streaming": "^3.10.0",
     "axios": "^1.2.1",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
