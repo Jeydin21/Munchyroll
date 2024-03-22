@@ -8,7 +8,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `https://munchyroll-api.j21.dev/anime-details/${animeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/anime-details/${animeId}`,
   );
 
   const data = await res.json();

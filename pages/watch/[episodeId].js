@@ -8,6 +8,7 @@ import VideoPlayer from "../../components/Player/VideoPlayer";
 import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 import Link from "next/link";
+require('dotenv').config();
 
 export const getServerSideProps = async (context) => {
   const { episodeId } = await context.query;
@@ -15,11 +16,11 @@ export const getServerSideProps = async (context) => {
   if(thing === 'jujutsu-kaisen-2nd-season') thing = 'jujutsu-kaisen-tv-2nd-season'
 
   const episodeData = await fetch(
-    `https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId}`,
   );
 
   const animeData = await fetch(
-    `https://munchyroll-api.j21.dev/anime-details/${thing}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/anime-details/${thing}`,
   );
 
   const episode = await episodeData.json();
@@ -75,9 +76,15 @@ function StreamingPage({ episode, anime, episodeId }) {
   }, [episodeId, triggerRender]);
 
   async function getEpisodeData(episodeNum) {
-    const episodeData = await fetch(
-      `https://munchyroll-api.j21.dev/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`,
-    );
+    console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL); // Log the environment variable
+  
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`;
+    console.log('URL:', url); // Log the full URL
+  
+    const episodeData = await fetch(url);
+  
+    console.log('Response:', episodeData); // Log the response
+  
     const episodeStuff = await episodeData.json()
     return episodeStuff;
   }

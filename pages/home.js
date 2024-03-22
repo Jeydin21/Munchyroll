@@ -7,13 +7,13 @@ import ReactGA from "react-ga";
 
 export async function getServerSideProps() {
   const popularResults = await fetch(
-    "https://munchyroll-api.j21.dev/popular",
+    `${process.env.NEXT_PUBLIC_API_URL}/popular`,
   );
   const moviesResults = await fetch(
-    "https://munchyroll-api.j21.dev/anime-movies",
+    `${process.env.NEXT_PUBLIC_API_URL}/anime-movies`,
   );
   const recentResults = await fetch(
-    "https://munchyroll-api.j21.dev/recent-release",
+    `${process.env.NEXT_PUBLIC_API_URL}/recent-release`,
   );
 
   const popular = await popularResults.json();

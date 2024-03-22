@@ -8,7 +8,7 @@ export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
   const res = await fetch(
-    `https://munchyroll-api.j21.dev/search?keyw=${searchId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/search?keyw=${searchId}`,
   );
 
   const data = await res.json();

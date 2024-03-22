@@ -13,6 +13,7 @@
     "@tawk.to/tawk-messenger-react": "^2.0.2",
     "@videojs/http-streaming": "^3.10.0",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "eslint": "8.57.0",
     "eslint-config-next": "^14.1.4",
     "framer-motion": "^11.0.18",

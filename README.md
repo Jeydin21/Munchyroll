@@ -84,4 +84,3 @@ Thanks for checking my project out
 If you have any questions or feedback, go to my [contact page](https://j21.dev/contact) and pick your preferred method of contact. You can also join the community Discord server I made down below:
 
 [![Discord Banner](https://discordapp.com/api/guilds/1128820150846632026/widget.png?style=banner2)](https://discord.gg/JQsvHC4JUH)
-
