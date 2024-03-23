@@ -24,20 +24,6 @@ function SearchPage({ data }) {
   const router = useRouter();
   const { searchId } = router.query;
 
-  // get the search id from the url with javascript
-
-  console.log(data);
-  // if (!searchId) {
-  //   return (
-  //     <MainLayout>
-  //       <Loading />
-  //     </MainLayout>
-  //   );
-  // }
-
-  // const { data, isLoading, isError, error } = useQuery("searchedAnime", () =>
-  //   getAnimeSearch(searchId)
-  // );
   return (
     <>
       <Head>
@@ -59,8 +45,6 @@ function SearchPage({ data }) {
         <link rel="manifest" href="public/manifest.json" />
       </Head>
       <MainLayout useHead={false}>
-        {/* {isLoading && <Loading />}
-      {isError && <div>Something went wrong</div>} */}
 
         {data && (
           <>

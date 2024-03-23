@@ -75,16 +75,10 @@ function StreamingPage({ episode, anime, episodeId }) {
     });
   }, [episodeId, triggerRender]);
 
-  async function getEpisodeData(episodeNum) {
-    console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL); // Log the environment variable
-  
+  async function getEpisodeData(episodeNum) {  
     const url = `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`;
-    console.log('URL:', url); // Log the full URL
-  
+    
     const episodeData = await fetch(url);
-  
-    console.log('Response:', episodeData); // Log the response
-  
     const episodeStuff = await episodeData.json()
     return episodeStuff;
   }

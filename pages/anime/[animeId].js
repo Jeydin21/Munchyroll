@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React from "react";
 import AnimeDetails from "../../components/anime-details/AnimeDetails";
 import MainLayout from "../../components/layout/MainLayout";
@@ -21,17 +20,6 @@ export const getServerSideProps = async (context) => {
 };
 
 function AnimeDetailsPage({ data }) {
-  const router = useRouter();
-  // const { animeId } = router.query;
-
-  // get the anime id from the url with javascript
-  // const animeId = window.location.pathname.split("/")[1];
-
-  // const { data, isLoading, isError, error } = useQuery("animeDetails", () =>
-  //   getAnimeDetails(animeId)
-  // );
-
-  console.log(data);
   return (
     <>
       <Head>
@@ -49,8 +37,6 @@ function AnimeDetailsPage({ data }) {
         <link rel="manifest" href="public/manifest.json" />
       </Head>
       <MainLayout useHead={false}>
-        {/* {isLoading && <Loading />}
-      {isError && <div>Something went wrong</div>} */}
 
         {data && <AnimeDetails data={data} />}
       </MainLayout>

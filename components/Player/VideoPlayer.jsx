@@ -6,20 +6,16 @@ import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
 const VideoPlayer = ({ videoSource }) => {
   const videoRef = useRef();
-
-  console.log("videoSource", videoSource);
   const [player, setPlayer] = useState(undefined);
 
   useEffect(() => {
     return () => {
       const video = videoRef.current;
       if (player) {
-        console.log("dispose video");
         player.dispose();
       }
       if (video) {
         videoRef.current.pause();
-        console.log("cleanup video");
       }
     };
   }, []);
@@ -54,14 +50,12 @@ const VideoPlayer = ({ videoSource }) => {
           enableVolumeScroll: true,
           enableFullscreen: true,
         });
-        console.log("onPlayerReady");
       },
     );
 
     setPlayer(p);
     return () => {
       if (player) {
-        console.log("dispose");
         player.dispose();
       }
     };

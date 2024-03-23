@@ -36,6 +36,8 @@ function LandingPage() {
     welcomeMessage = "Good night 🌃";
   }
 
+  console.log("If u see this then ur a cool person :)")
+
   return (
     <div
       className={`min-h-screen justify-center relative flex items-center bg-gradient-to-t ${backgroundClass}`}

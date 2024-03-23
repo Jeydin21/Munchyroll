@@ -52,8 +52,6 @@ const Home = ({ popular, movies, recent }) => {
         {/* Maybe change this to scan image and return main color */}
       </Head>
       <MainLayout useHead={false}>
-        {/* {isLoading && <Loading />}
-      {isError && <div>Something went wrong</div>} */}
 
         {recent && (
           <>
