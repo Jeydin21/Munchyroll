@@ -6,7 +6,7 @@ import ReactGA from "react-ga";
 
 import nprogress from "nprogress";
 
-ReactGA.initialize("G-0K4K425H17");
+ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
 
 import Router from "next/router";
 import GoogleAnalytics from "../components/GoogleAnalytics";
