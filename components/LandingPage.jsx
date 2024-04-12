@@ -26,10 +26,10 @@ function LandingPage() {
     backgroundClass = "from-[#CF9E57] to-[#19547B]";
     welcomeMessage = "Good morning 🌅";
   } else if (hour >= noon && hour < dusk) {
-    backgroundClass = "from-[#bdc3c7] to-[#003973]";
+    backgroundClass = "from-[#507b98] to-[#003973]";
     welcomeMessage = "Good afternoon 🏙️";
   } else if (hour >= dusk && hour < night) {
-    backgroundClass = "from-[#C45656] to-[#2C3E50]";
+    backgroundClass = "from-[#7b3737] to-[#2C3E50]";
     welcomeMessage = "Good evening 🌇";
   } else {
     backgroundClass = "from-[#141E30] to-[#243B55]";
