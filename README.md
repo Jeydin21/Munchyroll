@@ -73,7 +73,7 @@ npm run dev
 http://localhost:3000
 ```
 ## Credits
-- [GogoAnime API](https://github.com/riimuru/gogoanime-api) for all anime details and sources
+- GogoAnime API made by [riimuru](https://github.com/riimuru/) for all anime details and sources - **API has been taken down, try and find a copy somewhere**
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [License](https://github.com/Jeydin21/Munchyroll/blob/master/LICENSE) file for more details
