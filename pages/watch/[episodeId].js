@@ -12,15 +12,13 @@ require('dotenv').config();
 
 export const getServerSideProps = async (context) => {
   const { episodeId } = await context.query;
-  let thing = episodeId.replace(/-episode-\d+/, '')
-  if(thing === 'jujutsu-kaisen-2nd-season') thing = 'jujutsu-kaisen-tv-2nd-season'
 
   const episodeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/watch/${episodeId}`,
   );
 
   const animeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime-details/${thing}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/info/${episodeId}`,
   );
 
   const episode = await episodeData.json();

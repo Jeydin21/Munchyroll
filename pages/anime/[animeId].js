@@ -7,7 +7,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/${animeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/info/${animeId}`,
   );
 
   const data = await res.json();
@@ -23,12 +23,12 @@ function AnimeDetailsPage({ data }) {
   return (
     <>
       <Head>
-        <title>{data?.title + " - Munchyroll "}</title>
+        <title>{data?.title.english + " - Munchyroll "}</title>
         <meta name="description" content={data?.description} />
         <meta name="keywords" content={data?.genres} />
         <meta
           property="og:title"
-          content={data?.title + " - Munchyroll "}
+          content={data?.title.english + " - Munchyroll "}
         />
         <meta property="og:description" content={data?.description} />
         <meta property="og:image" content={data?.image} />

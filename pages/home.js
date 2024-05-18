@@ -71,7 +71,7 @@ const Home = ({ newData, trendingData, popularData }) => {
           <>
             <h1 className=" text-2xl font-bold">Trending Anime</h1>
             <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-            {trendingData && trendingData.results && trendingData.results.map((anime) => (
+              {trendingData && trendingData.results && trendingData.results.map((anime) => (
                 <Card key={anime.id} data={anime} />
               ))}
             </div>
@@ -84,7 +84,7 @@ const Home = ({ newData, trendingData, popularData }) => {
           <>
             <h1 className=" text-2xl font-bold">Popular Anime</h1>
             <div className="border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-            {popularData && popularData.results && popularData.results.map((anime) => (
+              {popularData && popularData.results && popularData.results.map((anime) => (
                 <Card key={anime.id} data={anime} />
               ))}
             </div>

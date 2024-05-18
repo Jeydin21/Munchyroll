@@ -11,7 +11,7 @@ function ReleaseCard({ data }) {
         />
 
         <div className="">
-          <h4 className="mt-3 font-bold  line-clamp-2">{data.title.english}</h4>
+          <h4 className="mt-3 font-bold  line-clamp-2">{data.title.english || data.title.romaji}</h4>
 
           <p>Episode {data.episodeNumber}</p>
         </div>
