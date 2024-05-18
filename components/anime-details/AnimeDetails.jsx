@@ -60,7 +60,7 @@ function AnimeDetails({ data }) {
             .map((episode, i) => (
               <TextButtons
                 key={i}
-                link={`/watch/${episode.id}`}
+                link={`/watch/${data.id}/${episode.id}`}
                 text={episode.number}
               />
             ))}
