@@ -6,30 +6,20 @@ import Card from "../components/small-components/Card";
 import ReactGA from "react-ga";
 
 export async function getServerSideProps() {
-  const popularResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/popular`,
-  );
-  const moviesResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime-movies`,
-  );
-  const recentResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/recent-release`,
+  const popular = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/top-airing`,
   );
 
-  const popular = await popularResults.json();
-  const movies = await moviesResults.json();
-  const recent = await recentResults.json();
+  const popularData = await popular.json();
 
   return {
     props: {
-      popular,
-      movies,
-      recent,
+      popularData
     },
   };
 }
 
-const Home = ({ popular, movies, recent }) => {
+const Home = ({ popularData }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   });
@@ -53,27 +43,13 @@ const Home = ({ popular, movies, recent }) => {
       </Head>
       <MainLayout useHead={false}>
 
-        {recent && (
-          <>
-            <h1 className=" text-2xl font-bold">Recent Anime</h1>
-            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {recent &&
-                recent.map((anime) => (
-                  <ReleaseCard key={anime.animeId} data={anime} />
-                ))}
-            </div>
-          </>
-        )}
-        <br></br>
-        <br></br>
-        <br></br>
-        {popular && (
+        {popularData && (
           <>
             <h1 className=" text-2xl font-bold">Popular Anime</h1>
             <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {popular &&
-                popular.map((anime) => (
-                  <Card key={anime.animeId} data={anime} />
+              {popularData &&
+                popularData.results.map((anime) => (
+                  <Card key={anime.id} data={anime} />
                 ))}
             </div>
           </>
@@ -81,17 +57,6 @@ const Home = ({ popular, movies, recent }) => {
         <br></br>
         <br></br>
         <br></br>
-        {movies && (
-          <>
-            <h1 className=" text-2xl font-bold">Anime Movies</h1>
-            <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {movies &&
-                movies.map((anime) => (
-                  <Card key={anime.animeId} data={anime} />
-                ))}
-            </div>
-          </>
-        )}
       </MainLayout>
     </>
   );

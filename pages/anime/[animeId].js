@@ -7,7 +7,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime-details/${animeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/${animeId}`,
   );
 
   const data = await res.json();
@@ -23,15 +23,15 @@ function AnimeDetailsPage({ data }) {
   return (
     <>
       <Head>
-        <title>{data?.animeTitle + " - Munchyroll "}</title>
-        <meta name="description" content={data?.synopsis} />
+        <title>{data?.title + " - Munchyroll "}</title>
+        <meta name="description" content={data?.description} />
         <meta name="keywords" content={data?.genres} />
         <meta
           property="og:title"
-          content={data?.animeTitle + " - Munchyroll "}
+          content={data?.title + " - Munchyroll "}
         />
-        <meta property="og:description" content={data?.synopsis} />
-        <meta property="og:image" content={data?.animeImg} />
+        <meta property="og:description" content={data?.description} />
+        <meta property="og:image" content={data?.image} />
         <meta name="theme-color" content="#C4AD8A" />{" "}
         {/* Maybe change this to scan image and return main color */}
         <link rel="manifest" href="public/manifest.json" />
