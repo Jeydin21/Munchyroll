@@ -2,18 +2,18 @@ import React from "react";
 import Link from "next/link";
 function ReleaseCard({ data }) {
   return (
-    <Link href={"/anime/" + data.animeId}>
+    <Link href={"/anime/" + data.id}>
       <div className="hover:underline sm:p-3">
         <img
           className=" hover:scale-105 transition-all w-full aspect-[5/7] object-cover rounded-lg"
-          src={data.animeImg}
+          src={data.image}
           alt=""
         />
 
         <div className="">
-          <h4 className="mt-3 font-bold  line-clamp-2">{data.animeTitle}</h4>
+          <h4 className="mt-3 font-bold  line-clamp-2">{data.title.english}</h4>
 
-          <p>Episode {data.episodeNum}</p>
+          <p>Episode {data.episodeNumber}</p>
         </div>
       </div>
     </Link>

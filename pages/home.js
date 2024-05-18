@@ -6,20 +6,30 @@ import Card from "../components/small-components/Card";
 import ReactGA from "react-ga";
 
 export async function getServerSideProps() {
-  const popular = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/top-airing`,
+  const newResults = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/recent-episodes`,
+  );
+  const trendingResults = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/trending?&perPage=20`,
+  );
+  const popularResults = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/popular?&perPage=20`,
   );
 
-  const popularData = await popular.json();
+  const newData = await newResults.json(); // Parse response as JSON
+  const trendingData = await trendingResults.json(); // Parse response as JSON
+  const popularData = await popularResults.json(); // Parse response as JSON
 
   return {
     props: {
-      popularData
+      newData,
+      trendingData,
+      popularData,
     },
   };
 }
 
-const Home = ({ popularData }) => {
+const Home = ({ newData, trendingData, popularData }) => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   });
@@ -43,20 +53,43 @@ const Home = ({ popularData }) => {
       </Head>
       <MainLayout useHead={false}>
 
-        {popularData && (
+        {newData && (
           <>
-            <h1 className=" text-2xl font-bold">Popular Anime</h1>
+            <h1 className=" text-2xl font-bold">Recent Anime</h1>
             <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {popularData &&
-                popularData.results.map((anime) => (
-                  <Card key={anime.id} data={anime} />
-                ))}
+              {newData && newData.results && newData.results.map((anime) => (
+                <ReleaseCard key={anime.id} data={anime} />
+              ))}
+
             </div>
           </>
         )}
         <br></br>
         <br></br>
         <br></br>
+        {trendingData && (
+          <>
+            <h1 className=" text-2xl font-bold">Trending Anime</h1>
+            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
+            {trendingData && trendingData.results && trendingData.results.map((anime) => (
+                <Card key={anime.id} data={anime} />
+              ))}
+            </div>
+          </>
+        )}
+        <br></br>
+        <br></br>
+        <br></br>
+        {popularData && (
+          <>
+            <h1 className=" text-2xl font-bold">Popular Anime</h1>
+            <div className="border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
+            {popularData && popularData.results && popularData.results.map((anime) => (
+                <Card key={anime.id} data={anime} />
+              ))}
+            </div>
+          </>
+        )}
       </MainLayout>
     </>
   );
