@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
-import SearchCard from "../../components/small-components/SearchCard";
+import Card from "../../components/small-components/Card";
 
 export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
@@ -60,7 +60,7 @@ function SearchPage({ data }) {
                 data.results
                   // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
                   .map((anime) => (
-                    <SearchCard key={anime.id} data={anime} />
+                    <Card key={anime.id} data={anime} />
                   ))}
             </div>
           </>
