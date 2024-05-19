@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-ga": "^3.3.1",
     "react-icons": "^4.12.0",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
     "sharp": "^0.33.2",

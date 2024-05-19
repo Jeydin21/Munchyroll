@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { FaBook, FaStar, FaCalendar, FaPlay } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Card({ data }) {
   const [seriesData, setSeriesData] = useState(null);
@@ -25,22 +27,25 @@ function Card({ data }) {
 
   return (
     <Link href={"/anime/" + seriesData.id}>
-      <div className="group sm:p-3">
-        <div className="group overflow-hidden rounded-lg relative">
-          <img
-            className="w-full aspect-[5/7] object-cover group-hover:scale-105 group-hover:brightness-50 transition-all transform duration-300"
-            src={seriesData.image}
-            alt=""
-          />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <FaPlay className="text-4xl text-white" />
-          </div>
-        </div>
+  <div className="group sm:p-3">
+    <div className="overflow-hidden rounded-lg relative">
+      <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
+        <LazyLoadImage
+          effect="blur"
+          className="w-full aspect-[5/7] object-cover rounded-lg"
+          src={seriesData.image}
+          alt=""
+        />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <FaPlay className="text-4xl text-white" />
+      </div>
+    </div>
 
-        <div className="">
-          <h4 className="mt-3 font-bold line-clamp-2">{seriesData.title.english || seriesData.title.romaji}</h4>
+    <div className="">
+      <h4 className="mt-3 font-bold line-clamp-2">{seriesData.title.english || seriesData.title.romaji}</h4>
 
-          {/* <p>Episode {seriesData.episodeNumber}</p> */}
+      {/* <p>Episode {seriesData.episodeNumber}</p> */}
           <div className="flex space-x-4 mt-2 text-white select-none">
             <p>{seriesData.type}</p>
             {seriesData.releaseDate && (
