@@ -10,8 +10,9 @@ function AnimeDetails({ data }) {
     genres,
     status,
     releaseDate,
-    type,
     totalEpisodes,
+    season,
+    rating,
     episodes,
   } = data;
   return (
@@ -19,7 +20,7 @@ function AnimeDetails({ data }) {
       <div className=" lg:flex items-start  lg:space-x-7">
         <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
-          <h2 className=" line-clamp-1 font-semibold">{title.english}</h2>
+          <h2 className=" line-clamp-1 font-semibold">{title.english || title.romaji}</h2>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
             dangerouslySetInnerHTML={{ __html: description }}
@@ -36,8 +37,8 @@ function AnimeDetails({ data }) {
           </div>
           <div className="mt-5 flex gap-2 flex-wrap">
             <TextButtons text={"Status: " + status} />
-            <TextButtons text={"Season: " + type} />
-            <TextButtons text={"Released: " + releaseDate} />
+            <TextButtons text={"Season: " + season.charAt(0).toUpperCase() + season.slice(1).toLowerCase() + " " + releaseDate} />
+            <TextButtons text={"Score: " + rating + "%"} />
             <TextButtons text={totalEpisodes + " Episodes"} />
           </div>
           <div className=" mt-5">
