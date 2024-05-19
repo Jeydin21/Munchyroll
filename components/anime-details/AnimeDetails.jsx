@@ -22,9 +22,8 @@ function AnimeDetails({ data }) {
           <h2 className=" line-clamp-1 font-semibold">{title.english}</h2>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
-          >
-            <div dangerouslySetInnerHTML={{ __html: description }} />
-          </p>
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
           <span
             onClick={() => setIsReadMore(!isReadMore)}
             className="hover:underline text-indigo-200  cursor-pointer"
@@ -83,8 +82,8 @@ export const TextButtons = ({ text, link, isCurrent, onClick }) => {
 
   return (
     <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
-          <p className=" text-secondary">{text}</p>
-        </div>
+      <p className=" text-secondary">{text}</p>
+    </div>
   );
 };
 
