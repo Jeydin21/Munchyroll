@@ -78,7 +78,7 @@ const Home = ({ newData, trendingData, popularData }) => {
                       className="w-full h-full object-cover select-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-80 select-none"></div>
-                    <h2 className="absolute ml-10 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold select-none">{anime.title.english || anime.title.romaji}</h2>
+                    <h2 className="absolute ml-10 pb-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold select-none sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">{anime.title.english || anime.title.romaji}</h2>
                     <div className="absolute ml-10 transform top-[calc(50%+1rem)] text-left">
                       <div className="flex space-x-4 mt-2 text-white select-none">
                         <p>{anime.type}</p>
@@ -89,7 +89,7 @@ const Home = ({ newData, trendingData, popularData }) => {
                       <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto select-none" dangerouslySetInnerHTML={{ __html: anime.description }} />
                     </div>
                     <Link href={"/anime/" + anime.id}>
-                      <button className="absolute bottom-5 right-5 backdrop:filter transition-all bg-slate-400 bg-opacity-30 backdrop-blur-md text-white px-4 py-2 rounded select-none text-2xl font-bold hover:scale-110 hover:text-blue-400"><span className="flex items-center"><FaPlay /><span className="ml-1"></span>Watch</span></button>
+                      <button className="absolute bottom-10 right-10 backdrop:filter transition-all bg-slate-400 bg-opacity-30 backdrop-blur-md text-white px-4 py-2 rounded select-none text-2xl font-bold hover:scale-110 hover:text-blue-300"><span className="flex items-center"><FaPlay /><span className="ml-1"></span>Watch</span></button>
                     </Link>
                   </div>
                 ))}
@@ -100,7 +100,7 @@ const Home = ({ newData, trendingData, popularData }) => {
 
         {newData && (
           <>
-            <h1 className=" text-2xl font-bold">Recent Anime</h1>
+            <h1 className="text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Recent Anime</h1>
             <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {newData && newData.results && newData.results.map((anime) => (
                 <Card key={anime.id} data={anime} />
@@ -114,7 +114,7 @@ const Home = ({ newData, trendingData, popularData }) => {
         <br></br>
         {trendingData && (
           <>
-            <h1 className=" text-2xl font-bold">Trending Anime</h1>
+            <h1 className="text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Trending Anime</h1>
             <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {trendingData && trendingData.results && trendingData.results.map((anime) => (
                 <Card key={anime.id} data={anime} />
@@ -127,7 +127,7 @@ const Home = ({ newData, trendingData, popularData }) => {
         <br></br>
         {popularData && (
           <>
-            <h1 className=" text-2xl font-bold">Popular Anime</h1>
+            <h1 className="text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Popular Anime</h1>
             <div className="border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {popularData && popularData.results && popularData.results.map((anime) => (
                 <Card key={anime.id} data={anime} />

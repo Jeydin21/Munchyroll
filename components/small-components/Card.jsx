@@ -57,7 +57,7 @@ function Card({ data }) {
               </p>
             )}
             {seriesData.totalEpisodes && seriesData.totalEpisodes != 1 && (
-              <p>
+              <p className="max-xl:hidden">
                 <span className="flex items-center">
                   <FaBook />
                   <span className="ml-1">{seriesData.totalEpisodes}</span>
