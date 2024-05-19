@@ -63,6 +63,7 @@ const Home = ({ newData, trendingData, popularData }) => {
             interval={5000}
             infiniteLoop
             showStatus={false}
+            emulateTouch
           >
             {trendingData.results
               .filter(anime => anime.cover !== anime.image) // Only include items where anime.cover exists
@@ -72,25 +73,24 @@ const Home = ({ newData, trendingData, popularData }) => {
                   <img
                     src={anime.cover}
                     alt={anime.title.english || anime.title.romaji}
-                    className="w-full h-full object-cover rounded-xl rounded-l-xl"
+                    className="w-full h-full object-cover rounded-xl rounded-l-xl select-none"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60"></div>
-                  <h2 className="absolute ml-10 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold">{anime.title.english || anime.title.romaji}</h2>
+                  <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60 select-none"></div>
+                  <h2 className="absolute ml-10 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold select-none">{anime.title.english || anime.title.romaji}</h2>
                   <div className="absolute ml-10 transform top-[calc(50%+1rem)] text-left">
-                    <div className="flex space-x-4 mt-2 text-white">
+                    <div className="flex space-x-4 mt-2 text-white select-none">
                       <p>{anime.type}</p>
                       {anime.totalEpisodes !== 1 && <p><span className="flex items-center"><FaBook /><span className="ml-1">{anime.totalEpisodes}</span></span></p>}
                       <p><span className="flex items-center"><FaStar /><span className="ml-1">{anime.rating}</span></span></p>
                       {anime.duration !== null && <p><span className="flex items-center"><FaClock /><span className="ml-1">{anime.duration} mins</span></span></p>}
                     </div>
-                    <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto" dangerouslySetInnerHTML={{ __html: anime.description }} />
+                    <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto select-none" dangerouslySetInnerHTML={{ __html: anime.description }} />
                   </div>
                 </div>
               ))}
           </Carousel>
         </>
-        <br>
-        </br>
+        <br></br>
 
         {newData && (
           <>
