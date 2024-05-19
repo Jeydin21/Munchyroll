@@ -13,7 +13,7 @@ function SearchCard({ data }) {
         <div>
           <h4 className=" mt-3 font-bold  line-clamp-2">{data.title.english || data.title.romaji}</h4>
 
-          <p>{data.status}</p>
+          <p>Released: {data.releaseDate || "N/A"}</p>
         </div>
       </div>
     </Link>

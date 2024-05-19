@@ -89,6 +89,8 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
     return episodeStuff;
   }
 
+  const capitalizedName = episodeName.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -124,7 +126,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
   return (
     <>
       <Head>
-        <title>{anime.title.english || anime.title.romaji + " - Munchyroll "}</title>
+        <title>{capitalizedName + " - Munchyroll "}</title>
         <meta name="description" content={episode?.synopsis} />
         <meta name="keywords" content={episode?.genres} />
         <meta
@@ -167,11 +169,11 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                 </div>
 
                 <div className="font-bold hidden sm:block mt-5">
-                  <h2 className="  capitalize ">{episodeName}</h2>
+                  <h2 className="  capitalize ">{episodeName.replace(/-/g, ' ')}</h2>
                 </div>
               </div>
               <div className="font-bold sm:hidden mt-5">
-                <h2 className=" capitalize ">{episodeName}</h2>
+                <h2 className=" capitalize ">{episodeName.replace(/-/g, ' ')}</h2>
 
               </div>
 
@@ -185,9 +187,9 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                       key={i}
                       link={`/watch/${anime.id}/${episode.id}`}
                       text={episode.number}
-                      isCurrent={episode.id === anime.id}
+                      isCurrent={episode.id === episodeName}
                       onClick={() => getEpisodeData(episode.id).then(episodeData => {
-                        setVideoSource(episodeData.sources[0].url); setIsLoading(true);
+                        setVideoSource(episodeData.sources[3].url); setIsLoading(true);
                         }).catch(error => {
                           console.error(error);
                         })
