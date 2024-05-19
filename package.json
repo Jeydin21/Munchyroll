@@ -26,6 +26,7 @@
     "react-ga": "^3.3.1",
     "react-icons": "^4.12.0",
     "react-query": "^3.39.3",
+    "react-responsive-carousel": "^3.2.23",
     "sharp": "^0.33.2",
     "video.js": "^8.10.0",
     "videojs-hotkeys": "^0.2.28"

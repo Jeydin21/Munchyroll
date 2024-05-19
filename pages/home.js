@@ -4,6 +4,8 @@ import MainLayout from "../components/layout/MainLayout";
 import ReleaseCard from "../components/small-components/ReleaseCard";
 import Card from "../components/small-components/Card";
 import ReactGA from "react-ga";
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export async function getServerSideProps() {
   const newResults = await fetch(
@@ -52,6 +54,42 @@ const Home = ({ newData, trendingData, popularData }) => {
         {/* Maybe change this to scan image and return main color */}
       </Head>
       <MainLayout useHead={false}>
+
+        <>
+          <Carousel
+            showThumbs={false}
+            autoPlay
+            interval={5000}
+            infiniteLoop
+            showStatus={false}
+          >
+            {trendingData.results
+              .filter(anime => anime.cover !== anime.image) // Only include items where anime.cover exists
+              .slice(0, 15)
+              .map((anime, index) => (
+                <div key={index} className="h-96 relative">
+                  <img
+                    src={anime.cover}
+                    alt={anime.title.english || anime.title.romaji}
+                    className="w-full h-full object-cover rounded-xl rounded-l-xl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60"></div>
+                  <h2 className="absolute ml-10 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold">{anime.title.english || anime.title.romaji}</h2>
+                  <div className="absolute ml-10 transform top-[calc(50%+1rem)] text-left">
+                    <div className="flex space-x-4 mt-2 text-white">
+                      <p>{anime.type}</p>
+                      <p>{anime.totalEpisodes}</p>
+                      <p>{anime.rating}</p>
+                      <p>{anime.duration}</p>
+                    </div>
+                    <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto" dangerouslySetInnerHTML={{ __html: anime.description }} />
+                  </div>
+                </div>
+              ))}
+          </Carousel>
+        </>
+        <br>
+        </br>
 
         {newData && (
           <>
