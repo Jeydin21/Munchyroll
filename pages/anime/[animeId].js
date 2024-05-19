@@ -7,7 +7,7 @@ export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/info/${animeId}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${animeId}`,
   );
 
   const data = await res.json();

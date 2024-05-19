@@ -7,13 +7,13 @@ import ReactGA from "react-ga";
 
 export async function getServerSideProps() {
   const newResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/recent-episodes`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/recent-episodes`,
   );
   const trendingResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/trending?&perPage=20`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/trending?&perPage=20`,
   );
   const popularResults = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/popular?&perPage=20`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/popular?&perPage=20`,
   );
 
   const newData = await newResults.json(); // Parse response as JSON

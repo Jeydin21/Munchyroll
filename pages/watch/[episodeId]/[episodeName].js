@@ -14,11 +14,11 @@ export const getServerSideProps = async (context) => {
   const { episodeId, episodeName } = await context.query;
 
   const episodeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/watch/${episodeName}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`,
   );
 
   const animeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/meta/anilist/info/${episodeId}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${episodeId}`,
   );
 
   const regex = /episode-(\d+)$/;
@@ -82,7 +82,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
   };
 
   async function getEpisodeData(episodeName) {  
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/anime/gogoanime/watch/${episodeName}`;
+    const url = `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`;
     
     const episodeData = await fetch(url);
     const episodeStuff = await episodeData.json()
