@@ -126,12 +126,12 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
   return (
     <>
       <Head>
-        <title>{capitalizedName + " - Munchyroll "}</title>
+        <title>{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}</title>
         <meta name="description" content={episode?.synopsis} />
         <meta name="keywords" content={episode?.genres} />
         <meta
           property="og:title"
-          content={anime?.title.english || anime?.title.romaji + " - Munchyroll "}
+          content={(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}
         />
         <meta property="og:description" content={anime?.description} />
         <meta property="og:image" content={anime?.image} />
@@ -169,11 +169,11 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                 </div>
 
                 <div className="font-bold hidden sm:block mt-5">
-                  <h2 className="  capitalize ">{episodeName.replace(/-/g, ' ')}</h2>
+                  <h2 className="  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
                 </div>
               </div>
               <div className="font-bold sm:hidden mt-5">
-                <h2 className=" capitalize ">{episodeName.replace(/-/g, ' ')}</h2>
+                <h2 className=" capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
 
               </div>
 
