@@ -6,6 +6,7 @@ import Card from "../components/small-components/Card";
 import ReactGA from "react-ga";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FaBook, FaStar, FaClock } from 'react-icons/fa';
 
 export async function getServerSideProps() {
   const newResults = await fetch(
@@ -78,9 +79,9 @@ const Home = ({ newData, trendingData, popularData }) => {
                   <div className="absolute ml-10 transform top-[calc(50%+1rem)] text-left">
                     <div className="flex space-x-4 mt-2 text-white">
                       <p>{anime.type}</p>
-                      <p>{anime.totalEpisodes}</p>
-                      <p>{anime.rating}</p>
-                      <p>{anime.duration}</p>
+                      {anime.totalEpisodes !== 1 && <p><span className="flex items-center"><FaBook /><span className="ml-1">{anime.totalEpisodes}</span></span></p>}
+                      <p><span className="flex items-center"><FaStar /><span className="ml-1">{anime.rating}</span></span></p>
+                      {anime.duration !== null && <p><span className="flex items-center"><FaClock /><span className="ml-1">{anime.duration} mins</span></span></p>}
                     </div>
                     <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto" dangerouslySetInnerHTML={{ __html: anime.description }} />
                   </div>
