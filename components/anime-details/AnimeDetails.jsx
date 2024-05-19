@@ -4,29 +4,26 @@ import React from "react";
 function AnimeDetails({ data }) {
   const [isReadMore, setIsReadMore] = React.useState(false);
   const {
-    synopsis,
-    animeTitle,
-    otherNames,
-    animeImg,
+    description,
+    title,
+    image,
     genres,
     status,
-    releasedDate,
+    releaseDate,
     type,
     totalEpisodes,
-    episodesList,
+    episodes,
   } = data;
   return (
     <div className=" mt-5">
       <div className=" lg:flex items-start  lg:space-x-7">
-        <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={animeImg} alt="" />
+        <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
-          <h2 className=" line-clamp-1 font-semibold">{animeTitle}</h2>
-          <h4 className=" line-clamp-1  text-secondary-light">{otherNames}</h4>
+          <h2 className=" line-clamp-1 font-semibold">{title.english}</h2>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
-          >
-            {synopsis}
-          </p>
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
           <span
             onClick={() => setIsReadMore(!isReadMore)}
             className="hover:underline text-indigo-200  cursor-pointer"
@@ -40,7 +37,7 @@ function AnimeDetails({ data }) {
           <div className="mt-5 flex gap-2 flex-wrap">
             <TextButtons text={"Status: " + status} />
             <TextButtons text={"Season: " + type} />
-            <TextButtons text={"Released: " + releasedDate} />
+            <TextButtons text={"Released: " + releaseDate} />
             <TextButtons text={totalEpisodes + " Episodes"} />
           </div>
           <div className=" mt-5">
@@ -57,14 +54,13 @@ function AnimeDetails({ data }) {
       <div>
         <h2 className=" font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
-          {episodesList
+          {episodes
             ?.slice(0)
-            .reverse()
             .map((episode, i) => (
               <TextButtons
                 key={i}
-                link={`/watch/${episode.episodeId}`}
-                text={episode.episodeNum}
+                link={`/watch/${data.id}/${episode.id}`}
+                text={episode.number}
               />
             ))}
         </div>
@@ -86,8 +82,8 @@ export const TextButtons = ({ text, link, isCurrent, onClick }) => {
 
   return (
     <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
-          <p className=" text-secondary">{text}</p>
-        </div>
+      <p className=" text-secondary">{text}</p>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?keyw=${searchId}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/${searchId}`,
   );
 
   const data = await res.json();
@@ -57,10 +57,10 @@ function SearchPage({ data }) {
             </div>
             <div className=" mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
               {data &&
-                data
+                data.results
                   // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
                   .map((anime) => (
-                    <SearchCard key={anime.animeId} data={anime} />
+                    <SearchCard key={anime.id} data={anime} />
                   ))}
             </div>
           </>

@@ -1,27 +1,33 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { TextButtons } from "../../components/anime-details/AnimeDetails";
-import PrimaryButton from "../../components/buttons/PrimaryButton";
-import MainLayout from "../../components/layout/MainLayout";
-import VideoPlayer from "../../components/Player/VideoPlayer";
+import { TextButtons } from "../../../components/anime-details/AnimeDetails";
+import PrimaryButton from "../../../components/buttons/PrimaryButton";
+import MainLayout from "../../../components/layout/MainLayout";
+import VideoPlayer from "../../../components/Player/VideoPlayer";
 import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 import Link from "next/link";
 require('dotenv').config();
 
 export const getServerSideProps = async (context) => {
-  const { episodeId } = await context.query;
-  let thing = episodeId.replace(/-episode-\d+/, '')
-  if(thing === 'jujutsu-kaisen-2nd-season') thing = 'jujutsu-kaisen-tv-2nd-season'
+  const { episodeId, episodeName } = await context.query;
 
   const episodeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`,
   );
 
   const animeData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/anime-details/${thing}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${episodeId}`,
   );
+
+  const regex = /episode-(\d+)$/;
+  const match = episodeName.match(regex);
+  let episodeNumber;
+
+  if (match) {
+    episodeNumber = Number(match[1]);
+  }
 
   const episode = await episodeData.json();
   const anime = await animeData.json();
@@ -29,12 +35,13 @@ export const getServerSideProps = async (context) => {
     props: {
       episode,
       anime,
-      episodeId,
+      episodeName,
+      episodeNumber
     },
   };
 };
 
-function StreamingPage({ episode, anime, episodeId }) {
+function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
   const router = useRouter();
 
   const [isExternalPlayer, setIsExternalPlayer] = useState(true);
@@ -47,41 +54,22 @@ function StreamingPage({ episode, anime, episodeId }) {
 
   // get the search id from the url with javascript
 
-  const chicken = episodeId;
-  const episodeName = chicken.split("-").join(" ");
-
-  const arr = episodeName.split(" ");
-
   //loop through each element of the array and capitalize the first letter.
-
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
-  }
 
   //Join all the elements of the array back into a string
   //using a blankspace as a separator
-  const capitalizedEpisodeName = arr.join(" ");
-
-  const episodeNumber = parseInt(episodeId.split('-').pop());
 
   useEffect(() => {
-    getEpisodeData(episodeNumber).then(episodeData => {
-      setVideoSource(episodeData.sources[0].file);
+    getEpisodeData(episodeName).then(episodeData => {
+      console.log(episodeData)
+      setVideoSource(episodeData.sources[3].url);
       setFadeout(true);
       setTimeout(() => setIsLoading(false), 1500); // Adjust delay to match transition duration
       setTimeout(() => setFadeIn(true), 2000); // Adjust delay to match transition duration
     }).catch(error => {
       console.error(error);
     });
-  }, [episodeId, triggerRender]);
-
-  async function getEpisodeData(episodeNum) {  
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/vidcdn/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNum}`;
-    
-    const episodeData = await fetch(url);
-    const episodeStuff = await episodeData.json()
-    return episodeStuff;
-  }
+  }, [episodeName, triggerRender]);
 
   const handleNextEpisode = () => {
     // Your existing code...
@@ -92,6 +80,16 @@ function StreamingPage({ episode, anime, episodeId }) {
     // Your existing code...
     setTriggerRender(prevState => !prevState);
   };
+
+  async function getEpisodeData(episodeName) {  
+    const url = `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`;
+    
+    const episodeData = await fetch(url);
+    const episodeStuff = await episodeData.json()
+    return episodeStuff;
+  }
+
+  const capitalizedName = episodeName.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
 
   // if (!episodeId) {
@@ -128,15 +126,15 @@ function StreamingPage({ episode, anime, episodeId }) {
   return (
     <>
       <Head>
-        <title>{capitalizedEpisodeName + " - Munchyroll "}</title>
+        <title>{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}</title>
         <meta name="description" content={episode?.synopsis} />
         <meta name="keywords" content={episode?.genres} />
         <meta
           property="og:title"
-          content={episode?.animeTitle + " - Munchyroll "}
+          content={(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}
         />
-        <meta property="og:description" content={episode?.synopsis} />
-        <meta property="og:image" content={episode?.animeImg} />
+        <meta property="og:description" content={anime?.description} />
+        <meta property="og:image" content={anime?.image} />
         <meta name="theme-color" content="#C4AD8A" />
         <link rel="manifest" href="public/manifest.json" />
         {/* Maybe change this to scan image and return main color */}
@@ -159,40 +157,39 @@ function StreamingPage({ episode, anime, episodeId }) {
 
                 <div className="flex justify-between pt-5">
                 {episodeNumber > 1 && (
-                  <Link className="justify-start" href={`/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
+                  <Link className="justify-start" href={`/watch/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
                     <button className="bg-[#2f6b91] hover:bg-[#214861] text-white font-bold py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>Previous Episode</button>
                   </Link>
                 )}
-                {episodeNumber < anime.episodesList.length && (
-                  <Link className="justify-end" href={`/watch/${episodeId.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
+                {episodeNumber < anime.episodes.length && (
+                  <Link className="justify-end" href={`/watch/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
                     <button className="bg-[#2f6b91] hover:bg-[#214861] text-white font-bold py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Next Episode</button>
                   </Link>
                   )}
                 </div>
 
                 <div className="font-bold hidden sm:block mt-5">
-                  <h2 className="  capitalize ">{episodeName}</h2>
+                  <h2 className="  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
                 </div>
               </div>
               <div className="font-bold sm:hidden mt-5">
-                <h2 className=" capitalize ">{episodeName}</h2>
+                <h2 className=" capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
 
               </div>
 
               <div className="w-2/5">
               <h2 className="font-semibold lg:text-center mt-10">Episode List</h2>
               <div className=" lg:justify-center lg:px-10 mt-5 flex flex-wrap gap-3">
-                {anime.episodesList
+                {anime.episodes
                   ?.slice(0)
-                  .reverse()
                   .map((episode, i) => (
                     <TextButtons
                       key={i}
-                      link={`/watch/${episode.episodeId}`}
-                      text={episode.episodeNum}
-                      isCurrent={episode.episodeId === episodeId}
-                      onClick={() => getEpisodeData(episode.episodeNum).then(episodeData => {
-                        setVideoSource(episodeData.sources[0].file); setIsLoading(true);
+                      link={`/watch/${anime.id}/${episode.id}`}
+                      text={episode.number}
+                      isCurrent={episode.id === episodeName}
+                      onClick={() => getEpisodeData(episode.id).then(episodeData => {
+                        setVideoSource(episodeData.sources[3].url); setIsLoading(true);
                         }).catch(error => {
                           console.error(error);
                         })
