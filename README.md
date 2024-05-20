@@ -25,20 +25,20 @@ Live demo at [anime.j21.dev](https://anime.j21.dev)
 </p>
 
 <p align="center">
- <img src="https://i.postimg.cc/7YQFvgrg/image.png" alt="main">
+ <img src="https://i.postimg.cc/2Szfh2W2/image.png" alt="main">
 </p>
 
 <details>
 <summary>More Screenshots</summary>
 
 <h3 align="center">Home Page</h3>
-<img src="https://i.postimg.cc/W1ZTX9qD/image.png"/>
+<img src="https://i.postimg.cc/5tf6tcdM/image.png"/>
 
 <h3 align="center">Info Page</h3>
-<img src="https://i.postimg.cc/LsdLJqNc/image.png"/>
+<img src="https://i.postimg.cc/Bv8QbJYk/image.png"/>
 
 <h3 align="center">Watch Page</h3>
-<img src="https://i.postimg.cc/BZNzfxfm/image.png"/>
+<img src="https://i.postimg.cc/DygMJsR4/image.png"/>
 
 </details>
 
@@ -73,7 +73,7 @@ npm run dev
 http://localhost:3000
 ```
 ## Credits
-- GogoAnime API made by [riimuru](https://github.com/riimuru/) for all anime details and sources - **API has been taken down, try and find a copy somewhere**
+- [Consumet API](https://github.com/consumet/api.consumet.org) for all anime details and sources
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [License](https://github.com/Jeydin21/Munchyroll/blob/master/LICENSE) file for more details
