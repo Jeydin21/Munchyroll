@@ -157,13 +157,13 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
 
                 <div className="flex justify-between pt-5">
                 {episodeNumber > 1 && (
-                  <Link className="justify-start" href={`/watch/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
-                    <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>Previous Episode</button>
+                  <Link className="justify-start" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
+                      <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                   </Link>
                 )}
                 {episodeNumber < anime.episodes.length && (
-                  <Link className="justify-end" href={`/watch/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
-                    <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Next Episode</button>
+                  <Link className="justify-end" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
+                      <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                   </Link>
                   )}
                 </div>
