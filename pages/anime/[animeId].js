@@ -32,8 +32,7 @@ function AnimeDetailsPage({ data }) {
         />
         <meta property="og:description" content={data?.description} />
         <meta property="og:image" content={data?.image} />
-        <meta name="theme-color" content="#C4AD8A" />{" "}
-        {/* Maybe change this to scan image and return main color */}
+        <meta name="theme-color" content={data?.color} />
         <link rel="manifest" href="public/manifest.json" />
       </Head>
       <MainLayout useHead={false}>

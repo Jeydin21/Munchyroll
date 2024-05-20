@@ -135,7 +135,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
         />
         <meta property="og:description" content={anime?.description} />
         <meta property="og:image" content={anime?.image} />
-        <meta name="theme-color" content="#C4AD8A" />
+        <meta name="theme-color" content={anime?.color} />
         <link rel="manifest" href="public/manifest.json" />
         {/* Maybe change this to scan image and return main color */}
       </Head>

@@ -40,7 +40,7 @@ function SearchPage({ data }) {
           property="og:description"
           content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
         />
-        <meta name="theme-color" content="#C4AD8A" />{" "}
+        <meta name="theme-color" content="#C4AD8A" />
         {/* Maybe change this to scan image and return main color */}
         <link rel="manifest" href="public/manifest.json" />
       </Head>
