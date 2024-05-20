@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import AnimeDetails from "../../components/anime-details/AnimeDetails";
 import MainLayout from "../../components/layout/MainLayout";
+import Recommendations from "../../components/anime-details/Recommendations";
 
 export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
@@ -36,8 +37,10 @@ function AnimeDetailsPage({ data }) {
         <link rel="manifest" href="public/manifest.json" />
       </Head>
       <MainLayout useHead={false}>
-
         {data && <AnimeDetails data={data} />}
+        <div style={{ marginBottom: "10rem" }}></div>
+        
+        {data && <Recommendations data={data} />}
       </MainLayout>
     </>
   );
