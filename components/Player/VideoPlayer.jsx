@@ -31,7 +31,7 @@ const VideoPlayer = ({ videoSource }) => {
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
-        src: videoSource,
+        src: process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + videoSource,
         type: "application/x-mpegURL ",
       },
     };
