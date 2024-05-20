@@ -46,16 +46,12 @@ function Card({ data }) {
       <h4 className="mt-3 font-bold line-clamp-2">{seriesData.title.english || seriesData.title.romaji}</h4>
 
       {/* <p>Episode {seriesData.episodeNumber}</p> */}
-          <div className="flex space-x-4 mt-2 text-white select-none">
-            <p>{seriesData.type}</p>
+          <div className="flex space-x-2 mt-2 text-white select-none">
+            <p>{seriesData.type}
             {seriesData.releaseDate && (
-              <p>
-                <span className="flex items-center">
-                  <FaCalendar />
-                  <span className="ml-1">{seriesData.releaseDate}</span>
-                </span>
-              </p>
-            )}
+                  <span>•{seriesData.releaseDate}</span>
+              )}
+            </p>
             {seriesData.totalEpisodes && seriesData.totalEpisodes != 1 && (
               <p className="max-xl:hidden">
                 <span className="flex items-center">
