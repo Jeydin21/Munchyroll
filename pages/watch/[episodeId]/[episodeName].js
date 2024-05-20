@@ -127,8 +127,8 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
     <>
       <Head>
         <title>{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}</title>
-        <meta name="description" content={episode?.synopsis} />
-        <meta name="keywords" content={episode?.genres} />
+        <meta name="description" content={anime?.synopsis} />
+        <meta name="keywords" content={anime?.genres} />
         <meta
           property="og:title"
           content={(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber + " - Munchyroll "}
