@@ -169,16 +169,16 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                 </div>
 
                 <div className="font-bold max-lg:text-center hidden sm:block mt-5">
-                  <h2 className="  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
+                  <h2 className="dark:text-secondary text-primary  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
                 </div>
               </div>
               <div className="font-bold max-lg:text-center sm:hidden mt-5">
-                <h2 className=" capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
+                <h2 className="dark:text-secondary text-primary capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
 
               </div>
 
               <div className="max-sd:w-2/5 lg:w-2/5">
-              <h2 className="font-semibold text-center mt-10">Episode List</h2>
+              <h2 className="dark:text-secondary text-primary font-semibold text-center mt-10">Episode List</h2>
               <div className="justify-center px-10 mt-5 flex flex-wrap gap-3">
                 {anime.episodes
                   ?.slice(0)

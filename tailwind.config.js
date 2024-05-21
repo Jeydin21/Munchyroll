@@ -2,6 +2,7 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
+  darkMode: 'selector',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -10,12 +11,12 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#0F0E0E",
+          DEFAULT: "#222222",
           light: "#5F5E5E",
           hover: "#1F1F1F",
         },
         secondary: {
-          DEFAULT: "#FFFFFF",
+          DEFAULT: "#F2F2F2",
           light: "#D9D9D9",
         },
         accent: {

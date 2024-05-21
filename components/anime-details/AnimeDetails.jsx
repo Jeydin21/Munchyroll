@@ -20,9 +20,9 @@ function AnimeDetails({ data }) {
       <div className=" lg:flex items-start  lg:space-x-7">
         <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
-          <h2 className=" line-clamp-1 font-semibold">{title.english || title.romaji}</h2>
+          <h2 className="dark:text-secondary text-primary line-clamp-1 font-semibold">{title.english || title.romaji}</h2>
           <p
-            className={`mt-5 ${!isReadMore && " line-clamp-3"} text-secondary`}
+            className={`mt-5 ${!isReadMore && " line-clamp-3"} dark:text-secondary text-primary`}
             dangerouslySetInnerHTML={{ __html: description }}
           />
           <span
@@ -33,7 +33,7 @@ function AnimeDetails({ data }) {
           </span>
 
           <div className=" mt-5">
-            <h4 className=" font-semibold">Information</h4>
+            <h4 className="dark:text-secondary text-primary font-semibold">Information</h4>
           </div>
           <div className="mt-5 flex gap-2 flex-wrap">
             <TextButtons text={"Status: " + status} />
@@ -42,7 +42,7 @@ function AnimeDetails({ data }) {
             <TextButtons text={totalEpisodes + " Episodes"} />
           </div>
           <div className=" mt-5">
-            <h4 className=" font-semibold">Genres</h4>
+            <h4 className="dark:text-secondary text-primary font-semibold">Genres</h4>
           </div>
           <div className=" mt-3 flex gap-2 flex-wrap">
             {genres?.map((genre, i) => (
@@ -53,7 +53,7 @@ function AnimeDetails({ data }) {
       </div>
 
       <div>
-        <h2 className=" font-semibold mt-10">Episodes</h2>
+        <h2 className="dark:text-secondary text-primary font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
           {episodes
             ?.slice(0)

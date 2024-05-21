@@ -6,12 +6,12 @@ import { FaDiscord } from 'react-icons/fa';
 function Footer() {
 
   return (
-    <footer className="border-t-[1px] border-gray-600 mt-14 p-5 sm:p-10 flex justify-between">
+    <footer className="mt-14 p-5 sm:p-10 flex justify-between">
       <div className="flex items-center space-x-4">
         <div>
           <Logo />
-          <p>A minimal anime streaming site</p>
-          <p>
+          <p className="dark:text-secondary text-primary">A minimal anime streaming site</p>
+          <p className="dark:text-secondary text-primary">
             Made by <a className="hover:text-blue-400 underline transition-all" rel="noreferrer" target="_blank" href="https://j21.dev">Jeydin21</a>!
           </p>
         </div>
