@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
 import Card from "../components/small-components/Card";
@@ -7,6 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaPlay, FaBook, FaStar, FaClock } from 'react-icons/fa';
 import Link from "next/link";
+import { sanitize } from "isomorphic-dompurify";
 
 export async function getServerSideProps() {
   const newResults = await fetch(
@@ -33,9 +34,12 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ newData, trendingData, popularData }) => {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-  });
+    setIsClient(true);
+  }, []);
 
   return (
     <>
@@ -86,7 +90,7 @@ const Home = ({ newData, trendingData, popularData }) => {
                         <p><span className="flex items-center"><FaStar /><span className="ml-1">{anime.rating}</span></span></p>
                         {anime.duration !== null && <p><span className="flex items-center"><FaClock /><span className="ml-1">{anime.duration} mins</span></span></p>}
                       </div>
-                      <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto select-none" dangerouslySetInnerHTML={{ __html: anime.description }} />
+                      <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto select-none" dangerouslySetInnerHTML={{ __html: sanitize(anime.description) }}></div>
                     </div>
                     <Link href={"/anime/" + anime.id}>
                       <button className="absolute bottom-10 right-10 backdrop:filter transition-all bg-slate-400 bg-opacity-30 backdrop-blur-md text-white px-4 py-2 rounded select-none text-2xl font-bold hover:scale-110 hover:text-blue-300"><span className="flex items-center"><FaPlay /><span className="ml-1"></span>Watch</span></button>

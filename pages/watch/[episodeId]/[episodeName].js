@@ -2,11 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { TextButtons } from "../../../components/anime-details/AnimeDetails";
-import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import MainLayout from "../../../components/layout/MainLayout";
 import VideoPlayer from "../../../components/Player/VideoPlayer";
-import { HiOutlineDownload } from "react-icons/hi";
-import { BsFillPlayFill } from "react-icons/bs";
 import Link from "next/link";
 require('dotenv').config();
 
@@ -14,7 +11,7 @@ export const getServerSideProps = async (context) => {
   const { episodeId, episodeName } = await context.query;
 
   const episodeData = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`,
+    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/watch/${episodeName}`,
   );
 
   const animeData = await fetch(

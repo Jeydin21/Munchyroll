@@ -1,27 +1,38 @@
-import axios from "axios";
+const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK;
+const apiLink = process.env.NEXT_PUBLIC_CONSUMET_API;
 
-export const getPopularAnime = async () => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONSUMET_API}/popular`);
-  return data;
-};
-
-export const getAnimeSearch = async (search) => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONSUMET_API}/search?keyw=${search}`);
-  return data;
-};
-
-export const getTopAiringAnime = async () => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONSUMET_API}/top-airing`);
-  return data;
-};
 
 export const getAnimeDetails = async (id) => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${id}`);
-  const result = await data.json();
-  return result;
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/data/${id}`)
+  return data.json();
 };
 
-export const getStreamLink = async (episodeId) => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONSUMET_API}/vidcdn/watch/${episodeId}`);
-  return data;
-};
+export const getAnimeEpisodeData = async (id) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/episodes/${id}`)
+  return data.json();
+}
+
+export const getAnimeEpisodeLinks = async (animeId) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/watch/${animeId}`)
+  return data.json();
+}
+
+export const getAnimeSearch = async (query) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/search/${query}`)
+  return data.json();
+}
+
+export const getAnimeTrending = async (count) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/trending?&perPage=${count}`)
+  return data.json();
+}
+
+export const getAnimePopular = async (count) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/popular?&perPage=${count}`)
+  return data.json();
+}
+
+export const getAnimeRecentEpisodes = async (count) => {
+  const data = await fetch(process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + apiLink + `/meta/anilist/recent-episodes/?&perPage=${count}`)
+  return data.json();
+}
