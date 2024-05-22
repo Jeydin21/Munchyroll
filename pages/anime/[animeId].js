@@ -3,44 +3,44 @@ import React from "react";
 import AnimeDetails from "../../components/anime-details/AnimeDetails";
 import MainLayout from "../../components/layout/MainLayout";
 import Recommendations from "../../components/anime-details/Recommendations";
+import { getAnimeDetails, getAnimeEpisodeData } from "../../src/handlers/index";
 
 export const getServerSideProps = async (context) => {
   const { animeId } = context.query;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${animeId}`,
-  );
+  const animeData = await getAnimeDetails(animeId);
 
-  const data = await res.json();
+  const episodeData = await getAnimeEpisodeData(animeId);
 
   return {
     props: {
-      data,
+      animeData,
+      episodeData
     },
   };
 };
 
-function AnimeDetailsPage({ data }) {
+function AnimeDetailsPage({ animeData, episodeData }) {
   return (
     <>
       <Head>
-        <title>{data?.title.english + " - Munchyroll "}</title>
-        <meta name="description" content={data?.description} />
-        <meta name="keywords" content={data?.genres} />
+        <title>{animeData?.title.english + " - Munchyroll "}</title>
+        <meta name="description" content={animeData?.description} />
+        <meta name="keywords" content={animeData?.genres} />
         <meta
           property="og:title"
-          content={data?.title.english + " - Munchyroll "}
+          content={animeData?.title.english + " - Munchyroll "}
         />
-        <meta property="og:description" content={data?.description} />
-        <meta property="og:image" content={data?.image} />
-        <meta name="theme-color" content={data?.color} />
+        <meta property="og:description" content={animeData?.description} />
+        <meta property="og:image" content={animeData?.image} />
+        <meta name="theme-color" content={animeData?.color} />
         <link rel="manifest" href="public/manifest.json" />
       </Head>
       <MainLayout useHead={false}>
-        {data && <AnimeDetails data={data} />}
+        {animeData && <AnimeDetails animeData={animeData} episodeData={episodeData} />}
         <div style={{ marginBottom: "10rem" }}></div>
         
-        {data && <Recommendations data={data} />}
+        {animeData && <Recommendations animeData={animeData.recommendations} />}
       </MainLayout>
     </>
   );

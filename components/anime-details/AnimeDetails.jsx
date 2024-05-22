@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function AnimeDetails({ data }) {
+function AnimeDetails({ animeData, episodeData }) {
   const [isReadMore, setIsReadMore] = React.useState(false);
   const {
     description,
@@ -13,8 +13,7 @@ function AnimeDetails({ data }) {
     totalEpisodes,
     season,
     rating,
-    episodes,
-  } = data;
+  } = animeData;
   return (
     <div className=" mt-5">
       <div className=" lg:flex items-start  lg:space-x-7">
@@ -55,12 +54,13 @@ function AnimeDetails({ data }) {
       <div>
         <h2 className="dark:text-secondary text-primary font-semibold mt-10">Episodes</h2>
         <div className=" mt-5 flex  flex-wrap  gap-3">
-          {episodes
+          {episodeData
             ?.slice(0)
             .map((episode, i) => (
               <TextButtons
                 key={i}
-                link={`/watch/${data.id}/${episode.id}`}
+                link={`/watch/${animeData.id}/${episode.id}`}
+                // text={episode.number + ": " + episode.title}
                 text={episode.number}
               />
             ))}

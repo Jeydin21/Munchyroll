@@ -8,21 +8,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaPlay, FaBook, FaStar, FaClock } from 'react-icons/fa';
 import Link from "next/link";
 import { sanitize } from "isomorphic-dompurify";
+import { getAnimeTrending, getAnimePopular, getAnimeNew } from "../src/handlers/index";
 
 export async function getServerSideProps() {
-  const newResults = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/recent-episodes`,
-  );
-  const trendingResults = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/trending?&perPage=20`,
-  );
-  const popularResults = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/popular?&perPage=20`,
-  );
-
-  const newData = await newResults.json(); // Parse response as JSON
-  const trendingData = await trendingResults.json(); // Parse response as JSON
-  const popularData = await popularResults.json(); // Parse response as JSON
+  const newData = await getAnimeNew();
+  const trendingData = await getAnimeTrending(20);
+  const popularData = await getAnimePopular(20);
 
   return {
     props: {
@@ -34,11 +25,9 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ newData, trendingData, popularData }) => {
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-    setIsClient(true);
   }, []);
 
   return (
