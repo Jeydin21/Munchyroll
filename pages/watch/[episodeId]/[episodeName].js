@@ -6,6 +6,7 @@ import MainLayout from "../../../components/layout/MainLayout";
 import VideoPlayer from "../../../components/Player/VideoPlayer";
 import Link from "next/link";
 import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../src/handlers/index";
+import EpisodesList from "../../../components/Player/EpisodesList";
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeName } = await context.query;
@@ -123,9 +124,12 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
       </Head>
       <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
         <MainLayout useHead={false}>
+          <div className="font-bold max-lg:text-center sm:block mb-5">
+            <h2 className="dark:text-secondary text-primary  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
+          </div>
           {episode && (
             <div className="lg:flex lg:space-x-4">
-              <div className=" alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
+              <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
                 {!isExternalPlayer ? (
                   <iframe
                     className=" overflow-hidden aspect-[5/4]   sm:aspect-video w-full h-full"
@@ -138,25 +142,17 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                 )}
 
                 <div className="flex justify-between pt-5">
-                {episodeNumber > 1 && (
-                  <Link className="justify-start" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
+                  {episodeNumber > 1 && (
+                    <Link className="justify-start" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
-                  </Link>
-                )}
-                {episodeNumber < episode.length && (
-                  <Link className="justify-end" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
+                    </Link>
+                  )}
+                  {episodeNumber < episode.length && (
+                    <Link className="justify-end" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
-                  </Link>
+                    </Link>
                   )}
                 </div>
-
-                <div className="font-bold max-lg:text-center hidden sm:block mt-5">
-                  <h2 className="dark:text-secondary text-primary  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
-                </div>
-              </div>
-              <div className="font-bold max-lg:text-center sm:hidden mt-5">
-                <h2 className="dark:text-secondary text-primary capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
-
               </div>
 
               <div className="max-sd:w-2/5 lg:w-2/5">
