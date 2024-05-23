@@ -3,15 +3,12 @@ import React from "react";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
 import Card from "../../components/small-components/Card";
+import { getAnimeSearch } from '../../src/handlers/index';
 
 export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/${searchId}`,
-  );
-
-  const data = await res.json();
+  const data = await getAnimeSearch(searchId);
 
   return {
     props: {

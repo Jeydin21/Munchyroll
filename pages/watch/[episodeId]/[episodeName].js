@@ -5,18 +5,14 @@ import { TextButtons } from "../../../components/anime-details/AnimeDetails";
 import MainLayout from "../../../components/layout/MainLayout";
 import VideoPlayer from "../../../components/Player/VideoPlayer";
 import Link from "next/link";
-require('dotenv').config();
+import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../src/handlers/index";
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeName } = await context.query;
 
-  const episodeData = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/watch/${episodeName}`,
-  );
+  const anime = await getAnimeDetails(episodeId);
 
-  const animeData = await fetch(
-    `${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/info/${episodeId}`,
-  );
+  const episode = await getAnimeEpisodeData(episodeId);
 
   const regex = /episode-(\d+)$/;
   const match = episodeName.match(regex);
@@ -26,8 +22,8 @@ export const getServerSideProps = async (context) => {
     episodeNumber = Number(match[1]);
   }
 
-  const episode = await episodeData.json();
-  const anime = await animeData.json();
+  // const episode = await episodeData.json();
+  // const anime = await animeData.json();
   return {
     props: {
       episode,
@@ -57,7 +53,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
   //using a blankspace as a separator
 
   useEffect(() => {
-    getEpisodeData(episodeName).then(episodeData => {
+    getAnimeEpisodeLinks(episodeName).then(episodeData => {
       console.log(episodeData)
       setVideoSource(episodeData.sources[3].url);
       setFadeout(true);
@@ -77,17 +73,6 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
     // Your existing code...
     setTriggerRender(prevState => !prevState);
   };
-
-  async function getEpisodeData(episodeName) {  
-    const url = `${process.env.NEXT_PUBLIC_CONSUMET_API}/anime/gogoanime/watch/${episodeName}`;
-    
-    const episodeData = await fetch(url);
-    const episodeStuff = await episodeData.json()
-    return episodeStuff;
-  }
-
-  const capitalizedName = episodeName.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -117,7 +102,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
 
   if (isLoading) {
     return (<div className={`flex items-center justify-center h-screen transition-opacity duration-1000 ${fadeout ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 dark:border-purple-500"></div>
     </div>)
   }
   return (
@@ -158,7 +143,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                   </Link>
                 )}
-                {episodeNumber < anime.episodes.length && (
+                {episodeNumber < episode.length && (
                   <Link className="justify-end" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                   </Link>
@@ -177,7 +162,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
               <div className="max-sd:w-2/5 lg:w-2/5">
               <h2 className="dark:text-secondary text-primary font-semibold text-center mt-10">Episode List</h2>
               <div className="justify-center px-10 mt-5 flex flex-wrap gap-3">
-                {anime.episodes
+                {episode
                   ?.slice(0)
                   .map((episode, i) => (
                     <TextButtons

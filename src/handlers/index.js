@@ -18,7 +18,7 @@ export const getAnimeEpisodeLinks = async (animeId) => {
 }
 
 export const getAnimeSearch = async (query) => {
-  const data = await fetch(apiLink + `/meta/anilist/search/${query}`)
+  const data = await fetch(apiLink + `/meta/anilist/${query}`)
   return await data.json();
 }
 
