@@ -25,20 +25,29 @@ Live demo at [anime.j21.dev](https://anime.j21.dev)
 </p>
 
 <p align="center">
- <img src="https://i.postimg.cc/2Szfh2W2/image.png" alt="main">
+ <img src="https://i.postimg.cc/2yjcDFJC/image.png" alt="main">
 </p>
 
 <details>
 <summary>More Screenshots</summary>
 
-<h3 align="center">Home Page</h3>
-<img src="https://i.postimg.cc/5tf6tcdM/image.png"/>
+<h3 align="center">Home Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/W4LPPC7j/image.png"/>
 
-<h3 align="center">Info Page</h3>
-<img src="https://i.postimg.cc/Bv8QbJYk/image.png"/>
+<h3 align="center">Info Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/vB0jDN54/image.png"/>
 
-<h3 align="center">Watch Page</h3>
-<img src="https://i.postimg.cc/DygMJsR4/image.png"/>
+<h3 align="center">Watch Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/fTsNF6BN/image.png"/>
+
+<h3 align="center">Home Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/Kjznv95v/image.png"/>
+
+<h3 align="center">Info Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/zvbVc4jW/image.png"/>
+
+<h3 align="center">Watch Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/P5k4nn7d/image.png"/>
 
 </details>
 
