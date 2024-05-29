@@ -28,7 +28,6 @@ export default function Home() {
 					/>
 
 					<meta property="og:type" content="website" />
-					<meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
 					<meta
 						property="og:title"
 						content="Munchyroll"
@@ -40,7 +39,6 @@ export default function Home() {
 
 
 					<meta property="twitter:card" content="summary_large_image" />
-					<meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
 					<meta
 						property="twitter:title"
 						content="Munchyroll"
@@ -50,7 +48,7 @@ export default function Home() {
 						content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
 					/>
 					<meta name="theme-color" content="#C4AD8A" />
-					<link rel="manifest" href={process.env.NEXT_PUBLIC_URL + '/manifest.json'} />
+					<link rel="manifest" href="/manifest.json" />
 				</Head>
 				{process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
 					<Script src="https://us.umami.is/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>

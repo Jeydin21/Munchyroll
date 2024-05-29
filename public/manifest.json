@@ -3,9 +3,8 @@
   "short_name": "Munchyroll",
   "description": "Watch HD Anime For Free",
   "start_url": ".",
-  "display": "fullscreen",
-  "background-color": "#C4AD8A",
-  "theme_color": "#000000",
+  "display": "standalone",
+  "background_color": "#121212",
   "icons": [
     {
       "src": "/assets/icon-96x96.png",

@@ -53,7 +53,6 @@ function MainLayout({ children, useHead = true }) {
           />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
           <meta
             property="og:title"
             content="Munchyroll"
@@ -64,7 +63,6 @@ function MainLayout({ children, useHead = true }) {
           />
 
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
           <meta
             property="twitter:title"
             content="Munchyroll"
