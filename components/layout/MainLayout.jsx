@@ -34,7 +34,7 @@ function MainLayout({ children, useHead = true }) {
   const [theme, setTheme] = useState(cookies.theme || 'dark');
 
   useEffect(() => {
-    setCookie('theme', theme);
+    setCookie('theme', theme, { sameSite: 'lax' });
   }, [theme]);
 
   const toggleTheme = () => {
