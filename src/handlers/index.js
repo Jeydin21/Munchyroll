@@ -8,12 +8,13 @@ export const getAnimeDetails = async (id) => {
 };
 
 export const getAnimeEpisodeData = async (id) => {
-  const data = await fetch(apiLink + `/meta/anilist/episodes/${id}`)
-  return await data.json();
+  const data = await fetch(apiLink + `/meta/anilist/info/${id}`)
+  const episodeData = await data.json();
+  return episodeData.episodes;
 }
 
 export const getAnimeEpisodeLinks = async (animeId) => {
-  const data = await fetch(corsLink + '/' + apiLink + `/meta/anilist/watch/${animeId}`)
+  const data = await fetch(apiLink + `/meta/anilist/watch/${animeId}`)
   return await data.json();
 }
 

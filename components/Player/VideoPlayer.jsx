@@ -4,6 +4,9 @@ import videojs from "video.js"; // version 7
 import "@videojs/http-streaming";
 import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
+
+const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
+
 const VideoPlayer = ({ videoSource }) => {
   const videoRef = useRef();
   const [player, setPlayer] = useState(undefined);
@@ -31,8 +34,8 @@ const VideoPlayer = ({ videoSource }) => {
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
       sources: {
-        src: process.env.NEXT_PUBLIC_CORS_REQUEST_LINK + '/' + videoSource,
-        type: "application/x-mpegURL ",
+      src: corsLink ? `${corsLink}/${videoSource}` : videoSource,
+      type: "application/x-mpegURL ",
       },
     };
 
