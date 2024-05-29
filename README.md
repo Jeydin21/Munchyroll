@@ -54,26 +54,53 @@ Live demo at [anime.j21.dev](https://anime.j21.dev)
 If you encounter any strange bugs on the website, please let me know by  going to [issues](https://github.com/Jeydin21/Munchyroll/issues/) and create a bug report
 
 ## Local Development
-> If you want to self host this app, please note that it's only allowed for personal use; **commercial use is not permitted**
+> If you want to self host this app, please note that it's only allowed for personal use; **Commercial use is not recommended**
 
-1. Clone this repository:
+#### 1. Environment Variable file setup
+1. Copy all the contents of `.env.example` into a new file called `.env`
+
+
+#### 2. Backend Repository (Consumet API)
+1. Clone the backend repository and install the dependencies:
 ```bash
-git clone https://github.com/Jeydin21/Munchyroll.git
+$ git clone https://github.com/consumet/api.consumet.org.git
+$ cd api.consumet.org
+$ npm install # Or yarn install
 ```
-2. Go into the project folder and install dependencies using npm:
+
+2. Start the backend server
 ```bash
-npm install
+$ npm start
 ```
-3. Start the development server
+
+3. Put your backend URL into the `NEXT_PUBLIC_CONSUMET_URL` variable in the `.env` file
+
+#### 3. Frontend Repository (Munchyroll)
+1. Clone this repository and install the dependencies:
 ```bash
-npm run dev
+$ git clone https://github.com/Jeydin21/Munchyroll.git
+$ cd Munchyroll
+$ npm install # Or yarn install
+```
+
+2. Start the development server
+```bash
+$ npm run dev
 ```
 4. Open the project in your browser:
 ```
 http://localhost:3000
 ```
+
+#### Extra Steps (OPTIONAL)
+- If you want, you can host a CORS proxy. The recommended CORS proxy for this project is this one: [Rob--W/cors-anywhere](https://github.com/Rob--W/cors-anywhere). You can host this on vercel and save the link into the `NEXT_PUBLIC_CORS_REQUEST_LINK` variable in the `.env` file
+- You can turn on your own website tracking with Google Analytics, go to https://analytics.google.com/ and follow their setup instructions. Save the Tracking ID into the `NEXT_PUBLIC_GA_TRACKING_ID` variable in the `.env` file
+- You can turn on your own website tracking with Umami, go to https://umami.is/ and follow their setup instructions. Save the Website ID into the `NEXT_PUBLIC_UMAMI_WEBSITE_ID` variable in the `.env` file
+- You can turn on live customer communication with Tawk.to, go to https://tawk.to and follow their setup instructions. Save the Property ID and Widget ID into the `NEXT_PUBLIC_TAWKTO_PROPERTY_ID` and `NEXT_PUBLIC_TAWKTO_WIDGET_ID` variables, respectively
+
 ## Credits
 - [Consumet API](https://github.com/consumet/api.consumet.org) for all anime details and sources
+- [Anilist](https://anilist.co/) was used to provide extensive episode details and statistics
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [License](https://github.com/Jeydin21/Munchyroll/blob/master/LICENSE) file for more details
