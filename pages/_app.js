@@ -6,7 +6,9 @@ import ReactGA from "react-ga";
 
 import nprogress from "nprogress";
 
-ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
+if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
+}
 
 import Router from "next/router";
 import GoogleAnalytics from "../components/GoogleAnalytics";
@@ -17,10 +19,14 @@ function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <GoogleAnalytics />
-      <Component {...pageProps} />
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        {process.env.NEXT_PUBLIC_GA_TACKING_ID && (
+          <GoogleAnalytics />
+        )}
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </>
   );
 }
 

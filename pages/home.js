@@ -27,7 +27,9 @@ export async function getServerSideProps() {
 const Home = ({ newData, trendingData, popularData }) => {
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
+			ReactGA.pageview(window.location.pathname + window.location.search);
+		}
   }, []);
 
   return (
