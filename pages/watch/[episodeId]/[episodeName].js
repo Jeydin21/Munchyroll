@@ -58,8 +58,8 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
       console.log(episodeData)
       setVideoSource(episodeData.sources[3].url);
       setFadeout(true);
-      setTimeout(() => setIsLoading(false), 1500); // Adjust delay to match transition duration
-      setTimeout(() => setFadeIn(true), 2000); // Adjust delay to match transition duration
+      setTimeout(() => setIsLoading(false), 100); // Adjust delay to match transition duration
+      setTimeout(() => setFadeIn(true), 1000); // Adjust delay to match transition duration
     }).catch(error => {
       console.error(error);
     });
@@ -156,26 +156,29 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
               </div>
 
               <div className="max-sd:w-2/5 lg:w-2/5">
-              <h2 className="dark:text-secondary text-primary font-semibold text-center mt-10">Episode List</h2>
-              <div className="justify-center px-10 mt-5 flex flex-wrap gap-3">
-                {episode
-                  ?.slice(0)
-                  .map((episode, i) => (
-                    <TextButtons
-                      key={i}
-                      link={`/watch/${anime.id}/${episode.id}`}
-                      text={episode.number}
-                      isCurrent={episode.id === episodeName}
-                      onClick={() => getEpisodeData(episode.id).then(episodeData => {
-                        setVideoSource(episodeData.sources[3].url); setIsLoading(true);
-                        }).catch(error => {
-                          console.error(error);
-                        })
-                        }
-                    />
-                  ))}
+                <h2 className="dark:text-secondary text-primary font-semibold text-center mt-10">Episode List</h2>
+                <div className="justify-center px-10 mt-5 flex flex-wrap gap-3">
+                  {episode
+                    ?.slice(0)
+                    .map((episode, i) => {
+                      console.log(episode.id);  // This will log the episode id
+                      return (
+                        <TextButtons
+                          key={i}
+                          link={`/watch/${anime.id}/${episode.id}`}
+                          text={episode.number}
+                          isCurrent={episode.id === episodeName}
+                          onClick={() => getAnimeEpisodeLinks(episode.id).then(episodeData => {
+                            setIsLoading(true); setVideoSource(episodeData.sources[3].url)
+                          }).catch(error => {
+                            console.error(error);
+                          })
+                          }
+                        />
+                      );
+                    })}
+                </div>
               </div>
-            </div>
 
               {/*<PrimaryButton
 								icon={<BsFillPlayCircleFill />}
