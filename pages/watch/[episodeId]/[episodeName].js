@@ -55,7 +55,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
 
   useEffect(() => {
     getAnimeEpisodeLinks(episodeName).then(episodeData => {
-      console.log(episodeData)
+      // console.log(episodeData)
       setVideoSource(episodeData.sources[3].url);
       setFadeout(true);
       setTimeout(() => setIsLoading(false), 100); // Adjust delay to match transition duration
@@ -161,7 +161,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                   {episode
                     ?.slice(0)
                     .map((episode, i) => {
-                      console.log(episode.id);  // This will log the episode id
+                      // console.log(episode.id);
                       return (
                         <TextButtons
                           key={i}
