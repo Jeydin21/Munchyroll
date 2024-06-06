@@ -28,8 +28,8 @@ const Home = ({ newData, trendingData, popularData }) => {
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
-			ReactGA.pageview(window.location.pathname + window.location.search);
-		}
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
   }, []);
 
   return (
@@ -73,18 +73,20 @@ const Home = ({ newData, trendingData, popularData }) => {
                       className="w-full h-full object-cover select-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-80 select-none"></div>
-                    <h2 className="absolute ml-10 pb-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold select-none sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">{anime.title.english || anime.title.romaji}</h2>
-                    <div className="absolute ml-10 transform top-[calc(50%+1rem)] text-left">
-                      <div className="flex space-x-4 mt-2 text-white select-none">
-                        <p>{anime.type}</p>
-                        {anime.totalEpisodes !== 1 && <p><span className="flex items-center"><FaBook /><span className="ml-1">{anime.totalEpisodes}</span></span></p>}
-                        <p><span className="flex items-center"><FaStar /><span className="ml-1">{anime.rating}</span></span></p>
-                        {anime.duration !== null && <p><span className="flex items-center"><FaClock /><span className="ml-1">{anime.duration} mins</span></span></p>}
+                    <div className="absolute top-0 left-0 m-10">
+                      <h2 className="pb-2 text-left text-white text-3xl font-bold select-none line-clamp-3 sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">{anime.title.english || anime.title.romaji}</h2>
+                      <div className="transform top-[calc(50%+1rem)] text-left">
+                        <div className="flex flex-wrap space-x-4 mt-2 text-white select-none">
+                          <p>{anime.type}</p>
+                          {anime.totalEpisodes !== 1 && <p><span className="flex items-center"><FaBook /><span className="ml-1">{anime.totalEpisodes}</span></span></p>}
+                          <p><span className="flex items-center"><FaStar /><span className="ml-1">{anime.rating}</span></span></p>
+                          {anime.duration !== null && <p><span className="flex items-center"><FaClock /><span className="ml-1">{anime.duration} mins</span></span></p>}
+                        </div>
+                        <div className="text-white mt-2 md:max-w-[60%] lg:max-w-[75%] line-clamp-4 select-none" dangerouslySetInnerHTML={{ __html: sanitize(anime.description) }}></div>
                       </div>
-                      <div className="text-white mt-2 max-w-[40%] max-h-24 overflow-auto select-none" dangerouslySetInnerHTML={{ __html: sanitize(anime.description) }}></div>
                     </div>
                     <Link href={"/anime/" + anime.id}>
-                      <button className="absolute bottom-10 right-10 backdrop:filter transition-all bg-slate-400 bg-opacity-30 backdrop-blur-md text-white px-4 py-2 rounded select-none text-2xl font-bold hover:scale-110 hover:text-blue-300"><span className="flex items-center"><FaPlay /><span className="ml-1"></span>Watch</span></button>
+                      <button className="absolute bottom-6 right-10 backdrop:filter transition-all bg-slate-400 bg-opacity-30 backdrop-blur-md text-white px-4 py-2 rounded select-none text-2xl font-bold hover:scale-110 hover:text-blue-300"><span className="flex items-center"><FaPlay /><span className="ml-1"></span>Watch</span></button>
                     </Link>
                   </div>
                 ))}
