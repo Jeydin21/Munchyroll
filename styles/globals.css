@@ -15,23 +15,24 @@
 }
 
 @layer utilities {
+  .scrollbar-hidden-background {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #F2F2F2 transparent; /* For Firefox */
+  }
+
   .scrollbar-hidden-background::-webkit-scrollbar {
-    width: 32px;
+    width: 4px; /* For Chrome, Safari, and other Webkit browsers */
   }
 
   .scrollbar-hidden-background::-webkit-scrollbar-track {
-    background: transparent;
+    background: transparent; /* For Chrome, Safari, and other Webkit browsers */
   }
 
   .scrollbar-hidden-background::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
-    border: 4px solid transparent;
-    background-clip: content-box;
-  }
-
-  .scrollbar-hidden-background {
-    scrollbar-color: #888 transparent;
+    background-color: #F2F2F2; /* For Chrome, Safari, and other Webkit browsers */
+    border-radius: 2px; /* For Chrome, Safari, and other Webkit browsers */
+    border: 2px solid transparent; /* For Chrome, Safari, and other Webkit browsers */
+    background-clip: content-box; /* For Chrome, Safari, and other Webkit browsers */
   }
 }
 
