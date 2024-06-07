@@ -49,6 +49,10 @@ export default function Home() {
 					/>
 					<meta name="theme-color" content="#C4AD8A" />
 					<link rel="manifest" href="/manifest.json" />
+					<link rel="shortcut icon" href="favicon.ico" />
+					<link rel="icon" type="image/png" href="android-chrome-192x192.png" />
+					<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 				</Head>
 				{process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
 					<Script src="https://us.umami.is/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>

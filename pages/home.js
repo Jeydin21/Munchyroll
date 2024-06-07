@@ -45,9 +45,12 @@ const Home = ({ newData, trendingData, popularData }) => {
           property="og:description"
           content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
         />
-        <link rel="manifest" href="public/manifest.json" />
-        <meta name="theme-color" content="#C4AD8A" />{" "}
-        {/* Maybe change this to scan image and return main color */}
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#C4AD8A" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="android-chrome-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <MainLayout useHead={false}>
 

@@ -34,12 +34,16 @@ function AnimeDetailsPage({ animeData, episodeData }) {
         <meta property="og:description" content={animeData?.description} />
         <meta property="og:image" content={animeData?.image} />
         <meta name="theme-color" content={animeData?.color} />
-        <link rel="manifest" href="public/manifest.json" />
+        <link rel="manifest" href="manifest.json" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="android-chrome-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <MainLayout useHead={false}>
         {animeData && <AnimeDetails animeData={animeData} episodeData={episodeData} />}
         <div style={{ marginBottom: "10rem" }}></div>
-        
+
         {animeData && <Recommendations animeData={animeData.recommendations} />}
       </MainLayout>
     </>

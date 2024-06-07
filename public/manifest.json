@@ -2,35 +2,73 @@
   "name": "Munchyroll",
   "short_name": "Munchyroll",
   "description": "An ad-free anime streaming website aimed at minimalism and responsive design. Share this with friends!",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#121212",
   "icons": [
     {
-      "src": "/assets/icon-96x96.png",
-      "sizes": "96x96 64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "src": "icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "/assets/icon-512x512.png",
+      "src": "icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "assets/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
+      "src": "icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "/assets/icon-512x512.png",
+      "src": "icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
   "theme_color": "#121212",
-  "id": "munchyroll",
   "dir": "ltr",
-  "scope": "anime.j21.dev",
   "lang": "en",
   "orientation": "any",
   "categories": [
