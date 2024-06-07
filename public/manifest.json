@@ -1,7 +1,7 @@
 {
   "name": "Munchyroll",
   "short_name": "Munchyroll",
-  "description": "Watch HD Anime For Free",
+  "description": "An ad-free anime streaming website aimed at minimalism and responsive design. Share this with friends!",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#121212",
@@ -26,5 +26,17 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "theme_color": "#121212",
+  "id": "munchyroll",
+  "dir": "ltr",
+  "scope": "anime.j21.dev",
+  "lang": "en",
+  "orientation": "any",
+  "categories": [
+    "entertainment",
+    "music",
+    "social",
+    "sports"
   ]
 }
