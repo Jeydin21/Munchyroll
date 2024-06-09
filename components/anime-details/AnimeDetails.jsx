@@ -17,7 +17,6 @@ function AnimeDetails({ animeData, episodeData }) {
   } = animeData;
   return (
     <>
-    <img src={cover} alt={title} className="max-lg:hidden w-full rounded-xl" />
     <div className=" mt-5">
       <div className=" lg:flex items-start  lg:space-x-7">
         <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />

@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useCookies } from 'react-cookie';
 
-function MainLayout({ children, useHead = true }) {
+function MainLayout({ children, useHead = true, banner }) {
   // const [hour, setHour] = useState();
 
   // useEffect(() => {
@@ -75,8 +75,14 @@ function MainLayout({ children, useHead = true }) {
         </Head>
       )}
       <Header theme={theme} toggleTheme={toggleTheme} />
+      {banner && (
+        <div className="relative max-lg:hidden">
+        <img src={banner} className="w-full h-96" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-[#121212] to-white opacity-100"></div>
+      </div>
+      )}
       <div className=" flex ">
-        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh] mt-10 ">
+        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh]">
           {children}
         </div>
       </div>
