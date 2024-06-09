@@ -1,80 +1,94 @@
 import React from "react";
 import Link from "next/link";
-import { FaBook, FaStar, FaCalendar, FaPlay } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { FaBook, FaStar, FaPlay } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-function Card({ data }) {
-  const [seriesData, setSeriesData] = useState(null);
+function Card({ data, release }) {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/data/${data.id}`);
-        const result = await response.json();
-        setSeriesData(result);
+  if (release) return (
+    <>
+      <Link href={"/watch/" + data.id + "/" + data.episodeId}>
+        <div className="group sm:p-3 ">
+          <div className="overflow-hidden relative rounded-lg">
+            <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
+              <LazyLoadImage
+                effect="blur"
+                className="w-full h-full aspect-[5/7] object-cover rounded-lg"
+                src={data.image}
+                alt=""
+              />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <FaPlay className="text-4xl" />
+            </div>
+          </div>
 
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
+          <div className="dark:text-secondary text-primary">
+            <h4 className="mt-3 font-bold line-clamp-2">{data.title.english || data.title.romaji}</h4>
 
-    fetchData();
-  }, [data.id]);
-
-  if (!seriesData) return null; // or a loading spinner
+            {/* <p>Episode {data.episodeNumber}</p> */}
+            <div className="flex space-x-2 mt-2 select-none">
+              <p className="dark:text-secondary text-primary">{data.type}
+                {data.episodeTitle && (
+                  <span>•{data.episodeTitle}</span>
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
 
   return (
     <>
-      {seriesData.title && (
-        <Link href={"/anime/" + seriesData.id}>
-          <div className="group sm:p-3">
-            <div className="overflow-hidden rounded-lg relative">
-              <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
-                <LazyLoadImage
-                  effect="blur"
-                  className="w-full aspect-[5/7] object-cover rounded-lg"
-                  src={seriesData.image}
-                  alt=""
-                />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <FaPlay className="text-4xl" />
-              </div>
+      <Link href={"/anime/" + data.id}>
+        <div className="group sm:p-3 ">
+          <div className="overflow-hidden relative rounded-lg">
+            <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
+              <LazyLoadImage
+                effect="blur"
+                className="w-full h-full aspect-[5/7] object-cover rounded-lg"
+                src={data.image}
+                alt=""
+              />
             </div>
-
-            <div className="dark:text-secondary text-primary">
-              <h4 className="mt-3 font-bold line-clamp-2">{seriesData.title.english || seriesData.title.romaji}</h4>
-
-              {/* <p>Episode {seriesData.episodeNumber}</p> */}
-              <div className="flex space-x-2 mt-2 select-none">
-                <p className="dark:text-secondary text-primary">{seriesData.type}
-                  {seriesData.releaseDate && (
-                    <span>•{seriesData.releaseDate}</span>
-                  )}
-                </p>
-                {seriesData.totalEpisodes && seriesData.totalEpisodes != 1 && (
-                  <p className="max-xl:hidden">
-                    <span className="dark:text-secondary text-primary flex items-center">
-                      <FaBook />
-                      <span className="ml-1">{seriesData.totalEpisodes}</span>
-                    </span>
-                  </p>
-                )}
-                {seriesData.rating && (
-                  <p>
-                    <span className="dark:text-secondary text-primary flex items-center">
-                      <FaStar />
-                      <span className="ml-1">{seriesData.rating}</span>
-                    </span>
-                  </p>
-                )}
-              </div>
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <FaPlay className="text-4xl" />
             </div>
           </div>
-        </Link>
-      )}
+
+          <div className="dark:text-secondary text-primary">
+            <h4 className="mt-3 font-bold line-clamp-2">{data.title.english || data.title.romaji}</h4>
+
+            {/* <p>Episode {data.episodeNumber}</p> */}
+            <div className="flex space-x-2 mt-2 select-none">
+              <p className="dark:text-secondary text-primary">{data.type}
+                {data.releaseDate && (
+                  <span>•{data.releaseDate}</span>
+                )}
+              </p>
+              {data.totalEpisodes && data.totalEpisodes != 1 && (
+                <p className="max-xl:hidden">
+                  <span className="dark:text-secondary text-primary flex items-center">
+                    <FaBook />
+                    <span className="ml-1">{data.totalEpisodes}</span>
+                  </span>
+                </p>
+              )}
+              {data.rating && (
+                <p>
+                  <span className="dark:text-secondary text-primary flex items-center">
+                    <FaStar />
+                    <span className="ml-1">{data.rating}</span>
+                  </span>
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </Link>
     </>
   );
 }

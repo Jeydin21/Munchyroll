@@ -1,30 +1,31 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
-import Card from "../components/small-components/Card";
+import Trending from "../components/layout/Trending";
+import Popular from "../components/layout/Popular";
+import Top from "../components/layout/Top";
+import New from "../components/layout/New";
 import ReactGA from "react-ga";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaPlay, FaBook, FaStar, FaClock } from 'react-icons/fa';
 import Link from "next/link";
 import { sanitize } from "isomorphic-dompurify";
-import { getAnimeTrending, getAnimePopular, getAnimeNew } from "../src/handlers/index";
+import { getAnimeTrending } from "../src/handlers/index";
 
 export async function getServerSideProps() {
-  const newData = await getAnimeNew();
   const trendingData = await getAnimeTrending(20);
-  const popularData = await getAnimePopular(20);
 
   return {
     props: {
-      newData,
       trendingData,
-      popularData,
     },
   };
 }
 
 const Home = ({ newData, trendingData, popularData }) => {
+
+  const [display, setDisplay] = useState('Trending');
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
@@ -96,43 +97,30 @@ const Home = ({ newData, trendingData, popularData }) => {
         </>
         <br></br>
 
-        {newData && (
-          <>
-            <h1 className="dark:text-secondary text-primary text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Recent Anime</h1>
-            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {newData && newData.results && newData.results.map((anime) => (
-                <Card key={anime.id} data={anime} />
-              ))}
-
-            </div>
-          </>
-        )}
+        <div className="button-menu">
+          <div className="flex justify-center">
+            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>
+              Newest
+            </button>
+            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Trending' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Trending')}>
+              Trending
+            </button>
+            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Popular' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Popular')}>
+              Popular
+            </button>
+            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Top' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Top')}>
+              Top Rated
+            </button>
+          </div>
+        </div>
+        <br></br>
+        {display === 'New' && <New />}
+        {display === 'Trending' && <Trending />}
+        {display === 'Popular' && <Popular />}
+        {display === 'Top' && <Top />}
         <br></br>
         <br></br>
         <br></br>
-        {trendingData && (
-          <>
-            <h1 className="dark:text-secondary text-primary text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Trending Anime</h1>
-            <div className="border-b-[2px] border-gray-600 pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {trendingData && trendingData.results && trendingData.results.map((anime) => (
-                <Card key={anime.id} data={anime} />
-              ))}
-            </div>
-          </>
-        )}
-        <br></br>
-        <br></br>
-        <br></br>
-        {popularData && (
-          <>
-            <h1 className="dark:text-secondary text-primary text-2xl font-bold sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Popular Anime</h1>
-            <div className="border-gray-600 pb-10 mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7">
-              {popularData && popularData.results && popularData.results.map((anime) => (
-                <Card key={anime.id} data={anime} />
-              ))}
-            </div>
-          </>
-        )}
       </MainLayout>
     </>
   );
