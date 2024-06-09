@@ -24,16 +24,16 @@ export const getAnimeSearch = async (query) => {
 }
 
 export const getAnimeTrending = async (count) => {
-  const data = await fetch(apiLink + `/meta/anilist/trending?&perPage=${count}`)
+  const data = await fetch(apiLink + `/meta/anilist/trending?page=1&perPage=${count}`)
   return await data.json();
 }
 
 export const getAnimePopular = async (count) => {
-  const data = await fetch(apiLink + `/meta/anilist/popular?&perPage=${count}`)
+  const data = await fetch(apiLink + `/meta/anilist/popular?page=1&perPage=${count}`)
   return await data.json();
 }
 
 export const getAnimeNew = async () => {
-  const data = await fetch(apiLink + `/meta/anilist/recent-episodes`)
+  const data = await fetch(apiLink + `/meta/anilist/recent-episodes?page=1&perPage=20`)
   return await data.json();
 }
