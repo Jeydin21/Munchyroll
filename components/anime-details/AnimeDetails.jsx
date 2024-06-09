@@ -12,21 +12,24 @@ function AnimeDetails({ animeData, episodeData }) {
     releaseDate,
     totalEpisodes,
     season,
+    cover,
     rating,
   } = animeData;
   return (
+    <>
+    <img src={cover} alt={title} className="max-lg:hidden w-full rounded-xl" />
     <div className=" mt-5">
       <div className=" lg:flex items-start  lg:space-x-7">
         <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
         <div className=" mt-5 lg:mt-0 max-w-4xl">
-          <h2 className="dark:text-secondary text-primary line-clamp-1 font-semibold">{title.english || title.romaji}</h2>
+          <h2 className="dark:text-secondary text-primary line-clamp-1 text-3xl font-semibold">{title.english || title.romaji}</h2>
           <p
             className={`mt-5 ${!isReadMore && " line-clamp-3"} dark:text-secondary text-primary`}
             dangerouslySetInnerHTML={{ __html: description }}
           />
           <span
             onClick={() => setIsReadMore(!isReadMore)}
-            className="hover:underline text-indigo-200  cursor-pointer"
+            className="hover:underline dark:text-blue-300  text-blue-500 cursor-pointer"
           >
             {!isReadMore ? "Read More" : "Read Less"}
           </span>
@@ -45,7 +48,7 @@ function AnimeDetails({ animeData, episodeData }) {
           </div>
           <div className=" mt-3 flex gap-2 flex-wrap">
             {genres?.map((genre, i) => (
-              <TextButtons key={i} text={genre} />
+              <GenreButton key={i} text={genre} />
             ))}
           </div>
         </div>
@@ -66,7 +69,8 @@ function AnimeDetails({ animeData, episodeData }) {
             ))}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
@@ -74,7 +78,7 @@ export const TextButtons = ({ text, link, isCurrent, onClick }) => {
   if (link) {
     return (
       <Link href={link}>
-        <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
+        <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-slate-700 transition-all  px-2 py-2`}>
           <p className=" text-secondary">{text}</p>
         </div>
       </Link>
@@ -82,8 +86,16 @@ export const TextButtons = ({ text, link, isCurrent, onClick }) => {
   }
 
   return (
-    <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-primary-hover transition-all  px-2 py-2`}>
+    <div onClick={onClick} className={`${isCurrent ? "bg-blue-500 text-white" : "bg-primary-light border-gray-300"} rounded-md text-center min-w-[75px] hover:bg-slate-700 transition-all  px-2 py-2`}>
       <p className=" text-secondary">{text}</p>
+    </div>
+  );
+};
+
+export const GenreButton = ({ text }) => {
+  return (
+    <div className={`bg-primary-light border-gray-300 hover:bg-slate-700 rounded-full text-center min-w-[75px] transition-all py-1 px-3`}>
+      <p className="text-secondary">{text}</p>
     </div>
   );
 };

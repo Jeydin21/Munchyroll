@@ -11,7 +11,7 @@ function Card({ data }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/${data.id == 21 ? 'data' : 'info'}/${data.id}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_CONSUMET_API}/meta/anilist/data/${data.id}`);
         const result = await response.json();
         setSeriesData(result);
 

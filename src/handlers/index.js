@@ -8,9 +8,9 @@ export const getAnimeDetails = async (id) => {
 };
 
 export const getAnimeEpisodeData = async (id) => {
-  const data = await fetch(apiLink + `/meta/anilist/info/${id}`)
+  const data = await fetch(apiLink + `/meta/anilist/episodes/${id}`)
   const episodeData = await data.json();
-  return episodeData.episodes;
+  return episodeData;
 }
 
 export const getAnimeEpisodeLinks = async (animeId) => {
