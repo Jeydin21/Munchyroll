@@ -25,7 +25,7 @@ export async function getServerSideProps() {
 
 const Home = ({ newData, trendingData, popularData }) => {
 
-  const [display, setDisplay] = useState('Trending');
+  const [display, setDisplay] = useState('New');
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
@@ -99,16 +99,16 @@ const Home = ({ newData, trendingData, popularData }) => {
 
         <div className="button-menu">
           <div className="flex justify-center">
-            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>
+            <button className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>
               Newest
             </button>
-            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Trending' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Trending')}>
+            <button className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Trending' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Trending')}>
               Trending
             </button>
-            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Popular' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Popular')}>
+            <button className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Popular' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Popular')}>
               Popular
             </button>
-            <button className={`w-auto m-1 px-5 py-3 transition duration-300 dark:text-secondary text-primary font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Top' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Top')}>
+            <button className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary truncate text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Top' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Top')}>
               Top Rated
             </button>
           </div>
