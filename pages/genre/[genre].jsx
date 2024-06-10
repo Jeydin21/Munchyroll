@@ -3,39 +3,41 @@ import React from "react";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
 import Card from "../../components/small-components/Card";
-import { getAnimeSearch } from '../../src/handlers/index';
+import { getAnimeGenre } from '../../src/handlers/index';
 
 export const getServerSideProps = async (context) => {
-  const { searchId } = context.query;
+  const { genre } = context.query;
+  const genreId = genre.charAt(0).toUpperCase() + genre.slice(1);
 
-  const data = await getAnimeSearch(searchId, 24);
+  const data = await getAnimeGenre(genreId, 24);
 
   return {
     props: {
       data,
+      genreId
     },
   };
 };
 
-function SearchPage({ data }) {
+function GenrePage({ data, genreId }) {
   const router = useRouter();
-  const { searchId } = router.query;
+  const { genre } = router.query;
 
   return (
     <>
       <Head>
-        <title>{"Search Results > " + searchId + " - Munchyroll"}</title>
+        <title>{"Genre List > " + genreId + " - Munchyroll"}</title>
         <meta
           name="description"
-          content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
+          content={`View all ${genre} anime on Munchyroll!`}
         />
         <meta
           property="og:title"
-          content={"Search Results > " + searchId + " - Munchyroll"}
+          content={"Genre List > " + genreId + " - Munchyroll"}
         />
         <meta
           property="og:description"
-          content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
+          content={`View all ${genre} anime on Munchyroll!`}
         />
         <meta name="theme-color" content="#C4AD8A" />
         {/* Maybe change this to scan image and return main color */}
@@ -50,20 +52,17 @@ function SearchPage({ data }) {
         {data && (
           <>
             <div className=" ">
-              <h1 className=" text-2xl font-bold">Search Results &gt; {searchId}</h1>
-
-              {data.length === 0 && (
-                <div className=" mt-10 text-2xl ">No Results Found</div>
-              )}
+              <h1 className=" text-2xl font-bold">Genre List &gt; {genreId}</h1>
             </div>
-            <div className="mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
-              {data &&
-                data.results
-                  // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
-                  .map((anime) => (
+              {data.results && data.results.map ? (
+                <div className="mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
+                  {data.results.map((anime) => (
                     <Card key={anime.id} data={anime} />
                   ))}
-            </div>
+                </div>
+              ) : (
+                <div className=" mt-10 text-2xl ">No Results Found</div>
+              )}
           </>
         )}
       </MainLayout>
@@ -71,4 +70,4 @@ function SearchPage({ data }) {
   );
 }
 
-export default SearchPage;
+export default GenrePage;

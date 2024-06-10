@@ -19,8 +19,8 @@ export const getAnimeEpisodeLinks = async (animeId) => {
   return await data.json();
 }
 
-export const getAnimeSearch = async (query) => {
-  const data = await fetch(apiLink + `/meta/anilist/${query}`)
+export const getAnimeSearch = async (query, count) => {
+  const data = await fetch(apiLink + `/meta/anilist/${query}?page=1&perPage=${count}`)
   return await data.json();
 }
 
@@ -35,11 +35,21 @@ export const getAnimeTrending = async (count) => {
 }
 
 export const getAnimePopular = async (count) => {
-  const data = await fetch(apiLink + `/meta/anilist/popular?page=1&perPage=${count}`)
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&perPage=${count}`)
   return await data.json();
 }
 
 export const getAnimeNew = async (count) => {
-  const data = await fetch(apiLink + `/meta/anilist/recent-episodes?page=1&perPage=${count}`)
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=RELEASING&perPage=${count}`)
+  return await data.json();
+}
+
+export const getAnimeGenre = async (genre, count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["TRENDING_DESC"]&genres=["${genre}"]&page=1&perPage=${count}`)
+  return await data.json();
+}
+
+export const getUpcomingAnime = async (count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=NOT_YET_RELEASED&page=1&perPage=${count}`)
   return await data.json();
 }
