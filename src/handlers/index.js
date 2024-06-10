@@ -53,3 +53,14 @@ export const getUpcomingAnime = async (count) => {
   const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=NOT_YET_RELEASED&page=1&perPage=${count}`)
   return await data.json();
 }
+
+// MANGA FUNCTIONS
+export const getMangaDetails = async (id) => {
+  const data = await fetch(apiLink + `/meta/anilist-manga/info/${id}?provider=mangadex`)
+  return await data.json();
+};
+
+export const getMangaPages = async (chapterId) => {
+  const data = await fetch(apiLink + `/meta/anilist-manga/read?chapterId=${chapterId}&provider=mangadex`)
+  return await data.json();
+}
