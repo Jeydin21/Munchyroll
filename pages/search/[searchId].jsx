@@ -3,21 +3,24 @@ import React from "react";
 import Head from "next/head";
 import MainLayout from "../../components/layout/MainLayout";
 import Card from "../../components/small-components/Card";
-import { getAnimeSearch } from '../../src/handlers/index';
+import MangaCard from "../../components/small-components/MangaCard";
+import { getAnimeSearch, getMangaSearch } from '../../src/handlers/index';
 
 export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
-  const data = await getAnimeSearch(searchId, 24);
+  const animeSearchData = await getAnimeSearch(searchId, 16);
+  const mangaSearchData = await getMangaSearch(searchId, 16);
 
   return {
     props: {
-      data,
+      animeSearchData,
+      mangaSearchData,
     },
   };
 };
 
-function SearchPage({ data }) {
+function SearchPage({ animeSearchData, mangaSearchData }) {
   const router = useRouter();
   const { searchId } = router.query;
 
@@ -47,21 +50,32 @@ function SearchPage({ data }) {
       </Head>
       <MainLayout useHead={false}>
 
-        {data && (
+        {animeSearchData && (
           <>
             <div className=" ">
               <h1 className=" text-2xl font-bold">Search Results &gt; {searchId}</h1>
 
-              {data.length === 0 && (
+              {animeSearchData.length === 0 && (
                 <div className=" mt-10 text-2xl ">No Results Found</div>
               )}
             </div>
-            <div className="mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
-              {data &&
-                data.results
+            <br />
+            <h1 className=" text-xl font-bold">Anime Results</h1>
+            <div className="border-b-[2px] border-gray-600 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
+              {animeSearchData &&
+                animeSearchData.results
                   // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
                   .map((anime) => (
                     <Card key={anime.id} data={anime} />
+                  ))}
+            </div>
+            <br />
+            <h1 className=" text-xl font-bold">Manga Results</h1>
+            <div className="border-b-[2px] border-gray-600 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
+              {mangaSearchData &&
+                mangaSearchData.results
+                  .map((manga) => (
+                    <MangaCard key={manga.id} data={manga} />
                   ))}
             </div>
           </>

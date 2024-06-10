@@ -5,7 +5,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function MangaCard({ data }) {
-  const type = data.type === "MANGA" ? "Manga" : "TV";
+  const type = {
+    MANGA: "Manga",
+    ONE_SHOT: "One Shot",
+    NOVEL: "Novel",
+    DOUJIN: "Doujin",
+    MANHWA: "Manhwa",
+  }
 
   return (
     <>
@@ -32,7 +38,7 @@ function MangaCard({ data }) {
 
             {/* <p>Episode {data.episodeNumber}</p> */}
             <div className="flex space-x-2 mt-2 select-none">
-              <p className="dark:text-secondary text-primary">{type}</p>
+              <p className="dark:text-secondary text-primary">{type[data.type]}</p>
               {data.rating && (
                 <p>
                   <span className="dark:text-secondary text-primary flex items-center">

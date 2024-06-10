@@ -65,6 +65,11 @@ export const getMangaPages = async (chapterId) => {
   return await data.json();
 }
 
+export const getMangaSearch = async (query, count) => {
+  const data = await fetch(apiLink + `/meta/anilist-manga/${query}?page=1&perPage=${count}`)
+  return await data.json();
+}
+
 export const getMangaNew = async (count) => {
   const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=MANGA&sort=["POPULARITY_DESC"]&status=RELEASING&perPage=${count}`)
   return await data.json();

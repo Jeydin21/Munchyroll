@@ -5,6 +5,14 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Card({ data }) {
+  const type = {
+    TV: "TV",
+    MOVIE: "Movie",
+    OVA: "OVA",
+    ONA: "ONA",
+    SPECIAL: "Special",
+  }
+
   return (
     <>
       <Link href={"/anime/" + data.id}>
@@ -30,7 +38,7 @@ function Card({ data }) {
 
             {/* <p>Episode {data.episodeNumber}</p> */}
             <div className="flex space-x-2 mt-2 select-none">
-              <p className="dark:text-secondary text-primary">{data.type}
+              <p className="dark:text-secondary text-primary">{type[data.type]}
                 {data.releaseDate && (
                   <span>•{data.releaseDate}</span>
                 )}
