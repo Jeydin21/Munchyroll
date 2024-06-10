@@ -4,10 +4,12 @@ import { FaBook, FaStar, FaPlay } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-function Card({ data }) {
+function MangaCard({ data }) {
+  const type = data.type === "MANGA" ? "Manga" : "TV";
+
   return (
     <>
-      <Link href={"/anime/" + data.id}>
+      <Link href={"/manga/" + data.id}>
         <div className="group sm:p-3 ">
           <div className="overflow-hidden relative rounded-lg aspect-[5/7]">
             <div className="absolute inset-0">
@@ -30,19 +32,7 @@ function Card({ data }) {
 
             {/* <p>Episode {data.episodeNumber}</p> */}
             <div className="flex space-x-2 mt-2 select-none">
-              <p className="dark:text-secondary text-primary">{data.type}
-                {data.releaseDate && (
-                  <span>•{data.releaseDate}</span>
-                )}
-              </p>
-              {data.totalEpisodes && data.totalEpisodes != 1 && (
-                <p className="max-xl:hidden">
-                  <span className="dark:text-secondary text-primary flex items-center">
-                    <FaBook />
-                    <span className="ml-1">{data.totalEpisodes}</span>
-                  </span>
-                </p>
-              )}
+              <p className="dark:text-secondary text-primary">{type}</p>
               {data.rating && (
                 <p>
                   <span className="dark:text-secondary text-primary flex items-center">
@@ -59,4 +49,4 @@ function Card({ data }) {
   );
 }
 
-export default Card;
+export default MangaCard;

@@ -40,7 +40,7 @@ export const getAnimePopular = async (count) => {
 }
 
 export const getAnimeNew = async (count) => {
-  const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=RELEASING&perPage=${count}`)
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=ANIME&sort=["POPULARITY_DESC"]&status=RELEASING&perPage=${count}`)
   return await data.json();
 }
 
@@ -62,5 +62,25 @@ export const getMangaDetails = async (id) => {
 
 export const getMangaPages = async (chapterId) => {
   const data = await fetch(apiLink + `/meta/anilist-manga/read?chapterId=${chapterId}&provider=mangadex`)
+  return await data.json();
+}
+
+export const getMangaNew = async (count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=MANGA&sort=["POPULARITY_DESC"]&status=RELEASING&perPage=${count}`)
+  return await data.json();
+}
+
+export const getMangaTrending = async (count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=MANGA&sort=["TRENDING_DESC"]&perPage=${count}`)
+  return await data.json();
+}
+
+export const getMangaPopular = async (count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=MANGA&sort=["POPULARITY_DESC"]&perPage=${count}`)
+  return await data.json();
+}
+
+export const getMangaTop = async (count) => {
+  const data = await fetch(apiLink + `/meta/anilist/advanced-search?type=MANGA&sort=["SCORE_DESC"]&perPage=${count}`)
   return await data.json();
 }

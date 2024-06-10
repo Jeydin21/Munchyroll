@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function MangaDetails({ mangaData, pagesData }) {
+function MangaDetails({ mangaData }) {
   const [isReadMore, setIsReadMore] = React.useState(false);
   const {
     description,
