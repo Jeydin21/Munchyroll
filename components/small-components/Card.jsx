@@ -8,7 +8,7 @@ function Card({ data, release }) {
 
   if (release) return (
     <>
-      <Link href={"/watch/" + data.id + "/" + data.episodeId}>
+      <Link href={`/watch/${data.id}/${data.episodeNumber}`}>
         <div className="group sm:p-3 ">
           <div className="overflow-hidden relative rounded-lg">
             <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">

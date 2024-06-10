@@ -9,49 +9,32 @@ import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../.
 import EpisodesList from "../../../components/Player/EpisodesList";
 
 export const getServerSideProps = async (context) => {
-  const { episodeId, episodeName } = await context.query;
+  const { episodeId, episodeNum } = await context.query;
 
   const anime = await getAnimeDetails(episodeId);
 
   const episode = await getAnimeEpisodeData(episodeId);
 
-  const regex = /episode-(\d+)$/;
-  const match = episodeName.match(regex);
-  let episodeNumber;
+  const episodeNumber = parseInt(episodeNum);
 
-  if (match) {
-    episodeNumber = Number(match[1]);
-  }
-
-  // const episode = await episodeData.json();
-  // const anime = await animeData.json();
   return {
     props: {
       episode,
       anime,
-      episodeName,
       episodeNumber
     },
   };
 };
 
-function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
-  const router = useRouter();
-
+function StreamingPage({ episode, anime, episodeNumber }) {
   const [isExternalPlayer, setIsExternalPlayer] = useState(true);
   const [videoSource, setVideoSource] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Add this line
+  const [isLoading, setIsLoading] = useState(true);
   const [triggerRender, setTriggerRender] = useState(false);
   const [fadeout, setFadeout] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-  // const { episodeId } = router.query;
 
-  // get the search id from the url with javascript
-
-  //loop through each element of the array and capitalize the first letter.
-
-  //Join all the elements of the array back into a string
-  //using a blankspace as a separator
+  const episodeName = episode[episodeNumber - 1].id;
 
   useEffect(() => {
     getAnimeEpisodeLinks(episodeName).then(episodeData => {
@@ -128,7 +111,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
       <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
         <MainLayout useHead={false}>
           <div className="font-bold max-lg:text-center sm:block mb-5">
-            <h2 className="dark:text-secondary text-primary  capitalize ">{(anime?.title.english || anime?.title.romaji) + " Episode " + episodeNumber}</h2>
+            <h2 className="dark:text-secondary text-primary capitalize "><a className="hover:text-blue-400 transition" href={`/anime/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</a> {" > " + episodeNumber}</h2>
           </div>
           {episode && (
             <div className="lg:flex lg:space-x-4">
@@ -146,12 +129,12 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
 
                 <div className="flex justify-between pt-5">
                   {episodeNumber > 1 && (
-                    <Link className="justify-start" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber - 1}`}>
+                    <Link className="justify-start" href={`/watch/${anime.id}/${episodeNumber - 1}`}>
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                     </Link>
                   )}
                   {episodeNumber < episode.length && (
-                    <Link className="justify-end" href={`/watch/${anime.id}/${episodeName.replace(/-episode-\d+/, '')}-episode-${episodeNumber + 1}`}>
+                    <Link className="justify-end" href={`/watch/${anime.id}/${episodeNumber + 1}`}>
                       <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                     </Link>
                   )}
@@ -168,7 +151,7 @@ function StreamingPage({ episode, anime, episodeName, episodeNumber }) {
                       return (
                         <TextButtons
                           key={i}
-                          link={`/watch/${anime.id}/${episode.id}`}
+                          link={`/watch/${anime.id}/${episode.number}`}
                           text={episode.number}
                           isCurrent={episode.id === episodeName}
                           onClick={() => getAnimeEpisodeLinks(episode.id).then(episodeData => {
