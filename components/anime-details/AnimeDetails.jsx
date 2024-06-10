@@ -61,7 +61,7 @@ function AnimeDetails({ animeData, episodeData }) {
               .map((episode, i) => (
                 <TextButtons
                   key={i}
-                  link={`/watch/${animeData.id}/${episode.id}`}
+                  link={`/watch/${animeData.id}/${episode.number}`}
                   // text={episode.number + ": " + episode.title}
                   text={episode.number}
                 />
