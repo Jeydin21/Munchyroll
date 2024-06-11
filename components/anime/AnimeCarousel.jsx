@@ -6,7 +6,7 @@ import { sanitize } from "isomorphic-dompurify";
 
 function AnimeCarousel({ data }) {
   return (
-    <div className="rounded-xl overflow-hidden">
+    <div className="rounded-lg overflow-hidden">
       <Carousel
         showThumbs={false}
         autoPlay
@@ -43,7 +43,6 @@ function AnimeCarousel({ data }) {
             </div>
           ))}
       </Carousel>
-      <br />
     </div>
   );
 }

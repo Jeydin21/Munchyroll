@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import Logo from "../ui/Logo";
 import SearchInput from "../ui/SearchInput";
@@ -8,15 +8,29 @@ import { VscChromeClose } from "react-icons/vsc";
 function Header({ theme, toggleTheme, search = true }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setIsScrolled(isScrolled);
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div
-        className={`p-5 px-5 sm:px-10 z-50 flex justify-between left-0 items-center top-0 right-0`}
+        className={`transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 z-50 flex justify-between left-0 items-center top-0 right-0 ${isScrolled ? 'sticky top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30' : ''}`}
       >
         <Logo />
 
         <div className="flex items-center">
-          <button onClick={toggleTheme} className="dark:text-secondary text-primary">
+          <button onClick={toggleTheme} className="dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] p-3 rounded-lg">
             {theme === 'dark' ? <FaMoon /> : <FaSun />}
           </button>
 

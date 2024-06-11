@@ -16,7 +16,7 @@ function SearchInput({ isLandingPage = false }) {
       className={` ${`
         ${isLandingPage
           ? "bg-secondary transition-all sm:w-[400px] rounded-t-md"
-          : "dark:bg-slate-800 bg-slate-400 sm:w-[350px] rounded-md transition-all"
+          : "dark:bg-[#222222] bg-secondary-light sm:w-[350px] rounded-md transition-all"
         }   h-10`}
 
         flex items-center px-5

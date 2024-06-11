@@ -41,7 +41,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
   };
 
   return (
-    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} bg-white dark:bg-[#121212] ${landing === true ? "bg-red-500 bg-[radial-gradient(#ffffff90_1px,#f2f2f2_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(#ffffff15_1px,#121212_1px)]" : ""}`}>
+    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} dark:bg-[#121212] ${landing === true ? "bg-red-500 bg-[radial-gradient(#ffffff90_1px,#f2f2f2_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(#ffffff15_1px,#121212_1px)]" : ""}`}>
       {useHead && (
         <Head>
           <title>Munchyroll</title>
@@ -81,8 +81,8 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
           <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-[#121212] to-white opacity-100"></div>
         </div>
       )}
-      <div className=" flex ">
-        <div className="  z-10 w-full   px-5 sm:px-10 min-h-[90vh]">
+      <div className="flex">
+        <div className="z-10 w-full px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 min-h-[90vh]">
           {children}
         </div>
       </div>

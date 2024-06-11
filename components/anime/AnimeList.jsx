@@ -10,6 +10,7 @@ function AnimeList() {
 
   return (
     <>
+      <br />
       <div className="button-menu">
         <div className="flex justify-center">
           <button className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>

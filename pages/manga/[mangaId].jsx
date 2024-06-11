@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
-import MangaDetails from "../../components/manga-details/MangaDetails";
+import MangaDetails from "../../components/manga/info/MangaDetails";
 import MainLayout from "../../components/ui/MainLayout";
-import Recommendations from "../../components/manga-details/Recommendations";
+import Recommendations from "../../components/manga/info/Recommendations";
 import { getMangaDetails, getMangaPages } from "../../src/handlers/index";
 
 export const getServerSideProps = async (context) => {
