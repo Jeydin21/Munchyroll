@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useCookies } from 'react-cookie';
 
-function MainLayout({ children, useHead = true, banner }) {
+function MainLayout({ children, useHead = true, banner, search = true, landing = false }) {
   // const [hour, setHour] = useState();
 
   // useEffect(() => {
@@ -41,7 +41,7 @@ function MainLayout({ children, useHead = true, banner }) {
   };
 
   return (
-    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} bg-white dark:bg-[#121212]`}>
+    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} bg-white dark:bg-[#121212] ${landing === true ? "bg-red-500 bg-[radial-gradient(#ffffff90_1px,#f2f2f2_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(#ffffff15_1px,#121212_1px)]" : ""}`}>
       {useHead && (
         <Head>
           <title>Munchyroll</title>
@@ -73,7 +73,8 @@ function MainLayout({ children, useHead = true, banner }) {
           <meta name="theme-color" content="#C4AD8A" />
         </Head>
       )}
-      <Header theme={theme} toggleTheme={toggleTheme} />
+
+      <Header theme={theme} toggleTheme={toggleTheme} search={search} />
       {banner && (
         <div className="relative max-lg:hidden">
           <img src={banner} className="w-full h-96" />

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import LandingPage from "../components/LandingPage";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 import ReactGA from "react-ga";
+import MainLayout from "../components/ui/MainLayout";
 
 export default function Home() {
 	useEffect(() => {
@@ -57,7 +58,10 @@ export default function Home() {
 				{process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
 					<Script src="https://us.umami.is/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
 				)}
-				<LandingPage />
+
+					<MainLayout search={false} landing={true}>
+						<LandingPage />
+					</MainLayout>
 			</div>
 		</>
 	);
