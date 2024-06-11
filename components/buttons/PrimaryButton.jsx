@@ -1,11 +1,9 @@
-import React from "react";
-
 function PrimaryButton({ children, sub, icon, onClick, isLandingPage }) {
   return (
     <button
       className={`${isLandingPage
-          ? "rounded-b-md"
-          : "rounded-md"
+        ? "rounded-b-md"
+        : "rounded-md"
         } cursor-pointer hover:bg-primary-hover transition-all bg-primary-light px-5 text-gray-100 text-left font-medium w-full   p-2`}
       onClick={onClick}
     >

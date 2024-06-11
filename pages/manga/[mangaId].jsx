@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import MangaDetails from "../../components/manga-details/MangaDetails";
-import MainLayout from "../../components/layout/MainLayout";
+import MainLayout from "../../components/ui/MainLayout";
 import Recommendations from "../../components/manga-details/Recommendations";
 import { getMangaDetails, getMangaPages } from "../../src/handlers/index";
 
@@ -9,9 +9,6 @@ export const getServerSideProps = async (context) => {
   const { mangaId } = context.query;
 
   const mangaData = await getMangaDetails(mangaId);
-
-  console.log(mangaData);
-
   const pagesData = await getMangaPages(mangaId);
 
   return {

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import PrimaryButton from "./buttons/PrimaryButton";
-import SearchInput from "./small-components/SearchInput";
+import SearchInput from "./ui/SearchInput";
 
 function LandingPage() {
   const [hour, setHour] = useState();
@@ -84,9 +83,9 @@ function LandingPage() {
               src="/nilou.png"
               width={160}
               height={160}
-              alt="Nilou" 
+              alt="Nilou"
             />
-        </div>
+          </div>
           <SearchInput isLandingPage={true} />
           <div className="sm:w-[400px]">
             <Link href="/home">
