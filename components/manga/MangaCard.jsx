@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { FaStar, FaPlay } from 'react-icons/fa';
+import { FaBook, FaStar, FaPlay } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Status from "../ui/Status";
 
 function MangaCard({ data }) {
   const type = {
@@ -14,10 +15,10 @@ function MangaCard({ data }) {
 
   return (
     <>
-      <Link href={"/manga/" + data.id}>
-        <div className="group sm:p-3 ">
+      <Link href={"/anime/info/" + data.id}>
+        <div className="sm:p-3 ">
           <div className="overflow-hidden relative rounded-lg aspect-[5/7]">
-            <div className="absolute inset-0">
+            <div className="group absolute inset-0">
               <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
                 <LazyLoadImage
                   effect="blur"
@@ -33,19 +34,29 @@ function MangaCard({ data }) {
           </div>
 
           <div className="dark:text-secondary text-primary">
-            <h4 className="mt-2 font-bold line-clamp-2">{data.title.english || data.title.romaji}</h4>
+            <div className="mt-2 rounded-md flex items-center space-x-1 hover:bg-neutral-300 dark:hover:bg-neutral-800">
+              <Status status={data.status} />
+              <p title={data.title.english || data.title.romaji} className="transition-all dark:text-secondary text-primary font-bold line-clamp-1 text-sm rounded p-1">
+                {data.title.english || data.title.romaji}
+              </p>
+            </div>
 
             {/* <p>Episode {data.episodeNumber}</p> */}
-            <div className="flex space-x-2 mt-2 select-none">
-              <p className="dark:text-secondary text-primary">{type[data.type]}</p>
-              {data.rating && (
-                <p>
-                  <span className="dark:text-secondary text-primary flex items-center">
-                    <FaStar />
-                    <span className="ml-1">{data.rating}</span>
-                  </span>
+            <div className="text-xs sm:text-sm flex space-x-2 mt-2 select-none">
+              <div className="dark:text-secondary text-primary flex items-center space-x-2">
+                <p className="dark:text-secondary text-primary flex items-center">
+                  <FaBook />
+                  <span className="ml-1">{type[data.type]}</span>
                 </p>
-              )}
+                {data.rating && (
+                  <p>
+                    <span title={`Rating: ${data.rating}`} className="dark:text-secondary text-primary flex items-center">
+                      <FaStar />
+                      <span className="ml-1">{data.rating}</span>
+                    </span>
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
