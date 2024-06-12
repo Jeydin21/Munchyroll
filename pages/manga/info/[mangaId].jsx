@@ -21,12 +21,12 @@ function MangaDetailsPage({ mangaData }) {
   return (
     <>
       <Head>
-        <title>{mangaData?.title.english || mangaData?.title.romaji + " - Munchyroll "}</title>
+        <title>{"Read " + mangaData?.title.english || mangaData?.title.romaji + " - Munchyroll"}</title>
         <meta name="description" content={mangaData?.description} />
         <meta name="keywords" content={mangaData?.genres} />
         <meta
           property="og:title"
-          content={mangaData?.title.english || mangaData?.title.romaji + " - Munchyroll "}
+          content={"Read " + mangaData?.title.english || mangaData?.title.romaji + " - Munchyroll "}
         />
         <meta property="og:description" content={mangaData?.description} />
         <meta property="og:image" content={mangaData?.image} />

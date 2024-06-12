@@ -2,36 +2,36 @@ import { useRouter } from "next/router";
 import React from "react";
 import Head from "next/head";
 import MainLayout from "../../../components/ui/MainLayout";
-import AnimeCard from "../../../components/anime/AnimeCard";
-import { getAnimeSearch } from '../../../src/handlers/anime';
+import MangaCard from "../../../components/manga/MangaCard";
+import { getMangaSearch } from '../../../src/handlers/manga';
 
 export const getServerSideProps = async (context) => {
   const { searchId } = context.query;
 
-  const animeSearchData = await getAnimeSearch(searchId, 24);
+  const mangaSearchData = await getMangaSearch(searchId, 24);
 
   return {
     props: {
-      animeSearchData,
+      mangaSearchData,
     },
   };
 };
 
-function SearchPage({ animeSearchData }) {
+function SearchPage({ mangaSearchData }) {
   const router = useRouter();
   const { searchId } = router.query;
 
   return (
     <>
       <Head>
-        <title>{"Anime Search Results For: " + searchId + " - Munchyroll"}</title>
+        <title>{"Manga Search Results For: " + searchId + " - Munchyroll"}</title>
         <meta
           name="description"
           content="An ad-free anime streaming website aimed at minimality and responsive design. Share this with friends!"
         />
         <meta
           property="og:title"
-          content={"Anime Search Results For: " + searchId + " - Munchyroll"}
+          content={"Manga Search Results For: " + searchId + " - Munchyroll"}
         />
         <meta
           property="og:description"
@@ -47,22 +47,21 @@ function SearchPage({ animeSearchData }) {
       </Head>
       <MainLayout useHead={false} type={"anime"}>
 
-        {animeSearchData && (
+        {mangaSearchData && (
           <>
             <div className="pt-10">
               <h1 className=" text-2xl font-bold">Search Results &gt; {searchId}</h1>
 
-              {animeSearchData.results.length === 0 && (
+              {mangaSearchData.results.length === 0 && (
                 <div className="text-center mt-10 text-2xl ">No Results Found</div>
               )}
             </div>
             <br />
             <div className="pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7 3xl:grid-cols-8">
-              {animeSearchData &&
-                animeSearchData.results
-                  // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
-                  .map((anime) => (
-                    <AnimeCard key={anime.id} data={anime} />
+              {mangaSearchData &&
+                mangaSearchData.results
+                  .map((manga) => (
+                    <MangaCard key={manga.id} data={manga} />
                   ))}
             </div>
           </>
