@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaBook, FaStar, FaPlay } from 'react-icons/fa';
+import { FaCalendar, FaBook, FaStar, FaPlay } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -33,18 +33,21 @@ function AnimeCard({ data }) {
           </div>
 
           <div className="dark:text-secondary text-primary">
-            <h4 className="mt-2 font-bold line-clamp-2">{data.title.english || data.title.romaji}</h4>
+            <p title={data.title.english || data.title.romaji} className="hover:bg-neutral-800 mt-2 font-bold line-clamp-1 overflow-hidden text-md rounded p-1">{data.title.english || data.title.romaji}</p>
 
             {/* <p>Episode {data.episodeNumber}</p> */}
-            <div className="flex space-x-2 mt-2 select-none">
-              <p className="dark:text-secondary text-primary">{type[data.type]}
-                {data.releaseDate && (
-                  <span>•{data.releaseDate}</span>
-                )}
-              </p>
+            <div className="text-xs sm:text-sm flex space-x-2 mt-2 select-none">
+              <div className="dark:text-secondary text-primary flex items-center">
+                <p>
+                  <span title={`Released: ${data.releaseDate}`} className="dark:text-secondary text-primary flex items-center">
+                    <FaCalendar />
+                    <span className="ml-1">{data.releaseDate}</span>
+                  </span>
+                </p>
+              </div>
               {data.totalEpisodes && data.totalEpisodes != 1 && (
-                <p className="max-xl:hidden">
-                  <span className="dark:text-secondary text-primary flex items-center">
+                <p>
+                  <span title={`Episodes: ${data.totalEpisodes}`} className="dark:text-secondary text-primary flex items-center">
                     <FaBook />
                     <span className="ml-1">{data.totalEpisodes}</span>
                   </span>
@@ -52,7 +55,7 @@ function AnimeCard({ data }) {
               )}
               {data.rating && (
                 <p>
-                  <span className="dark:text-secondary text-primary flex items-center">
+                  <span title={`Rating: ${data.rating}`} className="dark:text-secondary text-primary flex items-center">
                     <FaStar />
                     <span className="ml-1">{data.rating}</span>
                   </span>
