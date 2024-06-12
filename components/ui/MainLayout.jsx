@@ -41,7 +41,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
   };
 
   return (
-    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} dark:bg-[#121212] ${landing === true ? "bg-fixed bg-red-500 bg-[radial-gradient(#ffffff90_1px,#f2f2f2_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(#ffffff15_1px,#121212_1px)]" : ""}`}>
+    <div className={`transition-colors duration-200 ${theme === 'dark' ? 'dark' : ''} dark:bg-[#121212] bg-fixed bg-red-500 bg-[radial-gradient(#ffffff90_1px,#f2f2f2_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(#ffffff15_1px,#121212_1px)]`}>
       {useHead && (
         <Head>
           <title>Munchyroll</title>
@@ -74,7 +74,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
         </Head>
       )}
 
-      <Header theme={theme} toggleTheme={toggleTheme} search={search} />
+      <Header theme={theme} toggleTheme={toggleTheme} search={search} bg={landing} />
       {banner && (
         <div className="pt-3 relative max-lg:hidden">
           <img src={banner} className="w-full h-96" />
