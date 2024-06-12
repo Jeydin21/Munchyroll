@@ -3,7 +3,7 @@ import React from "react";
 import MangaDetails from "../../components/manga/info/MangaDetails";
 import MainLayout from "../../components/ui/MainLayout";
 import Recommendations from "../../components/manga/info/Recommendations";
-import { getMangaDetails, getMangaPages } from "../../src/handlers/index";
+import { getMangaDetails, getMangaPages } from "../../src/handlers/anime";
 
 export const getServerSideProps = async (context) => {
   const { mangaId } = context.query;

@@ -5,7 +5,7 @@ import ReactGA from "react-ga";
 import MainLayout from "../../components/ui/MainLayout";
 import AnimeCarousel from "../../components/anime/AnimeCarousel";
 import AnimeList from "../../components/anime/AnimeList";
-import { getAnimeTrending } from "../../src/handlers/index";
+import { getAnimeTrending } from "../../src/handlers/anime";
 
 export async function getServerSideProps() {
   const trendingData = await getAnimeTrending(20);

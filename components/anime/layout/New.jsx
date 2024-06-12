@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAnimeNew } from "../../../src/handlers";
+import { getAnimeNew } from "../../../src/handlers/anime";
 import AnimeCard from "../../anime/AnimeCard";
 
 const New = () => {

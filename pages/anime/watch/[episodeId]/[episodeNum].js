@@ -4,7 +4,7 @@ import TextButton from "../../../../components/buttons/TextButton";
 import MainLayout from "../../../../components/ui/MainLayout";
 import VideoPlayer from "../../../../components/anime/player/VideoPlayer";
 import Link from "next/link";
-import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/index";
+import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/anime";
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum } = await context.query;

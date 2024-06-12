@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAnimeTrending } from "../../../src/handlers";
+import { getAnimeTrending } from "../../../src/handlers/anime";
 import AnimeCard from "../../anime/AnimeCard";
 
 const Trending = () => {

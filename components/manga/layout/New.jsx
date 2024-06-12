@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getMangaNew } from "../../../src/handlers";
+import { getMangaNew } from "../../../src/handlers/anime";
 import MangaCard from "../../manga/MangaCard";
 
 const New = () => {

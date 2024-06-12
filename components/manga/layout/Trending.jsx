@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getMangaTrending } from "../../../src/handlers";
+import { getMangaTrending } from "../../../src/handlers/anime";
 import MangaCard from "../../manga/MangaCard";
 
 const Trending = () => {

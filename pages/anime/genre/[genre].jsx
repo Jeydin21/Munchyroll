@@ -3,7 +3,7 @@ import React from "react";
 import Head from "next/head";
 import MainLayout from "../../../components/ui/MainLayout";
 import AnimeCard from "../../../components/anime/AnimeCard";
-import { getAnimeGenre } from '../../../src/handlers/index';
+import { getAnimeGenre } from '../../../src/handlers/anime';
 
 export const getServerSideProps = async (context) => {
   const { genre } = context.query;

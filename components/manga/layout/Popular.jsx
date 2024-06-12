@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getMangaPopular } from "../../../src/handlers";
+import { getMangaPopular } from "../../../src/handlers/anime";
 import MangaCard from "../../manga/MangaCard";
 
 const Popular = () => {
