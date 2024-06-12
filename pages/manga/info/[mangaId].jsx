@@ -3,23 +3,21 @@ import React from "react";
 import MangaDetails from "../../../components/manga/info/MangaDetails";
 import MainLayout from "../../../components/ui/MainLayout";
 import Recommendations from "../../../components/manga/info/Recommendations";
-import { getMangaDetails, getMangaPages } from "../../../src/handlers/anime";
+import { getMangaDetails } from "../../../src/handlers/manga";
 
 export const getServerSideProps = async (context) => {
   const { mangaId } = context.query;
 
   const mangaData = await getMangaDetails(mangaId);
-  const pagesData = await getMangaPages(mangaId);
 
   return {
     props: {
       mangaData,
-      pagesData
     },
   };
 };
 
-function MangaDetailsPage({ mangaData, pagesData }) {
+function MangaDetailsPage({ mangaData }) {
   return (
     <>
       <Head>
@@ -33,14 +31,14 @@ function MangaDetailsPage({ mangaData, pagesData }) {
         <meta property="og:description" content={mangaData?.description} />
         <meta property="og:image" content={mangaData?.image} />
         <meta name="theme-color" content={mangaData?.color} />
-        <link rel="manifest" href="manifest.json" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="icon" type="image/png" href="android-chrome-192x192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
-      <MainLayout useHead={false} banner={mangaData?.cover} type={manga}>
-        {mangaData && <MangaDetails mangaData={mangaData} pagesData={pagesData} />}
+      <MainLayout useHead={false} banner={mangaData?.cover} type={"manga"}>
+        {mangaData && <MangaDetails mangaData={mangaData} />}
         <div style={{ marginBottom: "10rem" }}></div>
 
         {mangaData && <Recommendations mangaData={mangaData.recommendations} />}

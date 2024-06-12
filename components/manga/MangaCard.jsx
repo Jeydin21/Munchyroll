@@ -15,7 +15,7 @@ function MangaCard({ data }) {
 
   return (
     <>
-      <Link href={"/anime/info/" + data.id}>
+      <Link href={"/manga/info/" + data.id}>
         <div className="sm:p-3 ">
           <div className="overflow-hidden relative rounded-lg aspect-[5/7]">
             <div className="group absolute inset-0">

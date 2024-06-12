@@ -1,5 +1,6 @@
-import TextButton from "../../buttons/TextButton"
 import { useState } from "react";
+import TextButton from "../../buttons/TextButton";
+import GenreButton from "../../buttons/GenreButton";
 
 function MangaDetails({ mangaData }) {
   const [isReadMore, setIsReadMore] = useState(false);
@@ -10,11 +11,21 @@ function MangaDetails({ mangaData }) {
     genres,
     status,
     releaseDate,
-    rating,
+    type,
+    rating
   } = mangaData;
+
+  const types = {
+    MANGA: "Manga",
+    ONE_SHOT: "One Shot",
+    NOVEL: "Novel",
+    DOUJIN: "Doujin",
+    MANHWA: "Manhwa",
+  }
+
   return (
     <>
-      <div className=" mt-5">
+      <div className="mt-5">
         <div className=" lg:flex items-start  lg:space-x-7">
           <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
           <div className=" mt-5 lg:mt-0 max-w-4xl">
@@ -34,8 +45,9 @@ function MangaDetails({ mangaData }) {
               <h4 className="dark:text-secondary text-primary font-semibold">Information</h4>
             </div>
             <div className="mt-5 flex gap-2 flex-wrap">
+              <TextButton text={"Type: " + types[type]} />
               <TextButton text={"Status: " + status} />
-              <TextButton text={"Released: " + releaseDate} />
+              <TextButton text={"Relased: " + releaseDate} />
               <TextButton text={"Score: " + rating + "%"} />
             </div>
             <div className=" mt-5">
@@ -57,9 +69,10 @@ function MangaDetails({ mangaData }) {
               .map((chapter, i) => (
                 <TextButton
                   key={i}
-                  // link={`/read/${mangaData.id}/${chapter.chapterNumber}`}
+                  // link={`/manga/read/${mangaData.id}/${chapter.chapterNumber}`}
                   // text={episode.number + ": " + episode.title}
                   text={chapter.chapterNumber}
+                  title={chapter.title}
                 />
               ))}
           </div>
