@@ -5,7 +5,7 @@ import SearchInput from "../ui/SearchInput";
 import { CgSearch } from "react-icons/cg";
 import { VscChromeClose } from "react-icons/vsc";
 
-function Header({ theme, toggleTheme, search = true }) {
+function Header({ theme, toggleTheme, search = true, landing = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +25,7 @@ function Header({ theme, toggleTheme, search = true }) {
   return (
     <>
       <div
-        className={`transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 z-50 flex justify-between left-0 items-center top-0 right-0 ${isScrolled ? 'sticky top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30' : ''}`}
+        className={`transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 z-50 flex justify-between left-0 items-center top-0 right-0 ${landing === true ? "" : "dark:bg-[#121212] bg-secondary"} ${isScrolled ? 'sticky top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30' : ''}`}
       >
         <Logo />
 

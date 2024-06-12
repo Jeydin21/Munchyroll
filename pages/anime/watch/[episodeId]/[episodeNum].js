@@ -107,9 +107,9 @@ function StreamingPage({ episode, anime, episodeNumber }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
-        <MainLayout useHead={false}>
+        <MainLayout useHead={false} landing>
           <div className="font-bold max-lg:text-center sm:block mb-5">
-            <h2 className="dark:text-secondary text-primary capitalize "><a className="hover:text-blue-400 transition" href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</a> {" > " + episodeNumber}</h2>
+            <h2 className="dark:text-secondary text-primary capitalize "><Link className="hover:text-blue-400 transition" href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</Link> {" > " + episodeNumber}</h2>
           </div>
           {episode && (
             <div className="lg:flex lg:space-x-4">

@@ -49,7 +49,7 @@ function AnimeDetailsPage({ animeData, episodeData }) {
           </MainLayout>
         </>
       ) : (
-        <MainLayout useHead={false} banner={animeData?.cover}>
+        <MainLayout useHead={false} banner={animeData?.cover} landing>
           {animeData && <AnimeDetails animeData={animeData} episodeData={episodeData} />}
           <div style={{ marginBottom: "10rem" }}></div>
           {animeData && <Recommendations animeData={animeData.recommendations} />}

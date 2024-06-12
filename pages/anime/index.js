@@ -45,7 +45,7 @@ const Home = ({ trendingData }) => {
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
-      <MainLayout useHead={false}>
+      <MainLayout useHead={false} landing>
           <AnimeCarousel data={trendingData.results} />
         <AnimeList />
       </MainLayout>

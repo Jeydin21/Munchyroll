@@ -1,4 +1,5 @@
 import Logo from "../ui/Logo";
+import Link from "next/link";
 import { FaGithub, FaDiscord , FaTwitter} from 'react-icons/fa';
 
 function Footer() {
@@ -13,10 +14,10 @@ function Footer() {
       </div>
       <div>
         <div className="flex sm:flex-col dark:text-primary-light text-primary max-sm:pt-5 max-sm:space-x-5 sm:space-y-2 pb-2">
-          <a className="hover:text-blue-400 transition-all" href="/anime">Anime</a>
-          <a className="hover:text-blue-400 transition-all" href="/manga">Manga</a>
-          <a className="hover:text-blue-400 transition-all" href="/movies">Movies</a>
-          <a className="hover:text-blue-400 transition-all" href="/shows">Shows</a>
+          <Link className="hover:text-blue-400 transition-all" href="/anime">Anime</Link>
+          <Link className="hover:text-blue-400 transition-all" href="/manga">Manga</Link>
+          <Link className="hover:text-blue-400 transition-all" href="/movies">Movies</Link>
+          <Link className="hover:text-blue-400 transition-all" href="/shows">Shows</Link>
         </div>
       </div>
     </footer>

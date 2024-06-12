@@ -4,7 +4,7 @@
 }
 
 #nprogress .bar {
-  background: rgb(219, 219, 219);
+  background: #F2F2F2;
 
   position: fixed;
   z-index: 1031;
@@ -17,14 +17,17 @@
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
+
 @keyframes gradient {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: -200% 0;
   }
 }
+
 /* Fancy blur effect */
 #nprogress .peg {
   display: block;
