@@ -34,25 +34,25 @@ function LandingPage() {
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Manga <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                       </h4>
-                      <p className="text-base opacity-75 text-primary dark:text-secondary">Explore new manga series!</p>
+                      <p className="text-base opacity-75 text-primary dark:text-secondary">Currently in beta testing!</p>
                     </div>
                   </Link>
-                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
+                  <a className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Movies <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                       </h4>
-                      <p className="text-base opacity-75 text-primary dark:text-secondary">Explore the latest movies!</p>
+                      <p className="text-base opacity-75 text-primary dark:text-secondary">In development...</p>
                     </div>
-                  </Link>
-                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
+                  </a>
+                  <a className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Shows <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                       </h4>
-                      <p className="text-base opacity-75 text-primary dark:text-secondary">Explore the latest shows!</p>
+                      <p className="text-base opacity-75 text-primary dark:text-secondary">In development...</p>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

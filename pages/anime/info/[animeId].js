@@ -42,14 +42,14 @@ function AnimeDetailsPage({ animeData, episodeData }) {
       </Head>
       {animeData?.image == animeData?.cover ? (
         <>
-          <MainLayout useHead={false}>
+          <MainLayout useHead={false} type={"anime"}>
           {animeData && <AnimeDetails animeData={animeData} episodeData={episodeData} />}
           <div style={{ marginBottom: "10rem" }}></div>
           {animeData && <Recommendations animeData={animeData.recommendations} />}
           </MainLayout>
         </>
       ) : (
-        <MainLayout useHead={false} banner={animeData?.cover}>
+        <MainLayout useHead={false} banner={animeData?.cover} type={"anime"}>
           {animeData && <AnimeDetails animeData={animeData} episodeData={episodeData} />}
           <div style={{ marginBottom: "10rem" }}></div>
           {animeData && <Recommendations animeData={animeData.recommendations} />}

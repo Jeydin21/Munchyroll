@@ -2,13 +2,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { CgSearch } from "react-icons/cg";
 
-function SearchInput({ isLandingPage = false }) {
+function SearchInput({ isLandingPage = false, type }) {
   const [search, setSearch] = useState();
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
-    router.push(`/anime/search/${search}`);
+    router.push(`/${type}/search/${search}`);
   };
   return (
     <form

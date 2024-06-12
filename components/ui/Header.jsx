@@ -5,7 +5,7 @@ import SearchInput from "../ui/SearchInput";
 import { CgSearch } from "react-icons/cg";
 import { VscChromeClose } from "react-icons/vsc";
 
-function Header({ theme, toggleTheme, search = true, bg = false }) {
+function Header({ theme, toggleTheme, search = true, bg = false, type }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +35,7 @@ function Header({ theme, toggleTheme, search = true, bg = false }) {
           </button>
 
           <div className={`hidden ${search === true ? "lg:block ml-4" : ""}`}>
-            <SearchInput />
+            <SearchInput type={type} />
           </div>
         </div>
 
