@@ -36,7 +36,7 @@ function AnimeCard({ data }) {
           <div>
             <div className="mt-2 rounded-md flex items-center space-x-1 hover:bg-neutral-300 dark:hover:bg-neutral-800">
               <Status status={data.status} />
-              <p title={data.title.english || data.title.romaji} className="transition-all dark:text-secondary text-primary font-bold line-clamp-1 overflow-hidden text-md rounded p-1">
+              <p title={data.title.english || data.title.romaji} className="transition-all dark:text-secondary text-primary font-bold line-clamp-1 text-sm rounded p-1">
                 {data.title.english || data.title.romaji}
               </p>
             </div>

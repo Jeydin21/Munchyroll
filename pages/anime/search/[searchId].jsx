@@ -57,7 +57,7 @@ function SearchPage({ animeSearchData }) {
               )}
             </div>
             <br />
-            <div className="pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-6 3xl:grid-cols-8">
+            <div className="pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-7 3xl:grid-cols-8">
               {animeSearchData &&
                 animeSearchData.results
                   // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
