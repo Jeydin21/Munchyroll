@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaCalendar, FaBook, FaStar, FaPlay } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Status from "../ui/Status";
 
 function AnimeCard({ data }) {
   const type = {
@@ -15,9 +16,9 @@ function AnimeCard({ data }) {
   return (
     <>
       <Link href={"/anime/info/" + data.id}>
-        <div className="group sm:p-3 ">
+        <div className="sm:p-3 ">
           <div className="overflow-hidden relative rounded-lg aspect-[5/7]">
-            <div className="absolute inset-0">
+            <div className="group absolute inset-0">
               <div className="transition-all transform duration-300 group-hover:scale-105 group-hover:brightness-50">
                 <LazyLoadImage
                   effect="blur"
@@ -32,9 +33,13 @@ function AnimeCard({ data }) {
             </div>
           </div>
 
-          <div className="dark:text-secondary text-primary">
-            <p title={data.title.english || data.title.romaji} className="hover:bg-neutral-800 mt-2 font-bold line-clamp-1 overflow-hidden text-md rounded p-1">{data.title.english || data.title.romaji}</p>
-
+          <div>
+            <div className="mt-2 rounded-md flex items-center space-x-1 hover:bg-neutral-300 dark:hover:bg-neutral-800">
+              <Status status={data.status} />
+              <p title={data.title.english || data.title.romaji} className="transition-all dark:text-secondary text-primary font-bold line-clamp-1 overflow-hidden text-md rounded p-1">
+                {data.title.english || data.title.romaji}
+              </p>
+            </div>
             {/* <p>Episode {data.episodeNumber}</p> */}
             <div className="text-xs sm:text-sm flex space-x-2 mt-2 select-none">
               <div className="dark:text-secondary text-primary flex items-center">

@@ -49,15 +49,15 @@ function SearchPage({ animeSearchData }) {
 
         {animeSearchData && (
           <>
-            <div className=" ">
+            <div className="pt-10">
               <h1 className=" text-2xl font-bold">Search Results &gt; {searchId}</h1>
 
-              {animeSearchData.length === 0 && (
-                <div className=" mt-10 text-2xl ">No Results Found</div>
+              {animeSearchData.results.length === 0 && (
+                <div className="text-center mt-10 text-2xl ">No Results Found</div>
               )}
             </div>
             <br />
-            <div className="border-b-[2px] border-gray-600 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-8">
+            <div className="pb-10 mt-5 grid grid-cols-3 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 auto-rows-[1fr] 2xl:grid-cols-6 3xl:grid-cols-8">
               {animeSearchData &&
                 animeSearchData.results
                   // .filter((anime) => !anime.animeTitle.toLowerCase().includes("dub"))
