@@ -21,7 +21,7 @@ function LandingPage() {
             <div className="mx-auto max-w-5xl p-6 sm:p-8">
               <div className="flex flex-col gap-6">
                 <div className="grid gap-6 md:grid-cols-2">
-                  <Link className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/anime">
+                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/anime">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Anime <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
@@ -29,7 +29,7 @@ function LandingPage() {
                       <p className="text-base opacity-75 text-primary dark:text-secondary">Explore new anime series!</p>
                     </div>
                   </Link>
-                  <Link className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
+                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Manga <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
@@ -37,7 +37,7 @@ function LandingPage() {
                       <p className="text-base opacity-75 text-primary dark:text-secondary">Explore new manga series!</p>
                     </div>
                   </Link>
-                  <Link className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
+                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Movies <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
@@ -45,7 +45,7 @@ function LandingPage() {
                       <p className="text-base opacity-75 text-primary dark:text-secondary">Explore the latest movies!</p>
                     </div>
                   </Link>
-                  <Link className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
+                  <Link className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Shows <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>

@@ -39,7 +39,7 @@ function Header({ theme, toggleTheme, search = true, bg = false }) {
           </div>
         </div>
 
-        <div className="flex justify-center items-center lg:hidden text-xl">
+        <div className={`flex justify-center items-center lg:hidden text-xl ${bg === true ? "hidden" : ""}`}>
           {isMenuOpen ? (
             <VscChromeClose onClick={() => setIsMenuOpen(false)} />
           ) : (
