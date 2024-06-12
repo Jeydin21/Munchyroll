@@ -17,7 +17,7 @@ function AnimeDetails({ animeData, episodeData }) {
   } = animeData;
   return (
     <>
-      <div className=" mt-5">
+      <div className="mt-5">
         <div className=" lg:flex items-start  lg:space-x-7">
           <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
           <div className=" mt-5 lg:mt-0 max-w-4xl">
@@ -64,6 +64,7 @@ function AnimeDetails({ animeData, episodeData }) {
                   link={`/anime/watch/${animeData.id}/${episode.number}`}
                   // text={episode.number + ": " + episode.title}
                   text={episode.number}
+                  title={episode.title}
                 />
               ))}
           </div>

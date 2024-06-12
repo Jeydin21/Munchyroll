@@ -3,6 +3,9 @@ function Status({ status }) {
     "Completed": "bg-emerald-500",
     "Ongoing": "bg-yellow-500",
     "Not yet aired": "bg-red-500",
+    "Cancelled": "bg-gray-500",
+    "Hiatus": "bg-blue-500",
+    "Unknown": "bg-gray-500",
   }
 
   return (

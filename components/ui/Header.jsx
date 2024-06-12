@@ -30,7 +30,7 @@ function Header({ theme, toggleTheme, search = true, landing = false }) {
         <Logo />
 
         <div className="flex items-center">
-          <button onClick={toggleTheme} className="dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] p-3 rounded-lg">
+          <button title="Change Theme" onClick={toggleTheme} className="dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] p-3 rounded-lg">
             {theme === 'dark' ? <FaMoon /> : <FaSun />}
           </button>
 

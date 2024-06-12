@@ -108,7 +108,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
       </Head>
       <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
         <MainLayout useHead={false} landing>
-          <div className="font-bold max-lg:text-center sm:block mb-5">
+          <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
             <h2 className="dark:text-secondary text-primary capitalize "><Link className="hover:text-blue-400 transition" href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</Link> {" > " + episodeNumber}</h2>
           </div>
           {episode && (
@@ -128,12 +128,12 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                 <div className="flex justify-between pt-5">
                   {episodeNumber > 1 && (
                     <Link className="justify-start" href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
-                      <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
+                      <button title="Go to the previous episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                     </Link>
                   )}
                   {episodeNumber < episode.length && (
                     <Link className="justify-end" href={`/anime/watch/${anime.id}/${episodeNumber + 1}`}>
-                      <button className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
+                      <button title="Go to the next episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                     </Link>
                   )}
                 </div>
@@ -150,6 +150,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                           key={i}
                           link={`/anime/watch/${anime.id}/${episode.number}`}
                           text={episode.number}
+                          title={episode.title}
                           isCurrent={episode.id === episodeName}
                           onClick={() => getAnimeEpisodeLinks(episode.id).then(episodeData => {
                             setIsLoading(true); setVideoSource(episodeData.sources[3].url)

@@ -43,12 +43,14 @@ function AnimeCard({ data }) {
             {/* <p>Episode {data.episodeNumber}</p> */}
             <div className="text-xs sm:text-sm flex space-x-2 mt-2 select-none">
               <div className="dark:text-secondary text-primary flex items-center">
-                <p>
-                  <span title={`Released: ${data.releaseDate}`} className="dark:text-secondary text-primary flex items-center">
-                    <FaCalendar />
-                    <span className="ml-1">{data.releaseDate}</span>
-                  </span>
-                </p>
+                {data.releaseDate && (
+                  <p>
+                    <span title={`Released: ${data.releaseDate}`} className="dark:text-secondary text-primary flex items-center">
+                      <FaCalendar />
+                      <span className="ml-1">{data.releaseDate}</span>
+                    </span>
+                  </p>
+                )}
               </div>
               {data.totalEpisodes && data.totalEpisodes != 1 && (
                 <p>

@@ -13,16 +13,16 @@ function AnimeList() {
       <br />
       <div className="button-menu">
         <div className="flex justify-center">
-          <button className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>
+          <button title='Newest Tab' className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'New' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('New')}>
             Newest
           </button>
-          <button className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Trending' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Trending')}>
+          <button title='Trending Tab' className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Trending' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Trending')}>
             Trending
           </button>
-          <button className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Popular' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Popular')}>
+          <button title='Popular Tab' className={`w-auto m-1 p-2 md:px-5 md:py-3  transition duration-300 dark:text-secondary text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Popular' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Popular')}>
             Popular
           </button>
-          <button className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary truncate text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Top' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Top')}>
+          <button title='Top Rated Tab' className={`w-auto m-1 p-2 md:px-5 md:py-3 transition duration-300 dark:text-secondary truncate text-primary max-md:text-sm font-bold hover:bg-blue-500 hover:scale-105 active:scale-95 rounded-lg ${display === 'Top' ? 'bg-blue-500' : ''}`} onClick={() => setDisplay('Top')}>
             Top Rated
           </button>
         </div>
