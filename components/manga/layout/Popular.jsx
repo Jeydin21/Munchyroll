@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMangaPopular } from "../../../src/handlers";
-import MangaCard from "../../small-components/MangaCard";
+import MangaCard from "../../manga/MangaCard";
 
 const Popular = () => {
   const [popularMangaData, setPopularMangaData] = useState(null);

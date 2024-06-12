@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMangaTrending } from "../../../src/handlers";
-import MangaCard from "../../small-components/MangaCard";
+import MangaCard from "../../manga/MangaCard";
 
 const Trending = () => {
   const [trendingMangaData, setTrendingMangaData] = useState(null);

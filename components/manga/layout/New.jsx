@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMangaNew } from "../../../src/handlers";
-import MangaCard from "../../small-components/MangaCard";
+import MangaCard from "../../manga/MangaCard";
 
 const New = () => {
   const [newMangaData, setNewMangaData] = useState(null);

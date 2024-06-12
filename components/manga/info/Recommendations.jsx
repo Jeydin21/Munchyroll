@@ -1,4 +1,4 @@
-import MangaCard from '../../anime/Managcard'
+import MangaCard from "../../manga/MangaCard";
 
 function Recommendations({ mangaData }) {
   return (

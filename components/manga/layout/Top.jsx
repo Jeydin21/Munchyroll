@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMangaTop } from "../../../src/handlers";
-import MangaCard from "../../small-components/MangaCard";
+import MangaCard from "../../manga/MangaCard";
 
 const Top = () => {
   const [topMangaData, setTopMangaData] = useState(null);

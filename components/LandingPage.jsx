@@ -29,7 +29,7 @@ function LandingPage() {
                       <p className="text-base opacity-75 text-primary dark:text-secondary">Explore new anime series!</p>
                     </div>
                   </a>
-                  <a className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/manga">
+                  <a className="flex flex-col justify-between gap-6 rounded-full border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Manga <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
