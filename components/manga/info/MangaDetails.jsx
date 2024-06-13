@@ -69,7 +69,7 @@ function MangaDetails({ mangaData }) {
               .map((chapter, i) => (
                 <TextButton
                   key={i}
-                  // link={`/manga/read/${mangaData.id}/${chapter.chapterNumber}`}
+                  link={`/manga/read/${mangaData.id}/${chapter.id}/${chapter.chapterNumber}`}
                   // text={episode.number + ": " + episode.title}
                   text={chapter.chapterNumber}
                   title={chapter.title}
