@@ -52,7 +52,7 @@ function ReadingPage({ manga, chapter, chapterNumber, chapterId }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <div className={`transition-opacity duration-3000`}>
-        <MainLayout useHead={false} type={"manga"}>
+        <MainLayout useHead={false} type={"manga"} manga={true}>
           <div className="pt-5 font-bold text-center sm:block mb-5">
             <h2 className="dark:text-secondary text-primary capitalize "><Link className="hover:text-blue-400 transition" href={`/manga/info/${manga?.id}`}>{(manga?.title.english || manga?.title.romaji)}</Link> {" > " + chapterNumber}</h2>
           </div>

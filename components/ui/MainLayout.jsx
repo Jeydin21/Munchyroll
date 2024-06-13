@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useCookies } from 'react-cookie';
 
-function MainLayout({ children, useHead = true, banner, search = true, landing = false, type }) {
+function MainLayout({ children, useHead = true, banner, search = true, landing = false, type, manga=false }) {
   // const [hour, setHour] = useState();
 
   // useEffect(() => {
@@ -74,7 +74,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
         </Head>
       )}
 
-      <Header theme={theme} toggleTheme={toggleTheme} search={search} bg={landing} type={type} />
+      <Header theme={theme} toggleTheme={toggleTheme} search={search} bg={landing} type={type} manga={manga} />
       {banner && (
         <div className="pt-3 relative max-lg:hidden">
           <img src={banner} className="w-full h-96" />
