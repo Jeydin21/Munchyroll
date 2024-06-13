@@ -5,6 +5,7 @@ import MainLayout from "../../../../../components/ui/MainLayout";
 import MangaReader from "../../../../../components/manga/reader/MangaReader";
 import Link from "next/link";
 import { getMangaDetails, getMangaPages } from "../../../../../src/handlers/manga";
+import next from "next";
 
 export const getServerSideProps = async (context) => {
   const { mangaId, chapterId, chapterNum } = await context.query;
@@ -19,12 +20,18 @@ export const getServerSideProps = async (context) => {
     props: {
       chapter,
       manga,
-      chapterNumber
+      chapterNumber,
+      chapterId
     },
   };
 };
 
-function ReadingPage({ manga, chapter, chapterNumber }) {
+function ReadingPage({ manga, chapter, chapterNumber, chapterId }) {
+  const currentChapterIndex = manga.chapters.findIndex(chapter => chapter.id === chapterId);
+  const prevChapterId = currentChapterIndex > 0 ? manga.chapters[currentChapterIndex - 1].id : null;
+  const nextChapterId = currentChapterIndex < manga.chapters.length - 1 ? manga.chapters[currentChapterIndex + 1].id : null;
+
+
   return (
     <>
       <Head>
@@ -54,16 +61,12 @@ function ReadingPage({ manga, chapter, chapterNumber }) {
               <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
                 <MangaReader pages={chapter} />
                 <div className="flex justify-between pt-5">
-                  {chapterNumber > 1 && (
-                    <Link className="justify-start" href={`/manga/read/${manga.id}/${chapterNumber - 1}`}>
+                    <Link className={`justify-start ${(chapterNumber > 1) ? "" : "invisible"}`} href={`/manga/read/${manga.id}/${prevChapterId}/${chapterNumber - 1}`}>
                       <button title="Go to the previous chapter" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded">&#x2190; Chapter {chapterNumber - 1} </button>
                     </Link>
-                  )}
-                  {chapterNumber < manga.chapters.length && (
-                    <Link className="justify-end" href={`/manga/read/${manga.id}/${chapterNumber + 1}`}>
+                    <Link className={`justify-end ${(chapterNumber < manga.chapters.length) ? "" : "invisible"}`} href={`/manga/read/${manga.id}/${nextChapterId}/${chapterNumber + 1}`}>
                       <button title="Go to the next chapter" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded">Chapter {chapterNumber + 1} &#x2192;</button>
                     </Link>
-                  )}
                 </div>
               </div>
             </div>

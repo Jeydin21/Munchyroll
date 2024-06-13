@@ -9,10 +9,11 @@ function MangaReader({ pages }) {
               <Image
                 src={item.img}
                 key={index}
-                alt="Pages"
+                alt={`Page ${index + 1}`}
                 width={800}
                 height={1000}
-                priority
+                loading="lazy"
+                placeholder="blur"
                 quality={100}
                 unoptimized
                 className="py-1"

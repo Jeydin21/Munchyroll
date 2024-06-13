@@ -126,16 +126,12 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                 )}
 
                 <div className="flex justify-between pt-5">
-                  {episodeNumber > 1 && (
-                    <Link className="justify-start" href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
+                    <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
                       <button title="Go to the previous episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                     </Link>
-                  )}
-                  {episodeNumber < episode.length && (
-                    <Link className="justify-end" href={`/anime/watch/${anime.id}/${episodeNumber + 1}`}>
+                    <Link className={`justify-end ${(episodeNumber < episode.length) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber + 1}`}>
                       <button title="Go to the next episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                     </Link>
-                  )}
                 </div>
               </div>
 
