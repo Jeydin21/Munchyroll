@@ -46,11 +46,11 @@ function ReadingPage({ manga, chapter, chapterNumber }) {
       </Head>
       <div className={`transition-opacity duration-3000`}>
         <MainLayout useHead={false} type={"manga"}>
-          <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
+          <div className="pt-5 font-bold text-center sm:block mb-5">
             <h2 className="dark:text-secondary text-primary capitalize "><Link className="hover:text-blue-400 transition" href={`/manga/info/${manga?.id}`}>{(manga?.title.english || manga?.title.romaji)}</Link> {" > " + chapterNumber}</h2>
           </div>
           {chapter && (
-            <div className="lg:flex lg:space-x-4">
+            <div className="lg:flex justify-center lg:space-x-4">
               <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
                 <MangaReader pages={chapter} />
                 <div className="flex justify-between pt-5">
@@ -59,7 +59,7 @@ function ReadingPage({ manga, chapter, chapterNumber }) {
                       <button title="Go to the previous chapter" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded">&#x2190; Chapter {chapterNumber - 1} </button>
                     </Link>
                   )}
-                  {chapterNumber < chapter.length && (
+                  {chapterNumber < manga.chapters.length && (
                     <Link className="justify-end" href={`/manga/read/${manga.id}/${chapterNumber + 1}`}>
                       <button title="Go to the next chapter" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded">Chapter {chapterNumber + 1} &#x2192;</button>
                     </Link>

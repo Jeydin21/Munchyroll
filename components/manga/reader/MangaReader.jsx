@@ -7,7 +7,7 @@ function MangaReader({ pages }) {
           pages.map((item, index) => (
             <div key={index}>
               <Image
-                src={`https://sup-proxy.zephex0-f6c.workers.dev/api-content?url=${item.img}&headers=https://mangadex.org`}
+                src={item.img}
                 key={index}
                 alt="Pages"
                 width={800}
@@ -15,6 +15,7 @@ function MangaReader({ pages }) {
                 priority
                 quality={100}
                 unoptimized
+                className="py-1"
               />
             </div>
           ))}
