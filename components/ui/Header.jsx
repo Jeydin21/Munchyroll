@@ -47,18 +47,18 @@ function Header({ theme, toggleTheme, search = true, bg = false, manga, type }) 
       </div>
 
       <div
-    onClick={() => setIsMenuOpen(false)}
-    className={`transition-all z-40 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80" : ""} w-screen h-screen`}
-  />
+        onClick={() => setIsMenuOpen(false)}
+        className={`transition-all fixed ${isMenuOpen ? "z-40 top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80" : ""} w-screen h-screen`}
+      />
 
       <div
-    onClick={() => setIsMenuOpen(false)}
-    className={`transition-all pt-2 p-5 z-50 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0" : "-top-full"} w-screen flex items-center justify-center transform transition-transform ${isMenuOpen ? "scale-100" : "scale-0"}`}
-  >
-    <div onClick={(e) => e.stopPropagation()}>
-      <SearchInput type={type} />
-    </div>
-  </div>
+        onClick={() => setIsMenuOpen(false)}
+        className={`transition-all pt-2 p-5 z-50 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0" : "-top-full"} w-screen flex items-center justify-center transform transition-transform ${isMenuOpen ? "scale-100" : "scale-0"}`}
+      >
+        <div onClick={(e) => e.stopPropagation()}>
+          <SearchInput type={type} />
+        </div>
+      </div>
     </>
   );
 }
