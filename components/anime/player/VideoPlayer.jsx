@@ -49,7 +49,7 @@ const VideoPlayer = ({ videoSource }) => {
           enableModifiersForNumbers: false,
           enableMute: true,
           enableNumbers: true,
-          enableVolumeScroll: true,
+          enableVolumeScroll: false,
           enableFullscreen: true,
         });
       },
@@ -70,7 +70,7 @@ const VideoPlayer = ({ videoSource }) => {
           id="videoPlayerHLS"
           onContextMenu={(e) => e.preventDefault()}
           ref={videoRef}
-          className="video-js  vjs-big-play-centered"
+          className="video-js vjs-big-play-centered"
         ></video>
       </div>
     </div>

@@ -5,6 +5,7 @@ import MainLayout from "../../../../components/ui/MainLayout";
 import VideoPlayer from "../../../../components/anime/player/VideoPlayer";
 import Link from "next/link";
 import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/anime";
+import AnimeDetails from "../../../../components/anime/info/AnimeDetails";
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum } = await context.query;
@@ -33,6 +34,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
   const [fadeIn, setFadeIn] = useState(false);
 
   const episodeName = episode[episodeNumber - 1].id;
+  const episodeTitle = episode[episodeNumber - 1].title;
 
   useEffect(() => {
     getAnimeEpisodeLinks(episodeName).then(episodeData => {
@@ -108,9 +110,6 @@ function StreamingPage({ episode, anime, episodeNumber }) {
       </Head>
       <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
         <MainLayout useHead={false} type={"anime"}>
-          <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
-            <h2 className="dark:text-secondary text-primary capitalize "><Link className="hover:text-blue-400 transition" href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</Link> {" > " + episodeNumber}</h2>
-          </div>
           {episode && (
             <div className="lg:flex lg:space-x-4">
               <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
@@ -125,14 +124,21 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                   <VideoPlayer videoSource={videoSource} />
                 )}
 
-                <div className="flex justify-between pt-5">
-                    <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
-                      <button title="Go to the previous episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
-                    </Link>
-                    <Link className={`justify-end ${(episodeNumber < episode.length) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber + 1}`}>
-                      <button title="Go to the next episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
-                    </Link>
+                {/* <div className="flex justify-between pt-5">
+                  <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
+                    <button title="Go to the previous episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
+                  </Link>
+                  <Link className={`justify-end ${(episodeNumber < episode.length) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber + 1}`}>
+                    <button title="Go to the next episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
+                  </Link>
+                </div> */}
+                <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
+                  <div className="dark:text-secondary text-primary capitalize space-y-2">
+                    <Link className="hover:text-blue-400 transition text-4xl " href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</Link>
+                    <p className="text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
+                  </div>
                 </div>
+                <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
               </div>
 
               <div className="max-sd:w-2/5 lg:w-2/5">

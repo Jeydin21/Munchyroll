@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextButton from "../../buttons/TextButton";
 import GenreButton from "../../buttons/GenreButton";
 
-function AnimeDetails({ animeData, episodeData }) {
+function AnimeDetails({ animeData, episodeData, episodePage = false }) {
   const [isReadMore, setIsReadMore] = useState(false);
   const {
     description,
@@ -17,11 +17,11 @@ function AnimeDetails({ animeData, episodeData }) {
   } = animeData;
   return (
     <>
-      <div className="mt-5">
-        <div className=" lg:flex items-start  lg:space-x-7">
+      <div className={`mt-5 ${episodePage === true ? "border-t-[2px] border-primary" : ""}`}>
+        <div className={`${episodePage === true ? "mt-5" : ""} lg:flex items-start lg:space-x-7`}>
           <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
           <div className=" mt-5 lg:mt-0 max-w-4xl">
-            <h2 className="dark:text-secondary text-primary line-clamp-1 text-3xl font-semibold">{title.english || title.romaji}</h2>
+            <h2 className={`${episodePage === true ? "hidden" : ""} dark:text-secondary text-primary line-clamp-1 text-3xl font-semibold`}>{title.english || title.romaji}</h2>
             <p
               className={`mt-5 ${!isReadMore && " line-clamp-3"} dark:text-secondary text-primary`}
               dangerouslySetInnerHTML={{ __html: description }}
@@ -53,7 +53,7 @@ function AnimeDetails({ animeData, episodeData }) {
           </div>
         </div>
 
-        <div>
+        <div className={`${episodePage === true ? "hidden" : ""}`}>
           <h2 className="dark:text-secondary text-primary font-semibold mt-10">Episodes</h2>
           <div className=" mt-5 flex  flex-wrap  gap-3">
             {episodeData
