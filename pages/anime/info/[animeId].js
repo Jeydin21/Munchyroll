@@ -24,7 +24,7 @@ function AnimeDetailsPage({ animeData, episodeData }) {
   return (
     <>
       <Head>
-        <title>{"Watch " + (animeData?.title.english || animeData?.title.romaji) + " - Munchyroll "}</title>
+        <title>{(animeData?.title.english || animeData?.title.romaji) + " - Munchyroll "}</title>
         <meta name="description" content={animeData?.description} />
         <meta name="keywords" content={animeData?.genres} />
         <meta

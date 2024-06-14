@@ -21,7 +21,7 @@ function MangaDetailsPage({ mangaData }) {
   return (
     <>
       <Head>
-        <title>{"Read " + (mangaData?.title.english || mangaData?.title.romaji) + " - Munchyroll"}</title>
+        <title>{(mangaData?.title.english || mangaData?.title.romaji) + " - Munchyroll"}</title>
         <meta name="description" content={mangaData?.description} />
         <meta name="keywords" content={mangaData?.genres} />
         <meta
