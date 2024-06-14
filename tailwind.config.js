@@ -13,11 +13,12 @@ module.exports = {
         primary: {
           DEFAULT: "#222222",
           light: "#5F5E5E",
-          hover: "#1F1F1F",
+          hover: "#4b4b4b",
         },
         secondary: {
           DEFAULT: "#F2F2F2",
-          light: "#E0E0E0",
+          light: "#D1D1D1",
+          hover:"#c1c1c1"
         },
         accent: {
           DEFAULT: "#FBBF24",

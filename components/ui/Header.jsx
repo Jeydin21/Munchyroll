@@ -29,30 +29,36 @@ function Header({ theme, toggleTheme, search = true, bg = false, manga, type }) 
       >
         <Logo />
 
-        <div className="flex items-center">
-          <button title="Change Theme" onClick={toggleTheme} className="dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] p-3 rounded-lg">
-            {theme === 'dark' ? <FaMoon /> : <FaSun />}
-          </button>
-
-          <div className={`hidden ${search === true ? "lg:block ml-4" : ""}`}>
-            <SearchInput type={type} />
+        <div className={`flex justify-end items-center`}>
+          <div className={`text-xl ${bg === true ? "hidden" : ""} text-primary dark:bg-[#222222] rounded-lg hover:cursor-pointer`}>
+            <button title="Change Theme" onClick={toggleTheme} className=" transition-all dark:text-secondary text-primary bg-secondary-light hover:bg-secondary-hover dark:hover:bg-primary-hover dark:bg-[#222222] p-3 rounded-lg">
+              {theme === 'dark' ? <FaMoon /> : <FaSun />}
+            </button>
           </div>
-        </div>
 
-        <div className={`flex justify-center items-center lg:hidden text-xl ${bg === true ? "hidden" : ""}`}>
-          {isMenuOpen ? (
-            <VscChromeClose onClick={() => setIsMenuOpen(false)} />
-          ) : (
-            <CgSearch onClick={() => setIsMenuOpen(true)} />
-          )}
+          <div className={`text-xl ${bg === true ? "hidden" : ""} transition-all dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] hover:bg-secondary-hover dark:hover:bg-primary-hover p-3 rounded-lg hover:cursor-pointer ml-2`}>
+            {isMenuOpen ? (
+              <VscChromeClose onClick={() => setIsMenuOpen(false)} />
+            ) : (
+              <CgSearch onClick={() => setIsMenuOpen(true)} />
+            )}
+          </div>
         </div>
       </div>
 
       <div
-        className={`transition-all pt-24 p-5 z-20 fixed h-[160px] rounded-b-xl ${isMenuOpen ? "top-0" : "-top-full"} w-screen`}
-      >
-        <SearchInput />
-      </div>
+    onClick={() => setIsMenuOpen(false)}
+    className={`transition-all z-40 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80" : ""} w-screen h-screen`}
+  />
+
+      <div
+    onClick={() => setIsMenuOpen(false)}
+    className={`transition-all pt-2 p-5 z-50 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0" : "-top-full"} w-screen flex items-center justify-center transform transition-transform ${isMenuOpen ? "scale-100" : "scale-0"}`}
+  >
+    <div onClick={(e) => e.stopPropagation()}>
+      <SearchInput type={type} />
+    </div>
+  </div>
     </>
   );
 }

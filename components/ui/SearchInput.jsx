@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { CgSearch } from "react-icons/cg";
 
-function SearchInput({ isLandingPage = false, type }) {
+function SearchInput({ type }) {
   const [search, setSearch] = useState();
   const router = useRouter();
   const handleSubmit = (e) => {
@@ -11,30 +11,21 @@ function SearchInput({ isLandingPage = false, type }) {
     router.push(`/${type}/search/${search}`);
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={` ${`
-        ${isLandingPage
-          ? "bg-secondary transition-all sm:w-[400px] rounded-t-md"
-          : "dark:bg-[#222222] bg-secondary-light sm:w-[350px] rounded-md transition-all"
-        }   h-10`}
-
-        flex items-center px-5
-        `}
-    >
+    <div className="p-6 dark:bg-primary border bg-secondary-light border-primary-light rounded-2xl space-y-5">
+      <p className="dark:text-secondary text-primary text-lg font-semibold">Looking for something?</p>
+    <form onSubmit={handleSubmit} className={`dark:bg-primary sm:w-[350px] rounded-md transition-all h-10 flex items-center space-x-1`}>
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className={` ${isLandingPage ? "text-black" : "dark:text-secondary dark:placeholder:text-secondary text-primary placeholder:text-primary"
-          } w-full outline-none p-3 px-0 h-full bg-transparent`}
-        placeholder="Search"
+        className={`dark:text-secondary dark:placeholder:text-secondary-light dark:bg-primary text-primary w-full border border-primary-light rounded-lg outline-none pl-3 h-full`}
+        placeholder={"Search " + type + "..."}
       />
       <CgSearch
         onClick={handleSubmit}
-        className={`${isLandingPage ? "text-black text-xl hover:cursor-pointer transition-all" : "dark:text-secondary text-primary text-xl hover:cursor-pointer transition-all"
-          }`}
+        className={`dark:text-secondary text-primary text-3xl hover:cursor-pointer transition-all`}
       />
-    </form>
+      </form>
+    </div>
   );
 }
 
