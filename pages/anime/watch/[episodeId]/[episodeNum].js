@@ -17,47 +17,24 @@ export const getServerSideProps = async (context) => {
 
   const episodeNumber = parseInt(episodeNum);
 
+  const episodeData = await getAnimeEpisodeLinks(episode[episodeNumber - 1].id);
+  const episodeDataLink = episodeData.sources[3].url
+
   return {
     props: {
       episode,
       anime,
-      episodeNumber
+      episodeNumber,
+      episodeDataLink
     },
   };
 };
 
-function StreamingPage({ episode, anime, episodeNumber }) {
+function StreamingPage({ episode, anime, episodeNumber, episodeDataLink }) {
   const [isExternalPlayer, setIsExternalPlayer] = useState(true);
-  const [videoSource, setVideoSource] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [triggerRender, setTriggerRender] = useState(false);
-  const [fadeout, setFadeout] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
 
   const episodeName = episode[episodeNumber - 1].id;
   const episodeTitle = episode[episodeNumber - 1].title;
-
-  useEffect(() => {
-    getAnimeEpisodeLinks(episodeName).then(episodeData => {
-      // console.log(episodeData)
-      setVideoSource(episodeData.sources[3].url);
-      setFadeout(true);
-      setTimeout(() => setIsLoading(false), 100); // Adjust delay to match transition duration
-      setTimeout(() => setFadeIn(true), 1000); // Adjust delay to match transition duration
-    }).catch(error => {
-      console.error(error);
-    });
-  }, [episodeName, triggerRender]);
-
-  const handleNextEpisode = () => {
-    // Your existing code...
-    setTriggerRender(prevState => !prevState);
-  };
-
-  const handlePreviousEpisode = () => {
-    // Your existing code...
-    setTriggerRender(prevState => !prevState);
-  };
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -85,11 +62,6 @@ function StreamingPage({ episode, anime, episodeNumber }) {
   //   );
   // };
 
-  if (isLoading) {
-    return (<div className={`flex items-center justify-center h-screen transition-opacity duration-1000 ${fadeout ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 dark:border-purple-500"></div>
-    </div>)
-  }
   return (
     <>
       <Head>
@@ -109,7 +81,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
-      <div className={`transition-opacity duration-3000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`transition-opacity duration-3000`}>
         <MainLayout useHead={false} type={"anime"}>
           {episode && (
             <div className="lg:flex lg:space-x-4">
@@ -122,7 +94,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                     frameborder="0"
                   ></iframe>
                 ) : (
-                  <VideoPlayer videoSource={videoSource} />
+                  <VideoPlayer videoSource={episodeDataLink} />
                 )}
 
                 {/* <div className="flex justify-between pt-5">
@@ -141,7 +113,6 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                 </div>
                 <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
               </div>
-
               <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} />
             </div>
           )}

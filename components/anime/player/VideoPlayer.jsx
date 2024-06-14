@@ -23,6 +23,16 @@ const VideoPlayer = ({ videoSource }) => {
   }, []);
 
   useEffect(() => {
+    if (player) {
+      player.src({
+        src: corsLink ? `${corsLink}/${videoSource}` : videoSource,
+        type: "application/x-mpegURL",
+      });
+      player.load();
+    }
+  }, [videoSource, player]);
+
+  useEffect(() => {
     const videoJsOptions = {
       autoplay: false,
       controls: true,
@@ -32,10 +42,6 @@ const VideoPlayer = ({ videoSource }) => {
       preload: "auto",
       liveui: true,
       playbackRates: [0.5, 1, 1.5, 2],
-      sources: {
-        src: corsLink ? `${corsLink}/${videoSource}` : videoSource,
-        type: "application/x-mpegURL ",
-      },
     };
 
     const p = videojs(
@@ -49,7 +55,7 @@ const VideoPlayer = ({ videoSource }) => {
           enableModifiersForNumbers: false,
           enableMute: true,
           enableNumbers: true,
-          enableVolumeScroll: false,
+          enableVolumeScroll: true,
           enableFullscreen: true,
         });
       },
@@ -70,7 +76,7 @@ const VideoPlayer = ({ videoSource }) => {
           id="videoPlayerHLS"
           onContextMenu={(e) => e.preventDefault()}
           ref={videoRef}
-          className="video-js vjs-big-play-centered"
+          className="video-js  vjs-big-play-centered"
         ></video>
       </div>
     </div>
