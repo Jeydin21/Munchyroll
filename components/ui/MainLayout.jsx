@@ -77,7 +77,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
       <Header theme={theme} toggleTheme={toggleTheme} search={search} bg={landing} type={type} manga={manga} />
       {banner && (
         <div className="pt-3 relative max-lg:hidden">
-          <img src={banner} className="w-full h-96" />
+          <img src={banner} className="w-full h-96 object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-[#121212] to-white opacity-100"></div>
         </div>
       )}

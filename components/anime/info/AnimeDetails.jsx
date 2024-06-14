@@ -18,17 +18,17 @@ function AnimeDetails({ animeData, episodeData, episodePage = false }) {
   return (
     <>
       <div className={`mt-5 ${episodePage === true ? "border-t-[2px] border-primary" : ""}`}>
-        <div className={`${episodePage === true ? "mt-5" : ""} lg:flex items-start lg:space-x-7`}>
-          <img className=" sm:max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
-          <div className=" mt-5 lg:mt-0 max-w-4xl">
-            <h2 className={`${episodePage === true ? "hidden" : ""} dark:text-secondary text-primary line-clamp-1 text-3xl font-semibold`}>{title.english || title.romaji}</h2>
+        <div className={`${episodePage === true ? "mt-5" : ""} sm:flex items-start sm:space-x-7`}>
+          <img className="max-sm:mx-auto max-w-[230px] aspect-[5/7] object-cover rounded-lg" src={image} alt="" />
+          <div className="mt-5 lg:mt-0 max-w-4xl">
+            <h2 className={`${episodePage === true ? "hidden" : ""} max-sm:text-center dark:text-secondary text-primary line-clamp-1 text-3xl font-semibold`}>{title.english || title.romaji}</h2>
             <p
               className={`mt-5 ${!isReadMore && " line-clamp-3"} dark:text-secondary text-primary`}
               dangerouslySetInnerHTML={{ __html: description }}
             />
             <span
               onClick={() => setIsReadMore(!isReadMore)}
-              className="hover:underline dark:text-blue-300  text-blue-500 cursor-pointer"
+              className="hover:underline dark:text-blue-300 text-blue-500 cursor-pointer"
             >
               {!isReadMore ? "Read More" : "Read Less"}
             </span>
@@ -52,19 +52,17 @@ function AnimeDetails({ animeData, episodeData, episodePage = false }) {
             </div>
           </div>
         </div>
-
         <div className={`${episodePage === true ? "hidden" : ""}`}>
           <h2 className="dark:text-secondary text-primary font-semibold mt-10">Episodes</h2>
-          <div className=" mt-5 flex  flex-wrap  gap-3">
+          <div className="mt-5 flex  flex-wrap  gap-3">
             {episodeData
               ?.slice(0)
               .map((episode, i) => (
                 <TextButton
                   key={i}
                   link={`/anime/watch/${animeData.id}/${episode.number}`}
-                  // text={episode.number + ": " + episode.title}
+                  title={"Episode: " + episode.number + ": " + episode.title}
                   text={episode.number}
-                  title={episode.title}
                 />
               ))}
           </div>
