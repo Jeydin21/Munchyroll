@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import dynamic from 'next/dynamic';
 import Head from "next/head";
 import TextButton from "../../../../components/buttons/TextButton";
 import MainLayout from "../../../../components/ui/MainLayout";
-import VideoPlayer from "../../../../components/anime/player/VideoPlayer";
 import Link from "next/link";
 import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/anime";
 import AnimeDetails from "../../../../components/anime/info/AnimeDetails";
 import EpisodesList from "../../../../components/anime/player/EpisodesList";
+
+const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum } = await context.query;
@@ -17,24 +19,31 @@ export const getServerSideProps = async (context) => {
 
   const episodeNumber = parseInt(episodeNum);
 
-  const episodeData = await getAnimeEpisodeLinks(episode[episodeNumber - 1].id);
-  const episodeDataLink = episodeData.sources[3].url
-
   return {
     props: {
       episode,
       anime,
       episodeNumber,
-      episodeDataLink
     },
   };
 };
 
-function StreamingPage({ episode, anime, episodeNumber, episodeDataLink }) {
+function StreamingPage({ episode, anime, episodeNumber }) {
   const [isExternalPlayer, setIsExternalPlayer] = useState(true);
+  const [episodeDataLink, setEpisodeDataLink] = useState(null);
 
   const episodeName = episode[episodeNumber - 1].id;
   const episodeTitle = episode[episodeNumber - 1].title;
+
+
+  useEffect(() => {
+    const fetchEpisodeData = async () => {
+      const episodeData = await getAnimeEpisodeLinks(episodeName);
+      setEpisodeDataLink(episodeData.sources[3].url);
+    };
+
+    fetchEpisodeData();
+  }, [episode, episodeNumber]);
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -84,17 +93,17 @@ function StreamingPage({ episode, anime, episodeNumber, episodeDataLink }) {
       <div className={`transition-opacity duration-3000`}>
         <MainLayout useHead={false} type={"anime"}>
           {episode && (
-            <div className="lg:flex lg:space-x-4">
-              <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-lg">
+            <div className="mt-3 lg:flex lg:space-x-4">
+              <div className="alignfull w-full overflow-hidden max-w-screen-xl">
                 {!isExternalPlayer ? (
                   <iframe
-                    className=" overflow-hidden aspect-[5/4]   sm:aspect-video w-full h-full"
+                    className=" overflow-hidden aspect-[5/4] sm:aspect-video w-full h-full"
                     src={videoSource}
                     allowFullScreen
                     frameborder="0"
                   ></iframe>
                 ) : (
-                  <VideoPlayer videoSource={episodeDataLink} />
+                  <VideoPlayer videoSource={episodeDataLink} key={episodeNumber} className="rounded-xl " />
                 )}
 
                 {/* <div className="flex justify-between pt-5">
@@ -107,8 +116,8 @@ function StreamingPage({ episode, anime, episodeNumber, episodeDataLink }) {
                 </div> */}
                 <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
                   <div className="dark:text-secondary text-primary capitalize space-y-2">
-                    <Link className="hover:text-blue-400 transition text-4xl " href={`/anime/info/${anime?.id}`}>{(anime?.title.english || anime?.title.romaji)}</Link>
-                    <p className="text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
+                    <Link className="hover:text-blue-400 transition text-4xl " href={`/anime/info/${anime?.id}`}>{anime?.title.english || anime?.title.romaji}</Link>
+                    <p className="dark:text-secondary text-primary text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
                   </div>
                 </div>
                 <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />

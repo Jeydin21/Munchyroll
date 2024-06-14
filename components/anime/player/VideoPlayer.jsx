@@ -41,7 +41,12 @@ const VideoPlayer = ({ videoSource }) => {
       responsive: true,
       preload: "auto",
       liveui: true,
-      playbackRates: [0.5, 1, 1.5, 2],
+      playbackRates: [0.5, 1, 1.5, 2, 4, 8],
+      enableSmoothSeeking: true,
+      playsinline: true,
+      nativeControlsForTouch: true,
+      notSupportedMessage: "If you see this, either the video is loading, or there is an error!",
+      preferFullWindow: true,
     };
 
     const p = videojs(
@@ -55,7 +60,7 @@ const VideoPlayer = ({ videoSource }) => {
           enableModifiersForNumbers: false,
           enableMute: true,
           enableNumbers: true,
-          enableVolumeScroll: true,
+          enableVolumeScroll: false,
           enableFullscreen: true,
         });
       },
@@ -70,13 +75,13 @@ const VideoPlayer = ({ videoSource }) => {
   }, []);
 
   return (
-    <div className="video-player-hls alignfull">
+    <div className="video-player-hls alignfull rounded-xl overflow-hidden">
       <div data-vjs-player>
         <video
           id="videoPlayerHLS"
           onContextMenu={(e) => e.preventDefault()}
           ref={videoRef}
-          className="video-js  vjs-big-play-centered"
+          className="video-js vjs-big-play-centered"
         ></video>
       </div>
     </div>

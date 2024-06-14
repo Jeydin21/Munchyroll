@@ -24,20 +24,20 @@ function AnimeDetailsPage({ animeData, episodeData }) {
   return (
     <>
       <Head>
-        <title>{"Watch " + animeData?.title.english || animeData?.title.romaji + " - Munchyroll "}</title>
+        <title>{"Watch " + (animeData?.title.english || animeData?.title.romaji) + " - Munchyroll "}</title>
         <meta name="description" content={animeData?.description} />
         <meta name="keywords" content={animeData?.genres} />
         <meta
           property="og:title"
-          content={"Watch " + animeData?.title.english || animeData?.title.romaji + " - Munchyroll "}
+          content={"Watch " + (animeData?.title.english || animeData?.title.romaji) + " - Munchyroll "}
         />
         <meta property="og:description" content={animeData?.description} />
         <meta property="og:image" content={animeData?.image} />
         <meta name="theme-color" content={animeData?.color} />
-        <link rel="manifest" href="manifest.json" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="icon" type="image/png" href="android-chrome-192x192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       {animeData?.image == animeData?.cover ? (
