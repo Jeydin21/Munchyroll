@@ -32,9 +32,11 @@ function StreamingPage({ episode, anime, episodeNumber }) {
   const [isExternalPlayer, setIsExternalPlayer] = useState(true);
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
 
-  const episodeName = episode[episodeNumber - 1].id;
-  const episodeTitle = episode[episodeNumber - 1].title;
+  const firstEpisodeNumber = episode[0].number;
+  const episodeIndex = firstEpisodeNumber === 0 ? episodeNumber : episodeNumber - 1;
 
+  const episodeName = episode[episodeIndex].id;
+  const episodeTitle = episode[episodeIndex].title;
 
   useEffect(() => {
     const fetchEpisodeData = async () => {
