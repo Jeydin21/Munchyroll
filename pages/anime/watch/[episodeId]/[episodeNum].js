@@ -6,6 +6,7 @@ import VideoPlayer from "../../../../components/anime/player/VideoPlayer";
 import Link from "next/link";
 import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/anime";
 import AnimeDetails from "../../../../components/anime/info/AnimeDetails";
+import EpisodesList from "../../../../components/anime/player/EpisodesList";
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum } = await context.query;
@@ -141,30 +142,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                 <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
               </div>
 
-              <div className="max-sd:w-2/5 lg:w-2/5">
-                <h2 className="dark:text-secondary text-primary font-semibold text-center mt-10">Episode List</h2>
-                <div className="justify-center px-10 mt-5 flex flex-wrap gap-3">
-                  {episode
-                    ?.slice(0)
-                    .map((episode, i) => {
-                      return (
-                        <TextButton
-                          key={i}
-                          link={`/anime/watch/${anime.id}/${episode.number}`}
-                          text={episode.number}
-                          title={episode.title}
-                          isCurrent={episode.id === episodeName}
-                          onClick={() => getAnimeEpisodeLinks(episode.id).then(episodeData => {
-                            setIsLoading(true); setVideoSource(episodeData.sources[3].url)
-                          }).catch(error => {
-                            console.error(error);
-                          })
-                          }
-                        />
-                      );
-                    })}
-                </div>
-              </div>
+              <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} />
             </div>
           )}
           {/* <div className="max-w-xs mt-10 space-y-4">
