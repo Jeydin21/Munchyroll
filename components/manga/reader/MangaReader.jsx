@@ -13,7 +13,6 @@ function MangaReader({ pages }) {
                 width={800}
                 height={1000}
                 loading="lazy"
-                placeholder="blur"
                 quality={100}
                 unoptimized
                 className="py-1"

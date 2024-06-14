@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useCookies } from 'react-cookie';
 
-function MainLayout({ children, useHead = true, banner, search = true, landing = false, type, manga=false }) {
+function MainLayout({ children, useHead = true, banner, search = true, landing = false, type, manga = false }) {
   // const [hour, setHour] = useState();
 
   // useEffect(() => {

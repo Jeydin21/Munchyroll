@@ -25,7 +25,7 @@ function Header({ theme, toggleTheme, search = true, bg = false, manga, type }) 
   return (
     <>
       <div
-        className={`transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 z-50 flex justify-between left-0 items-center top-0 right-0 ${bg === true ? "" : "dark:bg-[#121212] bg-secondary"} ${isScrolled ? `${manga === true ? "fixed" : "sticky"} top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30` : ''}`}
+        className={`transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 z-50 flex justify-between left-0 items-center top-0 right-0 ${bg === true ? "" : "dark:bg-[#121212] bg-secondary"} ${isScrolled ? `${manga === true ? "" : "sticky"} top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30` : ''}`}
       >
         <Logo />
 
