@@ -37,22 +37,22 @@ function LandingPage() {
                       <p className="text-base opacity-75 text-primary dark:text-secondary">Currently in beta testing!</p>
                     </div>
                   </Link>
-                  <a title="Go to movies homepage" className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center">
+                  <Link title="Go to movies homepage" className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/movies">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Movies <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                       </h4>
                       <p className="text-base opacity-75 text-primary dark:text-secondary">In development...</p>
                     </div>
-                  </a>
-                  <a title="Go to shows homepage" className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center">
+                  </Link>
+                  <Link title="Go to shows homepage" className="flex flex-col justify-between gap-6 rounded-3xl border border-primary dark:border-secondary p-6 transition-all hover:-mt-2 hover:mb-2 bg-secondary-light dark:bg-[#222222] text-center" href="/shows">
                     <div className="grid gap-4">
                       <h4 className="text-xl text-primary dark:text-secondary">
                         Shows <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                       </h4>
                       <p className="text-base opacity-75 text-primary dark:text-secondary">In development...</p>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
