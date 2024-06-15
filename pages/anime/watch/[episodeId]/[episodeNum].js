@@ -15,7 +15,7 @@ const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/
 const DubbedPlayer = dynamic(() => import('./../../../../components/anime/player/DubbedPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export const getServerSideProps = async (context) => {
-  const { episodeId, episodeNum } = await context.query;
+  const { episodeId, episodeNum, dub = false } = await context.query;
 
   const anime = await getAnimeDetails(episodeId);
 
@@ -28,12 +28,13 @@ export const getServerSideProps = async (context) => {
       episode,
       anime,
       episodeNumber,
+      dub
     },
   };
 };
 
-function StreamingPage({ episode, anime, episodeNumber }) {
-  const [isDubbed, setIsDubbed] = useState(false);
+function StreamingPage({ episode, anime, episodeNumber, dub }) {
+  const [isDubbed, setIsDubbed] = useState(dub);
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
   const [externalLink, setExternalLink] = useState(null);
@@ -56,9 +57,8 @@ function StreamingPage({ episode, anime, episodeNumber }) {
     };
 
     const fetchDubbedData = async () => {
-      let episodeString = episodeName;
-      episodeString = episodeString.replace(/(-episode)/, '-dub$1');
-      const episodeData = await getAnimeEpisodeLinks(episodeString);
+      const dubbedEpisodeData = await getAnimeEpisodeData(anime.id + "?dub=true");
+      const episodeData = await getAnimeEpisodeLinks(dubbedEpisodeData[episodeIndex].id);
       setDubbedEpisodeDataLink(episodeData.sources[3].url);
     };
 
