@@ -12,6 +12,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 
 const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
+const DubbedPlayer = dynamic(() => import('./../../../../components/anime/player/DubbedPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum } = await context.query;
@@ -48,17 +49,19 @@ function StreamingPage({ episode, anime, episodeNumber }) {
       const episodeData = await getAnimeEpisodeLinks(episodeName);
       setEpisodeDataLink(episodeData.sources[3].url);
     };
-  
+
     const fetchExternalData = async () => {
       const episodeData = await getExternalLink(episodeName);
       setExternalLink(episodeData.download);
     };
-  
+
     const fetchDubbedData = async () => {
-      const episodeData = await getAnimeEpisodeLinks(episodeName + "?dubbed=true");
+      let episodeString = episodeName;
+      episodeString = episodeString.replace(/(-episode)/, '-dub$1');
+      const episodeData = await getAnimeEpisodeLinks(episodeString);
       setDubbedEpisodeDataLink(episodeData.sources[3].url);
     };
-  
+
     if (isDubbed) {
       fetchDubbedData();
       fetchExternalData();
@@ -114,7 +117,7 @@ function StreamingPage({ episode, anime, episodeNumber }) {
           <div className="mt-3 lg:flex lg:space-x-4 rounded-xl">
             <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-xl">
               {isDubbed ? (
-                <VideoPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
+                <DubbedPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
               ) : (
                 <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
               )}
