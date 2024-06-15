@@ -52,3 +52,8 @@ export const getUpcomingAnime = async (count) => {
   const data = await fetch(apiLink + `/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=NOT_YET_RELEASED&page=1&perPage=${count}`)
   return await data.json();
 }
+
+export const getExternalLink = async (episodeId) => {
+  const data = await fetch(apiLink + `/anime/gogoanime/watch/${episodeId}?server=gogocdn`)
+  return await data.json();
+}

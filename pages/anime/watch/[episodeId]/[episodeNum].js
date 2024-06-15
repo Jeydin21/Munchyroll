@@ -4,9 +4,12 @@ import Head from "next/head";
 import TextButton from "../../../../components/buttons/TextButton";
 import MainLayout from "../../../../components/ui/MainLayout";
 import Link from "next/link";
-import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks } from "../../../../src/handlers/anime";
+import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks, getExternalLink } from "../../../../src/handlers/anime";
 import AnimeDetails from "../../../../components/anime/info/AnimeDetails";
 import EpisodesList from "../../../../components/anime/player/EpisodesList";
+import PrimaryButton from "../../../../components/buttons/PrimaryButton";
+import { HiOutlineDownload } from "react-icons/hi";
+import { BsFillPlayFill } from "react-icons/bs";
 
 const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
@@ -29,8 +32,10 @@ export const getServerSideProps = async (context) => {
 };
 
 function StreamingPage({ episode, anime, episodeNumber }) {
-  const [isExternalPlayer, setIsExternalPlayer] = useState(true);
+  const [isDubbed, setIsDubbed] = useState(false);
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
+  const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
+  const [externalLink, setExternalLink] = useState(null);
 
   const firstEpisodeNumber = episode[0].number;
   const episodeIndex = firstEpisodeNumber === 0 ? episodeNumber : episodeNumber - 1;
@@ -43,9 +48,25 @@ function StreamingPage({ episode, anime, episodeNumber }) {
       const episodeData = await getAnimeEpisodeLinks(episodeName);
       setEpisodeDataLink(episodeData.sources[3].url);
     };
-
-    fetchEpisodeData();
-  }, [episode, episodeNumber]);
+  
+    const fetchExternalData = async () => {
+      const episodeData = await getExternalLink(episodeName);
+      setExternalLink(episodeData.download);
+    };
+  
+    const fetchDubbedData = async () => {
+      const episodeData = await getAnimeEpisodeLinks(episodeName + "?dubbed=true");
+      setDubbedEpisodeDataLink(episodeData.sources[3].url);
+    };
+  
+    if (isDubbed) {
+      fetchDubbedData();
+      fetchExternalData();
+    } else {
+      fetchEpisodeData();
+      fetchExternalData();
+    }
+  }, [episode, episodeNumber, isDubbed]);
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -54,10 +75,6 @@ function StreamingPage({ episode, anime, episodeNumber }) {
   // const { episode, isLoading, isError, error } = useQuery("details", () =>
   //   getStreamLink(episodeId)
   // );
-
-  // const handleExternalPlayer = () => {
-  //   window.open(episode?.Referer, "_blank");
-  // };
 
   // const handleVLCPlayer = () => {
   //   window.open(
@@ -94,21 +111,15 @@ function StreamingPage({ episode, anime, episodeNumber }) {
       </Head>
       <div className={`transition-opacity duration-3000`}>
         <MainLayout useHead={false} type={"anime"}>
-          {episode && (
-            <div className="mt-3 lg:flex lg:space-x-4">
-              <div className="alignfull w-full overflow-hidden max-w-screen-xl">
-                {!isExternalPlayer ? (
-                  <iframe
-                    className=" overflow-hidden aspect-[5/4] sm:aspect-video w-full h-full"
-                    src={videoSource}
-                    allowFullScreen
-                    frameborder="0"
-                  ></iframe>
-                ) : (
-                  <VideoPlayer videoSource={episodeDataLink} key={episodeNumber} className="rounded-xl " />
-                )}
+          <div className="mt-3 lg:flex lg:space-x-4 rounded-xl">
+            <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-xl">
+              {isDubbed ? (
+                <VideoPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
+              ) : (
+                <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
+              )}
 
-                {/* <div className="flex justify-between pt-5">
+              {/* <div className="flex justify-between pt-5">
                   <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
                     <button title="Go to the previous episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handlePreviousEpisode(); setIsLoading(true); }}>&#x2190; Episode {episodeNumber - 1} </button>
                   </Link>
@@ -116,36 +127,43 @@ function StreamingPage({ episode, anime, episodeNumber }) {
                     <button title="Go to the next episode" className="bg-[#2f6b91] hover:bg-[#214861] transition-all text-white font-bold m-4 py-2 px-4 rounded" onClick={() => { handleNextEpisode(); setIsLoading(true); }}>Episode {episodeNumber + 1} &#x2192;</button>
                   </Link>
                 </div> */}
-                <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
-                  <div className="dark:text-secondary text-primary capitalize space-y-2">
-                    <Link className="hover:text-blue-400 transition sm:text-base md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl " href={`/anime/info/${anime?.id}`}>{anime?.title.english || anime?.title.romaji}</Link>
-                    <p className="dark:text-secondary text-primary sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
-                  </div>
+              <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
+                <div className="dark:text-secondary text-primary capitalize space-y-2">
+                  <Link className="hover:text-blue-400 transition sm:text-base md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl " href={`/anime/info/${anime?.id}`}>{anime?.title.english || anime?.title.romaji}</Link>
+                  <p className="dark:text-secondary text-primary sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
+
                 </div>
-                <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
               </div>
-              <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} />
+              <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
             </div>
-          )}
-          {/* <div className="max-w-xs mt-10 space-y-4">
-            {!isExternalPlayer ? (
+            <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} />
+          </div>
+          <div className="max-w-xs mt-10 space-y-4">
+            {isDubbed ? (
               <PrimaryButton
                 icon={<BsFillPlayFill />}
-                sub="Faster And No Ads"
-                onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+                sub="Classic anime experience"
+                onClick={() => setIsDubbed(false)}
               >
-                Use Internal Player
+                Watch Subbed
               </PrimaryButton>
             ) : (
               <PrimaryButton
-                icon={<HiOutlineDownload />}
-                sub="Download Option Available"
-                onClick={() => setIsExternalPlayer(!isExternalPlayer)}
+                icon={<BsFillPlayFill />}
+                sub="English anime experience"
+                onClick={() => setIsDubbed(true)}
               >
-                Use External Player
+                Watch Dubbed
               </PrimaryButton>
             )}
-          </div> */}
+            <PrimaryButton
+              icon={<HiOutlineDownload />}
+              sub="Watch offline at your convenience"
+              link={externalLink}
+            >
+              Download Episode
+            </PrimaryButton>
+          </div>
         </MainLayout>
       </div>
     </>
