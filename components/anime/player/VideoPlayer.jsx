@@ -3,7 +3,6 @@ import videojs from "video.js";
 import "@videojs/http-streaming";
 import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
-import '@videojs/themes/dist/city/index.css';
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
@@ -82,7 +81,7 @@ const VideoPlayer = ({ videoSource }) => {
           id="videoPlayerHLS"
           onContextMenu={(e) => e.preventDefault()}
           ref={videoRef}
-          className="video-js vjs-theme-city vjs-big-play-centered"
+          className="video-js vjs-big-play-centered"
         ></video>
       </div>
     </div>
