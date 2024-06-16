@@ -13,7 +13,6 @@ import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 
 const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
-const DubbedPlayer = dynamic(() => import('./../../../../components/anime/player/DubbedPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum, dub = false } = await context.query;
@@ -120,7 +119,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
           <div className="mt-3 lg:flex lg:space-x-4 rounded-xl">
             <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-xl">
               {isDubbed ? (
-                <DubbedPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
+                <VideoPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
               ) : (
                 <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
               )}
