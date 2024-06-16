@@ -52,8 +52,8 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
     };
 
     const fetchExternalData = async () => {
-      const episodeData = await getExternalLink(episodeName);
-      setExternalLink(episodeData.download);
+      const episodeData = await getAnimeEpisodeLinks(episodeName);
+      setExternalLink(episodeData.sources[3].url);
     };
 
     const fetchDubbedData = async () => {
