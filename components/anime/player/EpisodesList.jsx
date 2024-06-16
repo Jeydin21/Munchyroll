@@ -1,6 +1,6 @@
 import TextButton from "../../buttons/TextButton";
 
-function EpisodesList({ episodeData, episodeName, id }) {
+function EpisodesList({ episodeData, episodeName, id, isDubbed = false }) {
 
   return (
     <div className="max-sd:w-2/5 lg:w-2/5">
@@ -12,7 +12,7 @@ function EpisodesList({ episodeData, episodeName, id }) {
             return (
               <TextButton
                 key={i}
-                link={`/anime/watch/${id}/${episode.number}`}
+                link={`/anime/watch/${id}/${episode.number}?dub=${isDubbed}`}
                 text={episode.number}
                 title={"Episode " + episode.number + ": " + episode.title}
                 isCurrent={episode.id === episodeName}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import dynamic from 'next/dynamic';
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import TextButton from "../../../../components/buttons/TextButton";
 import MainLayout from "../../../../components/ui/MainLayout";
 import Link from "next/link";
@@ -34,6 +35,8 @@ export const getServerSideProps = async (context) => {
 };
 
 function StreamingPage({ episode, anime, episodeNumber, dub }) {
+  const router = useRouter();
+
   const [isDubbed, setIsDubbed] = useState(dub);
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
@@ -139,14 +142,18 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               </div>
               <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
             </div>
-            <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} />
+            <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} isDubbed={isDubbed} />
           </div>
           <div className="max-w-xs mt-10 space-y-4">
             {isDubbed ? (
               <PrimaryButton
                 icon={<BsFillPlayFill />}
                 sub="Classic anime experience"
-                onClick={() => setIsDubbed(false)}
+                onClick={() => {
+                  setIsDubbed(false);
+                  window.history.replaceState({}, '', `/anime/watch/${anime?.id}/${episodeNumber}?dub=false`);
+                  }
+                }
               >
                 Watch Subbed
               </PrimaryButton>
@@ -154,7 +161,11 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               <PrimaryButton
                 icon={<BsFillPlayFill />}
                 sub="English anime experience"
-                onClick={() => setIsDubbed(true)}
+                  onClick={() => {
+                    setIsDubbed(true);
+                    window.history.replaceState({}, '', `/anime/watch/${anime?.id}/${episodeNumber}?dub=true`);
+                    }
+                  }
               >
                 Watch Dubbed
               </PrimaryButton>
