@@ -1,12 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import videojs from "video.js";
+require('@silvermine/videojs-quality-selector')(videojs);
+require('@silvermine/videojs-quality-selector/dist/css/quality-selector.css');
 import "@videojs/http-streaming";
 import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
-const VideoPlayer = ({ videoSource }) => {
+const VideoPlayer = ({ videoSources }) => {
   const videoRef = useRef();
   const [player, setPlayer] = useState(undefined);
 
@@ -23,14 +25,29 @@ const VideoPlayer = ({ videoSource }) => {
   }, []);
 
   useEffect(() => {
-    if (player) {
-      player.src({
-        src: corsLink ? `${corsLink}/${videoSource}` : videoSource,
-        type: "application/x-mpegURL",
+    if (player && videoSources) {
+      // Find the highest quality that is not 'default' or 'backup'
+      const highestQuality = Math.max(...videoSources
+        .filter(source => source.quality !== 'default' && source.quality !== 'backup')
+        .map(source => parseInt(source.quality, 10)));
+  
+      const sources = videoSources.map((source) => {
+        const quality = source.quality === 'default' ? 0 : parseInt(source.quality, 10);
+        return {
+          src: source.url,
+          type: source.isM3U8 ? "application/x-mpegURL" : "video/mp4",
+          label: source.quality,
+          selected: quality === highestQuality,
+        };
       });
+  
+      player.src(sources);
       player.load();
+      if (!player.controlBar.getChild('QualitySelector')) {
+        player.controlBar.addChild('QualitySelector');
+      }
     }
-  }, [videoSource, player]);
+  }, [videoSources, player]);
 
   useEffect(() => {
     const videoJsOptions = {
@@ -47,6 +64,15 @@ const VideoPlayer = ({ videoSource }) => {
       nativeControlsForTouch: true,
       notSupportedMessage: "If you see this, either the video is loading, or there is an error!",
       preferFullWindow: true,
+      controlBar: {
+        children: [
+          'playToggle',
+          'progressControl',
+          'volumePanel',
+          'qualitySelector',
+          'fullscreenToggle',
+        ],
+      },
     };
 
     const p = videojs(
