@@ -6,7 +6,7 @@ import "videojs-hotkeys";
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
-const VideoPlayer = ({ videoSource }) => {
+const DubbedPlayer = ({ videoSource }) => {
   const videoRef = useRef();
   const [player, setPlayer] = useState(undefined);
 
@@ -88,7 +88,7 @@ const VideoPlayer = ({ videoSource }) => {
   );
 };
 
-VideoPlayer.defaultProps = {
+DubbedPlayer.defaultProps = {
   className: "",
   autoplay: false,
   controls: true,
@@ -97,4 +97,4 @@ VideoPlayer.defaultProps = {
   sources: [],
 };
 
-export default VideoPlayer;
+export default DubbedPlayer;

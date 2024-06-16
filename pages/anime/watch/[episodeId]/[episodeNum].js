@@ -13,6 +13,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 import { BsFillPlayFill } from "react-icons/bs";
 
 const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
+const DubbedPlayer = dynamic(() => import('./../../../../components/anime/player/DubbedPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 
 export const getServerSideProps = async (context) => {
   const { episodeId, episodeNum, dub = false } = await context.query;
@@ -50,7 +51,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
   useEffect(() => {
     const fetchEpisodeData = async () => {
       const episodeData = await getAnimeEpisodeLinks(episodeName);
-      setEpisodeDataLink(episodeData.sources);
+      setEpisodeDataLink(episodeData.sources[3].url);
     };
 
     const fetchExternalData = async () => {
@@ -61,7 +62,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
     const fetchDubbedData = async () => {
       const dubbedEpisodeData = await getAnimeEpisodeData(anime.id + "?dub=true");
       const episodeData = await getAnimeEpisodeLinks(dubbedEpisodeData[episodeIndex].id);
-      setDubbedEpisodeDataLink(episodeData.sources);
+      setDubbedEpisodeDataLink(episodeData.sources[3].url);
     };
 
     if (isDubbed) {
@@ -119,9 +120,9 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
           <div className="mt-3 lg:flex lg:space-x-4 rounded-xl">
             <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-xl">
               {isDubbed ? (
-                <VideoPlayer videoSources={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
+                <DubbedPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
               ) : (
-                <VideoPlayer videoSources={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
+                <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
               )}
 
               {/* <div className="flex justify-between pt-5">
