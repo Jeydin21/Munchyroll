@@ -35,7 +35,6 @@
     "react-responsive-carousel": "^3.2.23",
     "sharp": "^0.33.2",
     "tls": "^0.0.1",
-    "video.js": "^8.10.0",
     "videojs-hotkeys": "^0.2.28"
   },
   "devDependencies": {

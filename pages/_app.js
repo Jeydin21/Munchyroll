@@ -3,18 +3,18 @@ import "../styles/nprogress.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
 import ReactGA from "react-ga";
-
+import { events } from "next/router";
 import nprogress from "nprogress";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 if (process.env.NEXT_PUBLIC_GA_TRACKING_ID) {
   ReactGA.initialize(process.env.NEXT_PUBLIC_GA_TRACKING_ID);
 }
 
-import Router from "next/router";
-import GoogleAnalytics from "../components/GoogleAnalytics";
-Router.events.on("routeChangeStart", nprogress.start);
-Router.events.on("routeChangeError", nprogress.done);
-Router.events.on("routeChangeComplete", nprogress.done);
+events.on("routeChangeStart", nprogress.start);
+events.on("routeChangeError", nprogress.done);
+events.on("routeChangeComplete", nprogress.done);
+
 function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
 
