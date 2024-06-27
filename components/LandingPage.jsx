@@ -1,8 +1,4 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import PrimaryButton from "./buttons/PrimaryButton";
-import SearchInput from "./ui/SearchInput";
 
 function LandingPage() {
   return (

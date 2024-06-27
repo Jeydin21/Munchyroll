@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import dynamic from 'next/dynamic';
 import Head from "next/head";
 import { useRouter } from 'next/router';
-import TextButton from "../../../../components/buttons/TextButton";
 import MainLayout from "../../../../components/ui/MainLayout";
 import Link from "next/link";
 import { getAnimeDetails, getAnimeEpisodeData, getAnimeEpisodeLinks, getExternalLink } from "../../../../src/handlers/anime";

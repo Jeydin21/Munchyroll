@@ -3,7 +3,6 @@ import React from "react";
 import AnimeDetails from "../../../components/anime/info/AnimeDetails";
 import MainLayout from "../../../components/ui/MainLayout";
 import Recommendations from "../../../components/anime/info/Recommendations";
-import TextButton from "../../../components/buttons/TextButton";
 import { getAnimeDetails, getAnimeEpisodeData } from "../../../src/handlers/anime";
 
 export const getServerSideProps = async (context) => {

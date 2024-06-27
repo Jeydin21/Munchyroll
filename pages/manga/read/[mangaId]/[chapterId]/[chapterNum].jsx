@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
-import TextButton from "../../../../../components/buttons/TextButton";
 import MainLayout from "../../../../../components/ui/MainLayout";
 import MangaReader from "../../../../../components/manga/reader/MangaReader";
 import Link from "next/link";
 import { getMangaDetails, getMangaPages } from "../../../../../src/handlers/manga";
-import next from "next";
 
 export const getServerSideProps = async (context) => {
   const { mangaId, chapterId, chapterNum } = await context.query;
