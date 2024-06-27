@@ -17,7 +17,6 @@ function LandingPage() {
           </p>
         </div>
         <div className="space-y-8">
-          <div className="py-8 md:py-12">
             <div className="mx-auto max-w-5xl p-6 sm:p-8">
               <div className="flex flex-col gap-6">
                 <div className="grid gap-6 md:grid-cols-2">
@@ -56,7 +55,6 @@ function LandingPage() {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
