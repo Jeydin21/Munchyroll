@@ -55,7 +55,7 @@ function MangaDetails({ mangaData }) {
             </div>
             <div className=" mt-3 flex gap-2 flex-wrap">
               {genres?.map((genre, i) => (
-                <GenreButton text={genre} link={false} />
+                <GenreButton text={genre} />
               ))}
             </div>
           </div>
