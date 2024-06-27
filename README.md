@@ -24,8 +24,8 @@ An ad-free anime streaming web app aimed at minimality and responsive design.
 
 ## Images
 <p align="center">
- <img src="" alt="main">
- <img src="" alt="main">
+ <img src="public/screenshots/homeDark.png" alt="main">
+ <img src="public/screenshots/homeLight.png" alt="main">
 </p>
 
 <details>
@@ -34,22 +34,22 @@ An ad-free anime streaming web app aimed at minimality and responsive design.
 <div align="center">
 
 <h3 align="center">Anime Home Page (Dark Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/animeHomeDark.png"/>
 
 <h3 align="center">Anime Info Page (Dark Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/animeInfoDark.png"/>
 
 <h3 align="center">Anime Watch Page (Dark Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/animeInfoDark.png"/>
 
 <h3 align="center">Manga Home Page (Light Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/mangaHomeLight.png"/>
 
 <h3 align="center">Manga Info Page (Light Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/mangaInfoLight.png"/>
 
 <h3 align="center">Manga Read Page (Light Mode)</h3>
-<img src=""/>
+<img src="public/screenshots/mangaReadLight.png"/>
 
 </div>
 
