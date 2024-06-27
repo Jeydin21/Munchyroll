@@ -134,7 +134,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               <div className="pt-5 font-bold max-lg:text-center sm:block mb-5">
                 <div className="dark:text-secondary text-primary capitalize space-y-2">
                   <Link className="hover:text-blue-400 transition sm:text-base md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl " href={`/anime/info/${anime?.id}`}>{anime?.title.english || anime?.title.romaji}</Link>
-                  <p className="dark:text-secondary text-primary sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{"Episode " + episodeNumber + ": " + episodeTitle}</p>
+                  <p className="dark:text-secondary text-primary sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{episodeTitle ? (`Episode ${episodeNumber}: ${episodeTitle}`) : (`Episode ${episodeNumber}`)}</p>
 
                 </div>
               </div>
