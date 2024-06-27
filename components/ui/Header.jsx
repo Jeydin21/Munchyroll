@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaSun, FaMoon, FaBook } from "react-icons/fa";
 import { LuJapaneseYen, LuClapperboard } from "react-icons/lu";
 import { PiTelevision } from "react-icons/pi";
@@ -10,8 +10,8 @@ import Link from "next/link";
 
 function Header({ theme, toggleTheme, bg = false, manga, type }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isScrolled, setIsScrolled] = useState(false);
+  const searchInputRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +24,14 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
       document.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleSearchIconClick = () => {
+    setIsMenuOpen(true); // Open the search menu
+    setTimeout(() => {
+      // Ensure the menu is open before focusing
+      searchInputRef.current.focusInput();
+    }, 0);
+  };
 
   return (
     <>
@@ -62,7 +70,7 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
             </button>
           </div>
 
-          <div onClick={() => setIsMenuOpen(true)} className={`text-xl ${bg === true ? "hidden" : ""} transition-all dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] hover:bg-secondary-hover dark:hover:bg-primary-hover p-3 rounded-lg hover:cursor-pointer ml-2`}>
+          <div onClick={handleSearchIconClick} className={`text-xl ${bg === true ? "hidden" : ""} transition-all dark:text-secondary text-primary bg-secondary-light dark:bg-[#222222] hover:bg-secondary-hover dark:hover:bg-primary-hover p-3 rounded-lg hover:cursor-pointer ml-2`}>
             <CgSearch />
           </div>
         </div>
@@ -78,7 +86,7 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
         className={`transition-all pt-2 p-5 z-30 fixed ${isMenuOpen ? "top-0 left-0 right-0 bottom-0" : "-top-full"} w-screen flex items-center justify-center transform transition-transform ${isMenuOpen ? "scale-100" : "scale-0"}`}
       >
         <div onClick={(e) => e.stopPropagation()}>
-          <SearchInput type={type} />
+          <SearchInput ref={searchInputRef} type={type} />
         </div>
       </div>
     </>
