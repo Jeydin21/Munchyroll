@@ -4,12 +4,9 @@
 <h1>Munchyroll</h1>
 </a>
 An ad-free anime streaming web app aimed at minimality and responsive design. 
-<br>
-<br>
-
-Live demo at [anime.j21.dev](https://anime.j21.dev)
-
 <br />
+
+### Live demo at [anime.j21.dev](https://anime.j21.dev)
 <br />
 
  <a href="https://github.com/Jeydin21/Munchyroll/blob/master/LICENSE.md">
@@ -23,35 +20,36 @@ Live demo at [anime.j21.dev](https://anime.j21.dev)
   </a>
   
 </p>
+</div>
 
+## Images
 <p align="center">
- <img src="https://i.postimg.cc/2yjcDFJC/image.png" alt="main">
+ <img src="https://i.postimg.cc/CMCgDdFh/image.png" alt="main">
+ <img src="https://i.postimg.cc/14xnLtj5/image.png" alt="main">
 </p>
 
 <details>
 <summary>More Screenshots</summary>
 
-<h3 align="center">Home Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/W4LPPC7j/image.png"/>
+<h3 align="center">Anime Home Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/k4DvJXqn/image.png"/>
 
-<h3 align="center">Info Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/vB0jDN54/image.png"/>
+<h3 align="center">Anime Info Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/5y1zKjY5/image.png"/>
 
-<h3 align="center">Watch Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/fTsNF6BN/image.png"/>
+<h3 align="center">Anime Watch Page (Dark Mode)</h3>
+<img src="https://i.postimg.cc/h4rQPDQw/image.png"/>
 
-<h3 align="center">Home Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/Kjznv95v/image.png"/>
+<h3 align="center">Manga Home Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/KzKFX5Lx/image.png"/>
 
-<h3 align="center">Info Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/zvbVc4jW/image.png"/>
+<h3 align="center">Manga Info Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/k4Fq59cp/image.png"/>
 
-<h3 align="center">Watch Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/P5k4nn7d/image.png"/>
+<h3 align="center">Manga Read Page (Light Mode)</h3>
+<img src="https://i.postimg.cc/QxKBgpyL/image.png"/>
 
 </details>
-
-</div>
 
 ## Features
 - **No Ads** - No ads, no popups, no redirects, no bullshit
@@ -63,6 +61,7 @@ Live demo at [anime.j21.dev](https://anime.j21.dev)
 If you encounter any strange bugs on the website, please let me know by  going to [issues](https://github.com/Jeydin21/Munchyroll/issues/) and create a bug report
 
 ## Local Development
+> [!CAUTION]
 > If you want to self host this app, please note that it's only allowed for personal use; **Commercial use is not recommended**
 
 #### 1. Environment Variable file setup
@@ -70,6 +69,9 @@ If you encounter any strange bugs on the website, please let me know by  going t
 
 
 #### 2. Backend Repository (Consumet API)
+> [!TIP]
+> If you already have a backend URL from somewhere, you can skip this step and go to step 3
+
 1. Clone the backend repository and install the dependencies:
 ```bash
 $ git clone https://github.com/consumet/api.consumet.org.git

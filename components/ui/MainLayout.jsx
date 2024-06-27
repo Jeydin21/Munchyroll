@@ -78,7 +78,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
       {banner && (
         <div className="pt-3 relative max-lg:hidden">
           <img src={banner} className="w-full h-96 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-[#121212] to-white opacity-100"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-[#121212] to-[#f2f2f2] opacity-100"></div>
         </div>
       )}
       <div className="flex">

@@ -50,7 +50,7 @@ function SearchPage({ animeSearchData }) {
         {animeSearchData && (
           <>
             <div className="pt-10">
-              <h1 className=" text-2xl font-bold">Search Results &gt; {searchId}</h1>
+              <h1 className="text-primary dark:text-secondary text-2xl font-bold">Search Results &gt; {searchId}</h1>
 
               {animeSearchData.results.length === 0 && (
                 <div className="text-center mt-10 text-2xl ">No Results Found</div>
