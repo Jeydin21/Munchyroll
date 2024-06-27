@@ -40,7 +40,7 @@ An ad-free anime streaming web app aimed at minimality and responsive design.
 <img src="public/screenshots/animeInfoDark.png"/>
 
 <h3 align="center">Anime Watch Page (Dark Mode)</h3>
-<img src="public/screenshots/animeInfoDark.png"/>
+<img src="public/screenshots/animeWatchDark.png"/>
 
 <h3 align="center">Manga Home Page (Light Mode)</h3>
 <img src="public/screenshots/mangaHomeLight.png"/>
