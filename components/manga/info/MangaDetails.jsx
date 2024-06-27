@@ -65,12 +65,11 @@ function MangaDetails({ mangaData }) {
           <h2 className="dark:text-secondary text-primary font-semibold mt-10">Chapters</h2>
           <div className=" mt-5 flex  flex-wrap  gap-3">
             {mangaData.chapters
-              ?.slice(0)
+              ?.filter(chapter => chapter.pages && chapter.pages > 0) // Filter out chapters with 0 pages
               .map((chapter, i) => (
                 <TextButton
                   key={i}
                   link={`/manga/read/${mangaData.id}/${chapter.id}/${chapter.chapterNumber}`}
-                  // text={episode.number + ": " + episode.title}
                   text={chapter.chapterNumber}
                   title={chapter.title}
                 />

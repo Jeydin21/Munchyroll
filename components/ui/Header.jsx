@@ -33,14 +33,18 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
         <div className="z-50 flex flex-row space-x-5">
           <Logo />
           <div className="hidden lg:flex my-auto text-base dark:text-secondary text-primary space-x-1">
-            <button title="Anime" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
-              <LuJapaneseYen className="mt-1" />
-              <Link href={`/anime`}>Anime</Link>
-            </button>
-            <button title="Manga" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
-              <FaBook className="mt-1" />
-              <Link href={`/manga`}>Manga</Link>
-            </button>
+            <Link href={`/anime`}>
+              <button title="Anime" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
+                <LuJapaneseYen className="mt-1" />
+                <span>Anime</span>
+              </button>
+            </Link>
+            <Link href={`/manga`}>
+              <button title="Anime" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
+                <FaBook className="mt-1" />
+                <span>Manga</span>
+              </button>
+            </Link>
             {/* <button title="Movies" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
               <LuClapperboard className="mt-1" />
               <Link href={`/movies`}>Movies</Link>
