@@ -24,30 +24,34 @@ An ad-free anime streaming web app aimed at minimality and responsive design.
 
 ## Images
 <p align="center">
- <img src="https://i.postimg.cc/CMCgDdFh/image.png" alt="main">
- <img src="https://i.postimg.cc/14xnLtj5/image.png" alt="main">
+ <img src="" alt="main">
+ <img src="" alt="main">
 </p>
 
 <details>
 <summary>More Screenshots</summary>
 
+<div align="center">
+
 <h3 align="center">Anime Home Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/k4DvJXqn/image.png"/>
+<img src=""/>
 
 <h3 align="center">Anime Info Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/5y1zKjY5/image.png"/>
+<img src=""/>
 
 <h3 align="center">Anime Watch Page (Dark Mode)</h3>
-<img src="https://i.postimg.cc/h4rQPDQw/image.png"/>
+<img src=""/>
 
 <h3 align="center">Manga Home Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/KzKFX5Lx/image.png"/>
+<img src=""/>
 
 <h3 align="center">Manga Info Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/k4Fq59cp/image.png"/>
+<img src=""/>
 
 <h3 align="center">Manga Read Page (Light Mode)</h3>
-<img src="https://i.postimg.cc/QxKBgpyL/image.png"/>
+<img src=""/>
+
+</div>
 
 </details>
 
@@ -62,7 +66,8 @@ If you encounter any strange bugs on the website, please let me know by  going t
 
 ## Local Development
 > [!CAUTION]
-> If you want to self host this app, please note that it's only allowed for personal use; **Commercial use is not recommended**
+> If you want to self host this app, please note that it's only allowed for personal use
+> **Commercial use is not recommended**
 
 #### 1. Environment Variable file setup
 1. Copy all the contents of `.env.example` into a new file called `.env`
@@ -119,6 +124,6 @@ This project is licensed under the GNU General Public License v3.0 - see the [Li
 ## Contact
 Thanks for checking my project out
 
-If you have any questions or feedback, go to my [contact page](https://j21.dev/contact) and pick your preferred method of contact. You can also join the community Discord server I made down below:
+If you have any questions or feedback, go to my [website](https://j21.dev/) and pick your preferred method of contact. You can also join the community Discord server I made down below:
 
 [![Discord Banner](https://discordapp.com/api/guilds/1128820150846632026/widget.png?style=banner2)](https://discord.gg/JQsvHC4JUH)
