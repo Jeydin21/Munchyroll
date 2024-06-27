@@ -61,7 +61,7 @@ function AnimeDetails({ animeData, episodeData, episodePage = false }) {
                 <TextButton
                   key={i}
                   link={`/anime/watch/${animeData.id}/${episode.number}`}
-                  title={"Episode: " + episode.number + ": " + episode.title}
+                  title={episode.title ? `Episode ${episode.number}: ${episode.title}` : `Episode ${episode.number}`}
                   text={episode.number}
                 />
               ))}

@@ -14,7 +14,7 @@ function EpisodesList({ episodeData, episodeName, id, isDubbed = false }) {
                 key={i}
                 link={`/anime/watch/${id}/${episode.number}?dub=${isDubbed}`}
                 text={episode.number}
-                title={"Episode " + episode.number + ": " + episode.title}
+                title={episode.title ? `Episode ${episode.number}: ${episode.title}` : `Episode ${episode.number}`}
                 isCurrent={episode.id === episodeName}
               />
             );
