@@ -41,14 +41,14 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
               <FaBook className="mt-1" />
               <Link href={`/manga`}>Manga</Link>
             </button>
-            <button title="Movies" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
+            {/* <button title="Movies" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
               <LuClapperboard className="mt-1" />
-              <Link href={`movies`}>Movies</Link>
+              <Link href={`/movies`}>Movies</Link>
             </button>
             <button title="Shows" className="transition-all dark:text-secondary text-primary hover:bg-secondary-hover dark:hover:bg-primary-light py-2 px-5 my-auto rounded-lg flex flex-row space-x-2">
               <PiTelevision className="mt-1" />
               <Link href={`/shows`}>Shows</Link>
-            </button>
+            </button> */}
           </div>
         </div>
         <div className={`flex justify-end items-center`}>
