@@ -10,6 +10,13 @@ export const getServerSideProps = async (context) => {
 
   const mangaData = await getMangaDetails(mangaId);
 
+  const title = mangaData?.title?.english || mangaData?.title?.romaji;
+  if (!title) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       mangaData,
@@ -18,15 +25,17 @@ export const getServerSideProps = async (context) => {
 };
 
 function MangaDetailsPage({ mangaData }) {
+  const title = mangaData?.title?.english || mangaData?.title?.romaji;
+  
   return (
     <>
       <Head>
-        <title>{(mangaData?.title.english || mangaData?.title.romaji) + " - Munchyroll"}</title>
+        <title>{title + " - Munchyroll"}</title>
         <meta name="description" content={mangaData?.description} />
         <meta name="keywords" content={mangaData?.genres} />
         <meta
           property="og:title"
-          content={"Read " + (mangaData?.title.english || mangaData?.title.romaji) + " - Munchyroll "}
+          content={"Read " + title + " - Munchyroll "}
         />
         <meta property="og:description" content={mangaData?.description} />
         <meta property="og:image" content={mangaData?.image} />
