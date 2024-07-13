@@ -35,10 +35,10 @@ export const getServerSideProps = async (context) => {
 function StreamingPage({ episode, anime, episodeNumber, dub }) {
   const router = useRouter();
 
-  const [isDubbed, setIsDubbed] = useState(dub);
+  // const [isDubbed, setIsDubbed] = useState(dub);
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
-  const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
   const [externalLink, setExternalLink] = useState(null);
+  // const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
 
   const firstEpisodeNumber = episode[0].number;
   const episodeIndex = firstEpisodeNumber === 0 ? episodeNumber : episodeNumber - 1;
@@ -57,20 +57,22 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
       setExternalLink(episodeData.download);
     };
 
-    const fetchDubbedData = async () => {
-      const dubbedEpisodeData = await getAnimeEpisodeData(anime.id + "?dub=true");
-      const episodeData = await getAnimeEpisodeLinks(dubbedEpisodeData[episodeIndex].id);
-      setDubbedEpisodeDataLink(episodeData.sources[3].url);
-    };
+    // const fetchDubbedData = async () => {
+    //   const dubbedEpisodeData = await getAnimeEpisodeData(anime.id + "?dub=true");
+    //   const episodeData = await getAnimeEpisodeLinks(dubbedEpisodeData[episodeIndex].id);
+    //   setDubbedEpisodeDataLink(episodeData.sources[3].url);
+    // };
 
-    if (isDubbed) {
-      fetchDubbedData();
-      fetchExternalData();
-    } else {
-      fetchEpisodeData();
-      fetchExternalData();
-    }
-  }, [episode, episodeNumber, isDubbed]);
+    // if (isDubbed) {
+    //   fetchDubbedData();
+    //   fetchExternalData();
+    // } else {
+    //   fetchEpisodeData();
+    //   fetchExternalData();
+    // }
+    fetchEpisodeData();
+    fetchExternalData();
+  }, [episode, episodeNumber]);
 
   // if (!episodeId) {
   //   return <MainLayout>loading...</MainLayout>;
@@ -117,11 +119,12 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
         <MainLayout useHead={false} type={"anime"}>
           <div className="mt-3 lg:flex lg:space-x-4 rounded-xl">
             <div className="alignfull w-full overflow-hidden max-w-screen-xl rounded-xl">
-              {isDubbed ? (
+              {/* {isDubbed ? (
                 <VideoPlayer videoSource={dubbedEpisodeDataLink} key={dubbedEpisodeDataLink} className="rounded-xl " />
               ) : (
                 <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
-              )}
+              )} */}
+              <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
 
               {/* <div className="flex justify-between pt-5">
                   <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
@@ -140,10 +143,10 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               </div>
               <AnimeDetails animeData={anime} episodeData={episode} episodePage={true} />
             </div>
-            <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} isDubbed={isDubbed} />
+            <EpisodesList episodeData={episode} episodeName={episodeName} id={anime.id} isDubbed={false} />
           </div>
           <div className="max-w-xs mt-10 space-y-4">
-            {isDubbed ? (
+            {/* {isDubbed ? (
               <PrimaryButton
                 icon={<BsFillPlayFill />}
                 sub="Classic anime experience"
@@ -167,7 +170,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               >
                 Watch Dubbed
               </PrimaryButton>
-            )}
+            )} */}
             <PrimaryButton
               icon={<HiOutlineDownload />}
               sub="Watch offline at your convenience"
