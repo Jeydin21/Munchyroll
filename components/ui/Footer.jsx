@@ -5,7 +5,7 @@ import { FaGithub, FaDiscord, FaTwitter } from 'react-icons/fa';
 function Footer() {
   return (
     <>
-      <footer className="mt-14 py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 flex flex-col sm:flex-row justify-between">
+      <footer className="mt-14 py-2 px-5 flex flex-col sm:flex-row justify-between">
         <div className="z-50">
           <Logo hover={false} />
           <p className="dark:text-primary-light text-primary text-xs pt-2">
@@ -21,7 +21,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <footer className="pb-10 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+      <footer className="pb-10 px-5">
         <div className="pt-2 flex justify-between border-t-[2px] border-primary w-full">
           <p className="z-50 dark:text-primary-light text-primary text-sm">
             Made with ❤️ by <Link title="Jeydin21" className="hover:text-blue-400 dark:text-secondary text-primary underline transition-all" rel="noreferrer" target="_blank" href="https://j21.dev">Jeydin21</Link>

@@ -36,7 +36,7 @@ function Header({ theme, toggleTheme, bg = false, manga, type }) {
   return (
     <>
       <div
-        className={`z-50 transition-all py-2 px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 flex justify-between left-0 items-center top-0 right-0 ${bg === true ? "" : "dark:bg-[#121212] bg-secondary"} ${isScrolled ? `${manga === true ? "" : "sticky"} top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30` : ''}`}
+        className={`z-50 transition-all py-2 px-5 flex justify-between left-0 items-center top-0 right-0 ${bg === true ? "" : "dark:bg-[#121212] bg-secondary"} ${isScrolled ? `${manga === true ? "" : "sticky"} top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg dark:bg-primary/30 bg-secondary/30` : ''}`}
       >
         <div className="z-50 flex flex-row space-x-5">
           <Logo />
