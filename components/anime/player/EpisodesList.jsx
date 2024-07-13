@@ -4,7 +4,7 @@ function EpisodesList({ episodeData, episodeName, id, isDubbed = false }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredEpisodes = episodeData?.filter(episode =>
-    episode.title.toLowerCase().includes(searchTerm.toLowerCase()) || episode.number.toString().includes(searchTerm)
+    episode.number.toString().includes(searchTerm) || episode.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
