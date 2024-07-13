@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { getAnimeEpisodeLinks, getExternalLink } from "../../../src/handlers/anime";
 import videojs from "video.js";
 import "@videojs/http-streaming";
 import "video.js/dist/video-js.css";
@@ -6,9 +7,12 @@ import "videojs-hotkeys";
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
-const VideoPlayer = ({ videoSource }) => {
+const VideoPlayer = ({ episodeName }) => {
   const videoRef = useRef();
   const [player, setPlayer] = useState(undefined);
+
+  const [episodeDataLink, setEpisodeDataLink] = useState(null);
+  const [externalLink, setExternalLink] = useState(null);
 
   useEffect(() => {
     return () => {
@@ -23,14 +27,23 @@ const VideoPlayer = ({ videoSource }) => {
   }, []);
 
   useEffect(() => {
+    const fetchEpisodeData = async () => {
+      const episodeData = await getAnimeEpisodeLinks(episodeName);
+      setEpisodeDataLink(episodeData.sources[3].url);
+    };
+
+    fetchEpisodeData();
+  }, [episodeName]);
+
+  useEffect(() => {
     if (player) {
       player.src({
-        src: corsLink ? `${corsLink}/${videoSource}` : videoSource,
+        src: corsLink ? `${corsLink}/${episodeDataLink}` : episodeDataLink,
         type: "application/x-mpegURL",
       });
       player.load();
     }
-  }, [videoSource, player]);
+  }, [episodeDataLink, player]);
 
   useEffect(() => {
     const videoJsOptions = {

@@ -36,10 +36,9 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
   const router = useRouter();
 
   // const [isDubbed, setIsDubbed] = useState(dub);
-  const [episodeDataLink, setEpisodeDataLink] = useState(null);
-  const [externalLink, setExternalLink] = useState(null);
   // const [dubbedEpisodeDataLink, setDubbedEpisodeDataLink] = useState(null);
-
+  const [downloadLink, setDownloadLink] = useState(null);
+  
   const firstEpisodeNumber = episode[0].number;
   const episodeIndex = firstEpisodeNumber === 0 ? episodeNumber : episodeNumber - 1;
 
@@ -47,31 +46,12 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
   const episodeTitle = episode[episodeIndex].title;
 
   useEffect(() => {
-    const fetchEpisodeData = async () => {
-      const episodeData = await getAnimeEpisodeLinks(episodeName);
-      setEpisodeDataLink(episodeData.sources[3].url);
-    };
-
-    const fetchExternalData = async () => {
+    const fetchDownloadLink = async () => {
       const episodeData = await getExternalLink(episodeName);
-      setExternalLink(episodeData.download);
+      setDownloadLink(episodeData.download);
     };
 
-    // const fetchDubbedData = async () => {
-    //   const dubbedEpisodeData = await getAnimeEpisodeData(anime.id + "?dub=true");
-    //   const episodeData = await getAnimeEpisodeLinks(dubbedEpisodeData[episodeIndex].id);
-    //   setDubbedEpisodeDataLink(episodeData.sources[3].url);
-    // };
-
-    // if (isDubbed) {
-    //   fetchDubbedData();
-    //   fetchExternalData();
-    // } else {
-    //   fetchEpisodeData();
-    //   fetchExternalData();
-    // }
-    fetchEpisodeData();
-    fetchExternalData();
+    fetchDownloadLink();
   }, [episode, episodeNumber]);
 
   // if (!episodeId) {
@@ -124,7 +104,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               ) : (
                 <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
               )} */}
-              <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
+              <VideoPlayer episodeName={episodeName} className="rounded-xl " />
 
               {/* <div className="flex justify-between pt-5">
                   <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>
@@ -174,7 +154,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
             <PrimaryButton
               icon={<HiOutlineDownload />}
               sub="Watch offline at your convenience"
-              link={externalLink}
+              link={downloadLink}
             >
               Download Episode
             </PrimaryButton>
