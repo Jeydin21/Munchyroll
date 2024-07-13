@@ -82,7 +82,7 @@ function MainLayout({ children, useHead = true, banner, search = true, landing =
         </div>
       )}
       <div className="flex">
-        <div className="z-10 w-full px-5 md:px-12 lg:px-16 xl:px-20 2xl:px-24 min-h-[90vh]">
+        <div className="z-10 w-full px-5 min-h-[90vh]">
           {children}
         </div>
       </div>
