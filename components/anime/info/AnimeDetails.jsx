@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TextButton from "../../buttons/TextButton";
 import GenreButton from "../../buttons/GenreButton";
+import EpisodesList from "../../anime/player/EpisodesList";
 
 function AnimeDetails({ animeData, episodeData, episodePage = false }) {
   const [isReadMore, setIsReadMore] = useState(false);
@@ -14,6 +15,7 @@ function AnimeDetails({ animeData, episodeData, episodePage = false }) {
     totalEpisodes,
     season,
     rating,
+    id
   } = animeData;
   return (
     <>
@@ -53,19 +55,7 @@ function AnimeDetails({ animeData, episodeData, episodePage = false }) {
           </div>
         </div>
         <div className={`${episodePage === true ? "hidden" : ""}`}>
-          <h2 className="dark:text-secondary text-primary font-semibold mt-10">Episodes</h2>
-          <div className="mt-5 flex  flex-wrap  gap-3">
-            {episodeData
-              ?.slice(0)
-              .map((episode, i) => (
-                <TextButton
-                  key={i}
-                  link={`/anime/watch/${animeData.id}/${episode.number}`}
-                  title={episode.title ? `Episode ${episode.number}: ${episode.title}` : `Episode ${episode.number}`}
-                  text={episode.number}
-                />
-              ))}
-          </div>
+          <EpisodesList id={id} episodeData={episodeData} episodePage={episodePage} />
         </div>
       </div>
     </>
