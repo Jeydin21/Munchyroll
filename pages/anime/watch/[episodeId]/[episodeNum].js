@@ -104,7 +104,7 @@ function StreamingPage({ episode, anime, episodeNumber, dub }) {
               ) : (
                 <VideoPlayer videoSource={episodeDataLink} key={episodeDataLink} className="rounded-xl " />
               )} */}
-              <VideoPlayer episodeThumbnail={anime?.banner} episodeTitle={episodeTitle} episodeName={episodeName} className="rounded-xl " />
+              <VideoPlayer episodeNumber={episodeNumber} episodeThumbnail={episode.image} episodeTitle={episodeTitle} episodeName={episodeName} className="rounded-xl " />
 
               {/* <div className="flex justify-between pt-5">
                   <Link className={`justify-start ${(episodeNumber > 1) ? "" : "invisible"}`} href={`/anime/watch/${anime.id}/${episodeNumber - 1}`}>

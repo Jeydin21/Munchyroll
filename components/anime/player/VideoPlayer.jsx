@@ -7,7 +7,7 @@ import { defaultLayoutIcons, DefaultVideoLayout, DefaultAudioLayout } from '@vid
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
-const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail }) => {
+const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
 
   useEffect(() => {
@@ -30,16 +30,25 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail }) => {
     fetchEpisodeData();
   }, [episodeName]); // Ensure episodeName is correctly triggering the effect
 
-  // Conditional rendering or providing a default src
-  if (!episodeDataLink) {
-    return <div>Loading...</div>; // Or any other fallback UI
+   // Conditional rendering or providing a default src
+   if (!episodeDataLink) {
+    return <div className="flex justify-center items-center h-full">Loading...</div>; // Tailwind CSS for centering
   }
 
+  let episodeThing = "";
+
+  if (episodeTitle) {
+    episodeThing = `Episode ${episodeNumber}: ${episodeTitle}`;
+  } else {
+    episodeThing = `Episode ${episodeNumber}`;
+  }
+
+
+
   return (
-    <MediaPlayer title={episodeTitle} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
-      <MediaProvider>
-        <Poster src={episodeThumbnail} alt='' />
-      </MediaProvider>
+    <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
+      <MediaProvider />
+        <Poster src={episodeThumbnail} />
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       <DefaultVideoLayout icons={defaultLayoutIcons} />
     </MediaPlayer>
