@@ -12,38 +12,44 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
   const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
 
   useEffect(() => {
-    const fetchEpisodeData = async () => {
+    const fetchEpisodeDataAndSubtitles = async () => {
       try {
         const episodeData = await getAnimeEpisodeLinks(episodeName);
-        if (episodeData && episodeData.sources) {
-          // const defaultSource = episodeData.sources.find(source => source.quality === "default");
-          const defaultSource = episodeData.sources[0];
-          setEpisodeDataLink(corsLink ? `${corsLink}/${defaultSource.url}` : defaultSource.url);
+        if (episodeData) {
+          if (episodeData.sources && episodeData.sources.length > 0) {
+            const defaultSource = episodeData.sources[0];
+            setEpisodeDataLink(corsLink ? `${corsLink}/${defaultSource.url}` : defaultSource.url);
+          } else {
+            console.error("Episode data is missing or the expected structure is not met.");
+            setEpisodeDataLink(null);
+          }
+  
+          if (episodeData.subtitles && episodeData.subtitles.length > 0) {
+            const englishSubtitle = episodeData.subtitles.find(subtitle => subtitle.lang === "English");
+            if (englishSubtitle) {
+              setEpisodeSubtitleLink(englishSubtitle.url);
+            } else {
+              console.error("English subtitles are missing.");
+              setEpisodeSubtitleLink(null);
+            }
+          } else {
+            console.error("Episode subtitles are missing or the expected structure is not met.");
+            setEpisodeSubtitleLink(null);
+          }
         } else {
-          console.error("Episode data is missing or the expected structure is not met.");
-          setEpisodeDataLink(null); // Explicitly setting to null if condition fails
+          console.error("Failed to fetch episode data or subtitles.");
+          setEpisodeDataLink(null);
+          setEpisodeSubtitleLink(null);
         }
       } catch (error) {
-        console.error("Failed to fetch episode data:", error);
-        setEpisodeDataLink(null); // Consider setting to a fallback URL or error state
-      }
-
-      try {
-        const episodeData = await getAnimeEpisodeLinks(episodeName);
-        if (episodeData && episodeData.subtitles) {
-          setEpisodeSubtitleLink(episodeData.subtitles.find(subtitle => subtitle.lang === "English").url);
-        } else {
-          console.error("Episode subtitles are missing or the expected structure is not met.");
-          setEpisodeSubtitleLink(null); // Explicitly setting to null if condition fails
-        }
-      } catch (error) {
-        console.error("Failed to fetch episode subtitles:", error);
-        setEpisodeSubtitleLink(null); // Consider setting to a fallback URL or error state
+        console.error("Failed to fetch episode data or subtitles:", error);
+        setEpisodeDataLink(null);
+        setEpisodeSubtitleLink(null);
       }
     };
-
-    fetchEpisodeData();
-  }, [episodeName]); // Ensure episodeName is correctly triggering the effect
+  
+    fetchEpisodeDataAndSubtitles();
+  }, [episodeName]);
 
    // Conditional rendering or providing a default src
    if (!episodeDataLink) {
@@ -63,7 +69,7 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
   return (
     <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
       <MediaProvider>
-        <Track src={episodeSubtitleLink} kind="subtitles" label="English" lang="en-US" default />
+        <Track src={episodeSubtitleLink} kind="subtitles" label="English" lang="en-US" />
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       <DefaultVideoLayout icons={defaultLayoutIcons} />
