@@ -1,20 +1,19 @@
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK;
 const apiLink = process.env.NEXT_PUBLIC_CONSUMET_API;
 
-export const getAnimeDetails = async (id) => {
-  const data = await fetch(apiLink + `/meta/anilist/data/${id}`)
+export const getAnimeDetails = async (id, provider = "zoro") => {
+  const data = await fetch(apiLink + `/meta/anilist/data/${id}?provider=${provider}`)
   return await data.json();
 };
 
-export const getAnimeEpisodeData = async (id) => {
-  const data = await fetch(apiLink + `/meta/anilist/episodes/${id}`)
+export const getAnimeEpisodeData = async (id, provider = "zoro") => {
+  const data = await fetch(apiLink + `/meta/anilist/episodes/${id}?provider=${provider}`)
   const episodeData = await data.json();
   return episodeData;
 }
 
-
-export const getAnimeEpisodeLinks = async (animeId) => {
-  const data = await fetch(apiLink + `/meta/anilist/watch/${animeId}`)
+export const getAnimeEpisodeLinks = async (animeId, provider = "zoro") => {
+  const data = await fetch(apiLink + `/meta/anilist/watch/${animeId}?provider=${provider}`)
   return await data.json();
 }
 

@@ -9,7 +9,6 @@ import AnimeDetails from "../../../../components/anime/info/AnimeDetails";
 import EpisodesList from "../../../../components/anime/player/EpisodesList";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import { HiOutlineDownload } from "react-icons/hi";
-import { BsFillPlayFill } from "react-icons/bs";
 
 const VideoPlayer = dynamic(() => import('./../../../../components/anime/player/VideoPlayer'), { ssr: false, loading: () => <div>Loading...</div> });
 

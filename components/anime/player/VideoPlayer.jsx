@@ -2,21 +2,23 @@ import { useState, useEffect } from "react";
 import { getAnimeEpisodeLinks } from "../../../src/handlers/anime";
 import '@vidstack/react/player/styles/default/theme.css';
 import '@vidstack/react/player/styles/default/layouts/video.css';
-import { MediaPlayer, MediaProvider, Poster } from '@vidstack/react';
+import { MediaPlayer, MediaProvider, Poster, Track } from '@vidstack/react';
 import { defaultLayoutIcons, DefaultVideoLayout, DefaultAudioLayout } from '@vidstack/react/player/layouts/default';
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
 const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
+  const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
 
   useEffect(() => {
     const fetchEpisodeData = async () => {
       try {
         const episodeData = await getAnimeEpisodeLinks(episodeName);
-        if (episodeData && episodeData.sources && episodeData.sources[3] && episodeData.sources[3].url) {
-          const defaultSource = episodeData.sources.find(source => source.quality === "default");
-          setEpisodeDataLink(defaultSource.url);
+        if (episodeData && episodeData.sources) {
+          // const defaultSource = episodeData.sources.find(source => source.quality === "default");
+          const defaultSource = episodeData.sources[0];
+          setEpisodeDataLink(corsLink ? `${corsLink}/${defaultSource.url}` : defaultSource.url);
         } else {
           console.error("Episode data is missing or the expected structure is not met.");
           setEpisodeDataLink(null); // Explicitly setting to null if condition fails
@@ -24,6 +26,19 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
       } catch (error) {
         console.error("Failed to fetch episode data:", error);
         setEpisodeDataLink(null); // Consider setting to a fallback URL or error state
+      }
+
+      try {
+        const episodeData = await getAnimeEpisodeLinks(episodeName);
+        if (episodeData && episodeData.subtitles) {
+          setEpisodeSubtitleLink(episodeData.subtitles[0].url);
+        } else {
+          console.error("Episode subtitles are missing or the expected structure is not met.");
+          setEpisodeSubtitleLink(null); // Explicitly setting to null if condition fails
+        }
+      } catch (error) {
+        console.error("Failed to fetch episode subtitles:", error);
+        setEpisodeSubtitleLink(null); // Consider setting to a fallback URL or error state
       }
     };
 
@@ -47,8 +62,9 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
 
   return (
     <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
-      <MediaProvider />
-        <Poster src={episodeThumbnail} />
+      <MediaProvider>
+        <Track src={episodeSubtitleLink} kind="subtitles" label="English" lang="en-US" default />
+      </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       <DefaultVideoLayout icons={defaultLayoutIcons} />
     </MediaPlayer>
