@@ -17,7 +17,7 @@ function EpisodesList({ episodeData, episodeName, id, isDubbed = false, episodeP
   );
 
   return (
-    <div className={`max-lg:mt-10 w-full ${episodePage == false ? "mt-10 w-4/5 mx-auto" : "lg:w-1/4"}`}>
+    <div className={`max-lg:mt-10 w-full ${episodePage == false ? "mt-10 px-5 w-4/5 mx-auto" : "lg:w-1/4"}`}>
       <div className="py-2 flex flex-row space-x-2">
         <input
           type="text"
