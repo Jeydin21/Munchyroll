@@ -6,18 +6,18 @@ import { useCookies } from 'react-cookie';
 
 function EpisodesList({ episodeData, episodeName, id, isDubbed = false, episodePage }) {
   const [searchTerm, setSearchTerm] = useState('');
-
   const [cookies, setCookie] = useCookies(['listMode']);
-  const [isList, setIsList] = useState(cookies.listMode || true);
-  
+
+  const [isList, setIsList] = useState(cookies.listMode || false);
+
   const toggleMode = () => {
-    setIsList(!isList);
+    setIsList(prev => !prev);
   };
 
   useEffect(() => {
+    // Store isList as a string since cookies are stored as strings
     setCookie('listMode', isList, { sameSite: 'lax' });
   }, [isList]);
-
 
   const filteredEpisodes = episodeData?.filter(episode =>
     episode.number.toString().includes(searchTerm) || episode.title.toLowerCase().includes(searchTerm.toLowerCase())
