@@ -23,11 +23,11 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
             console.error("Episode data is missing or the expected structure is not met.");
             setEpisodeDataLink(null);
           }
-  
+
           if (episodeData.subtitles && episodeData.subtitles.length > 0) {
-            const englishSubtitle = episodeData.subtitles.find(subtitle => subtitle.lang === "English");
+            const englishSubtitle = episodeData.subtitles
             if (englishSubtitle) {
-              setEpisodeSubtitleLink(englishSubtitle.url);
+              setEpisodeSubtitleLink(englishSubtitle);
             } else {
               console.error("English subtitles are missing.");
               setEpisodeSubtitleLink(null);
@@ -47,12 +47,12 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
         setEpisodeSubtitleLink(null);
       }
     };
-  
+
     fetchEpisodeDataAndSubtitles();
   }, [episodeName]);
 
-   // Conditional rendering or providing a default src
-   if (!episodeDataLink) {
+  // Conditional rendering or providing a default src
+  if (!episodeDataLink) {
     return <div className="flex justify-center items-center h-full">Loading...</div>; // Tailwind CSS for centering
   }
 
@@ -69,7 +69,9 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
   return (
     <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
       <MediaProvider>
-        <Track src={episodeSubtitleLink} kind="subtitles" label="English" lang="en-US" />
+        {episodeSubtitleLink.filter(track => track.lang !== "Thumbnails").map((track) => (
+          <Track src={track.url} kind="subtitles" label={track.lang} key={track.content} default={track.lang === "English"} />
+        ))}
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       <DefaultVideoLayout icons={defaultLayoutIcons} />
