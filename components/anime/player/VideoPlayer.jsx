@@ -31,7 +31,7 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
       try {
         const episodeData = await getAnimeEpisodeLinks(episodeName);
         if (episodeData && episodeData.subtitles) {
-          setEpisodeSubtitleLink(episodeData.subtitles[0].url);
+          setEpisodeSubtitleLink(episodeData.subtitles.find(subtitle => subtitle.lang === "English").url);
         } else {
           console.error("Episode subtitles are missing or the expected structure is not met.");
           setEpisodeSubtitleLink(null); // Explicitly setting to null if condition fails
