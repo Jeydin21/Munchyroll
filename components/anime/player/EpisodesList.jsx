@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaTableList, FaTableCells } from "react-icons/fa6";
 import TextButton from "../../buttons/TextButton";
-
+import { useCookies } from 'react-cookie';
 
 function EpisodesList({ episodeData, episodeName, id, isDubbed = false, episodePage }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [isList, setIsList] = useState(true);
 
+  const [cookies, setCookie] = useCookies(['listMode']);
+  const [isList, setIsList] = useState(cookies.listMode || true);
+  
   const toggleMode = () => {
     setIsList(!isList);
   };
+
+  useEffect(() => {
+    setCookie('listMode', isList, { sameSite: 'lax' });
+  }, [isList]);
+
 
   const filteredEpisodes = episodeData?.filter(episode =>
     episode.number.toString().includes(searchTerm) || episode.title.toLowerCase().includes(searchTerm.toLowerCase())
