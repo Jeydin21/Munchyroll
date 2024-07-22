@@ -9,6 +9,10 @@ export const getAnimeDetails = async (id, provider = "zoro") => {
 export const getAnimeEpisodeData = async (id, provider = "zoro") => {
   const data = await fetch(apiLink + `/meta/anilist/episodes/${id}?provider=${provider}`)
   const episodeData = await data.json();
+  if (Object.keys(episodeData).length === 0) {
+    const data = await fetch(apiLink + `/meta/anilist/episodes/${id}`)
+    return await data.json();
+  }
   return episodeData;
 }
 

@@ -10,14 +10,27 @@ const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
+  const [isZoro, setIsZoro] = useState(null);
 
   useEffect(() => {
     const fetchEpisodeDataAndSubtitles = async () => {
       try {
-        const episodeData = await getAnimeEpisodeLinks(episodeName);
+        let episodeData;
+        if (episodeName.includes("$")) {
+          episodeData = await getAnimeEpisodeLinks(episodeName);
+          setIsZoro(true);
+        } else {
+          episodeData = await getAnimeEpisodeLinks(episodeName, "gogoanime");
+          setIsZoro(false);
+        }
         if (episodeData) {
           if (episodeData.sources && episodeData.sources.length > 0) {
-            const defaultSource = episodeData.sources[0];
+            let defaultSource;
+            if (isZoro) {
+              defaultSource = episodeData.sources[0];
+            } else {
+              defaultSource = episodeData.sources.find(source => source.quality === "default");
+            }
             setEpisodeDataLink(corsLink ? `${corsLink}/${defaultSource.url}` : defaultSource.url);
           } else {
             console.error("Episode data is missing or the expected structure is not met.");
@@ -67,9 +80,9 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
 
 
   return (
-    <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand" >
+    <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand">
       <MediaProvider>
-        {episodeSubtitleLink.filter(track => track.lang !== "Thumbnails").map((track) => (
+        {episodeSubtitleLink && episodeSubtitleLink.filter(track => track.lang !== "Thumbnails").map((track) => (
           <Track src={track.url} kind="subtitles" label={track.lang} key={track.content} default={track.lang === "English"} />
         ))}
       </MediaProvider>
