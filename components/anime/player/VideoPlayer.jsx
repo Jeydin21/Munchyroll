@@ -10,7 +10,7 @@ const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
-  const [isZoro, setIsZoro] = useState(null);
+  const [isZoro, setIsZoro] = useState(true);
 
   useEffect(() => {
     const fetchEpisodeDataAndSubtitles = async () => {
