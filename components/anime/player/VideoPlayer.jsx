@@ -4,13 +4,41 @@ import '@vidstack/react/player/styles/default/theme.css';
 import '@vidstack/react/player/styles/default/layouts/video.css';
 import { MediaPlayer, MediaProvider, Poster, Track } from '@vidstack/react';
 import { defaultLayoutIcons, DefaultVideoLayout, DefaultAudioLayout } from '@vidstack/react/player/layouts/default';
+import { set } from "nprogress";
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
 const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
+  const [vttContent, setVttContent] = useState(null);
   const [isZoro, setIsZoro] = useState(true);
+
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+      2,
+      "0"
+    )}:${String(secs).padStart(2, "0")}.000`;
+  };
+
+  const generateVTT = (intros, outros) => {
+    let vtt = "WEBVTT\n\n";
+
+    intros.forEach((intro, key) => {
+      vtt += `${formatTime(intro.start)} --> ${formatTime(intro.end)}\n`;
+      vtt += `Intro\n\n`;
+    });
+
+    outros.forEach((outro, key) => {
+      vtt += `${formatTime(outro.start)} --> ${formatTime(outro.end)}\n`;
+      vtt += `Outro\n\n`;
+    });
+
+    return vtt;
+  };
 
   useEffect(() => {
     const fetchEpisodeDataAndSubtitles = async () => {
@@ -19,6 +47,11 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
         if (episodeName.includes("$")) {
           episodeData = await getAnimeEpisodeLinks(episodeName);
           setIsZoro(true);
+          if (episodeData.intro && episodeData.outro) {
+            const intros = [episodeData.intro]
+            const outros = [episodeData.outro]
+            setVttContent(generateVTT(intros, outros));
+          }
         } else {
           episodeData = await getAnimeEpisodeLinks(episodeName, "gogoanime");
           setIsZoro(false);
@@ -77,14 +110,21 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
     episodeThing = `Episode ${episodeNumber}`;
   }
 
-
-
   return (
     <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand">
       <MediaProvider>
         {episodeSubtitleLink && episodeSubtitleLink.filter(track => track.lang !== "Thumbnails").map((track) => (
           <Track src={track.url} kind="subtitles" label={track.lang} key={track.content} default={track.lang === "English"} />
         ))}
+        {vttContent && (
+          <Track
+            content={vttContent}
+            default={true}
+            language="en-US"
+            kind="chapters"
+            data-type="vtt"
+          />
+        )}
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       <DefaultVideoLayout icons={defaultLayoutIcons} />
