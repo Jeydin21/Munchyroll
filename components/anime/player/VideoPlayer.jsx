@@ -8,7 +8,7 @@ import { set } from "nprogress";
 
 const corsLink = process.env.NEXT_PUBLIC_CORS_REQUEST_LINK
 
-const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumber }) => {
+const VideoPlayer = ({ episodeTitle, episodeName, episodeNumber }) => {
   const [episodeDataLink, setEpisodeDataLink] = useState(null);
   const [episodeSubtitleLink, setEpisodeSubtitleLink] = useState(null);
   const [vttContent, setVttContent] = useState(null);
@@ -127,7 +127,7 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeThumbnail, episodeNumbe
         )}
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
-      <DefaultVideoLayout icons={defaultLayoutIcons} />
+      <DefaultVideoLayout thumbnails={episodeSubtitleLink.find(track => track.lang === "Thumbnails").url} icons={defaultLayoutIcons} />
     </MediaPlayer>
   );
 };
