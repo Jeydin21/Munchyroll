@@ -127,7 +127,9 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeNumber }) => {
         )}
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
+      {episodeSubtitleLink && (
       <DefaultVideoLayout thumbnails={episodeSubtitleLink.find(track => track.lang === "Thumbnails").url} icons={defaultLayoutIcons} />
+    )}
     </MediaPlayer>
   );
 };
