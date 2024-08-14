@@ -114,7 +114,7 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeNumber }) => {
     <MediaPlayer title={episodeThing} src={episodeDataLink} playsInline aspectRatio="16/9" load="eager" posterLoad="eager" streamType="on-demand">
       <MediaProvider>
         {episodeSubtitleLink && episodeSubtitleLink.filter(track => track.lang !== "Thumbnails").map((track) => (
-          <Track src={track.url} kind="subtitles" label={track.lang} key={track.content} default={track.lang === "English"} />
+          <Track src={`${corsLink}/${track.url}`} kind="subtitles" label={track.lang} key={track.content} default={track.lang === "English"} />
         ))}
         {vttContent && (
           <Track
@@ -128,7 +128,7 @@ const VideoPlayer = ({ episodeTitle, episodeName, episodeNumber }) => {
       </MediaProvider>
       <DefaultAudioLayout icons={defaultLayoutIcons} />
       {episodeSubtitleLink && (
-      <DefaultVideoLayout thumbnails={episodeSubtitleLink.find(track => track.lang === "Thumbnails").url} icons={defaultLayoutIcons} />
+      <DefaultVideoLayout thumbnails={`${corsLink}/${episodeSubtitleLink.find(track => track.lang === "Thumbnails").url}`} icons={defaultLayoutIcons} />
     )}
     </MediaPlayer>
   );
