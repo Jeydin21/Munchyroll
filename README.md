@@ -1,12 +1,11 @@
 <div align="center">
-<a href="https://anime.j21.dev">
+<a>
   <img src="public/icon-512x512.png" alt="logo" width="180"/>
 <h1>Munchyroll</h1>
 </a>
 An ad-free anime streaming web app aimed at minimality and responsive design. 
 <br />
 
-### Live demo at [anime.j21.dev](https://anime.j21.dev)
 <br />
 
  <a href="https://github.com/Jeydin21/Munchyroll/blob/master/LICENSE.md">
